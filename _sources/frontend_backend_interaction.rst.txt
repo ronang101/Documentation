@@ -1,0 +1,103 @@
+.. _frontend-backend-interaction-label:
+
+Frontend-Backend Interaction Documentation
+==========================================
+
+The Redwood Prototype's frontend and backend modules interact to provide a seamless user experience. This section outlines how the frontend JavaScript modules communicate with the Flask backend via API endpoints, highlighting key functionalities and data flow.
+
+User Flow
+---------
+.. figure:: _static/user-flow-diagram.png
+   :align: center
+   :alt: User Flow Diagram
+   :figclass: align-center
+   :target: _static/user-flow-diagram.png
+
+   Figure 1: User Flow Overview
+
+API Endpoints and Frontend Handlers
+-----------------------------------
+
+1. **User Authentication and Account Management**
+   
+   - *Frontend*: :ref:`login.js <login-label>`
+     - Handles user authentication using Firebase and Google sign-in.
+     - Communicates with `/verify-token` endpoint to verify user identity.
+
+   - *Backend*: `app.py`
+     - Endpoint `/verify-token` for Firebase token verification.
+     - Session management for user authentication status.
+
+   .. figure:: _static/authentication-diagram.png
+      :align: center
+      :alt: User Authentication Flow Diagram
+      :figclass: align-center
+      :target: _static/authentication-diagram.png
+
+      Figure 2: User Authentication Flow
+
+2. **User Profile Management**
+   
+   - *Frontend*: :ref:`userCreation.js <userCreation-label>` and :ref:`editScript.js <edit-script-label>`
+     - `userCreation.js` handles new user profile creation.
+     - `editScript.js` facilitates user profile editing.
+     - Communicates with `/add_user` and `/update_user` endpoints.
+
+   - *Backend*: `app.py`
+     - Endpoints `/add_user` and `/update_user` for handling user data insertion and updates.
+
+3. **Recommendation System Interaction**
+
+   - *Frontend*: :ref:`recommendations.js <recommendations-label>`
+     - Manages the display and interaction with user recommendations.
+     - Communicates with `/api/recommendations` for generating recommendations and `/api/check_recommendations` for fetching recommendations 
+
+   - *Backend*: `app.py`
+     - Endpoint `/api/recommendations` to generate user-specific recommendations and `/api/check_recommendations` for user-specific fetching recommendations 
+
+   .. figure:: _static/recommendation-diagram.png
+      :align: center
+      :alt: Recommendation System Interaction Diagram
+      :figclass: align-center
+      :target: _static/recommendation-diagram.png
+  
+      Figure 3: Recommendation System Interaction
+
+4. **Match Interaction and Management**
+
+   - *Frontend*: :ref:`matches.js <matches-label>`
+     - Handles the display and management of user matches.
+     - Communicates with `/api/matches`, `/remove_match`, and `/report_match` endpoints.
+
+   - *Backend*: `app.py`
+     - Endpoints for fetching matches, removing matches, and reporting matches.
+
+5. **User Interaction Recording**
+
+   - *Frontend*: :ref:`recommendations.js <recommendations-label>`
+     - Record user interactions such as likes, dislikes, and reports.
+     - Interacts with `/record_interaction` and `/report` endpoints.
+
+   - *Backend*: `app.py`
+     - Endpoints `/record_interaction` and `/report` for logging user interactions in the database.
+
+6. **Account Deletion**
+
+   - *Frontend*: :ref:`editScript.js <edit-script-label>`
+     - Provides functionality for users to delete their accounts.
+     - Communicates with `/delete-account` endpoint.
+
+   - *Backend*: `app.py`
+     - Endpoint `/delete-account` for handling account deletion requests.
+
+Data Flow and Interaction Patterns
+----------------------------------
+
+The frontend modules use AJAX requests to communicate with the Flask backend's API endpoints. User data, preferences, and interactions are sent to the server for processing and storage. The backend, in turn, provides responses that include user-specific data, recommendations, and matches. This interaction allows for a dynamic and responsive user experience, adapting to user actions and preferences.
+
+See Also
+--------
+
+- :ref:`Modules Overview <modules-overview-label>` for a general overview of all modules.
+- :ref:`Environment Setup <environment-setup-label>` for setup details relevant to the frontend and backend.
+

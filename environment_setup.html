@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Environment Setup and Required Packages &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/environment_setup.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Future Work and Development Roadmap" href="future_work.html" />
+    <link rel="prev" title="Design Rationale" href="design_rationale.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="environment-setup-and-required-packages">
+<span id="environment-setup-label"></span><h1>Environment Setup and Required Packages<a class="headerlink" href="#environment-setup-and-required-packages" title="Link to this heading">¶</a></h1>
+<p>For new developers setting up their development environment for the Redwood Prototype, it is essential to install a list of Python packages that the system depends on. These packages provide the necessary functionality for database interaction, data manipulation, machine learning algorithms, and more.</p>
+<p>Below is the list of required packages with a brief description of their purpose within the Redwood Prototype:</p>
+<section id="psycopg2">
+<h2>psycopg2<a class="headerlink" href="#psycopg2" title="Link to this heading">¶</a></h2>
+<p>This package provides a Python adapter for PostgreSQL. It’s used for all database interactions within the application, including queries and updates.</p>
+</section>
+<section id="pandas">
+<h2>pandas<a class="headerlink" href="#pandas" title="Link to this heading">¶</a></h2>
+<p>A powerful data manipulation and analysis library. It’s utilized for handling dataframes and performing data processing tasks.</p>
+</section>
+<section id="scikit-learn">
+<h2>scikit-learn<a class="headerlink" href="#scikit-learn" title="Link to this heading">¶</a></h2>
+<p>An extensive machine learning library. It’s used for implementing various machine learning algorithms that underpin the recommendation system.</p>
+</section>
+<section id="faker">
+<h2>Faker<a class="headerlink" href="#faker" title="Link to this heading">¶</a></h2>
+<p>A library for generating fake data, useful for populating the system with mock data for testing purposes.</p>
+</section>
+<section id="scipy">
+<h2>scipy<a class="headerlink" href="#scipy" title="Link to this heading">¶</a></h2>
+<p>A library for scientific and technical computing. It provides functions for working with sparse matrices, which are crucial for efficient computation in the recommendation algorithms.</p>
+</section>
+<section id="geopy">
+<h2>geopy<a class="headerlink" href="#geopy" title="Link to this heading">¶</a></h2>
+<p>Used for geospatial calculations, this library helps in handling location-based filtering and distance calculations between users.</p>
+</section>
+<section id="memory-profiler">
+<h2>memory_profiler<a class="headerlink" href="#memory-profiler" title="Link to this heading">¶</a></h2>
+<p>This tool helps in profiling the memory usage of the application, ensuring efficient use of resources.</p>
+</section>
+<section id="matplotlib">
+<h2>matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading">¶</a></h2>
+<p>A library for creating static, animated, and interactive visualizations in Python. It can be used for visualizing data and debugging purposes.</p>
+</section>
+<section id="cupy-cuda12x">
+<h2>cupy-cuda12x<a class="headerlink" href="#cupy-cuda12x" title="Link to this heading">¶</a></h2>
+<p>Offers GPU-accelerated computing capabilities, particularly for matrix operations, which can significantly speed up computations.</p>
+</section>
+<section id="flask">
+<h2>flask<a class="headerlink" href="#flask" title="Link to this heading">¶</a></h2>
+<p>A micro web framework for Python, it’s the backbone of the web development portion of the Redwood Prototype.</p>
+</section>
+<section id="surprise">
+<h2>surprise<a class="headerlink" href="#surprise" title="Link to this heading">¶</a></h2>
+<p>A Python scikit for building and analyzing recommender systems that deal with explicit rating data. It’s used for collaborative filtering algorithms like Singular Value Decomposition (SVD).</p>
+</section>
+<section id="flask-apscheduler">
+<h2>Flask-APScheduler<a class="headerlink" href="#flask-apscheduler" title="Link to this heading">¶</a></h2>
+<p>An extension for Flask that adds support for the APScheduler. It’s used for scheduling tasks, such as the daily rebuilding of recommendation matrices.</p>
+</section>
+<section id="firebase-admin">
+<h2>firebase_admin<a class="headerlink" href="#firebase-admin" title="Link to this heading">¶</a></h2>
+<p>The Firebase Admin Python SDK enables server-side (backend) Python applications to interact with Firebase. It’s essential for managing user authentication.</p>
+</section>
+<section id="installation-instructions">
+<h2>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Link to this heading">¶</a></h2>
+<p>To install these packages, you’ll need to use pip, the package installer for Python. Within your virtual environment, execute the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>This command will automatically download and install all the packages listed in your requirements.txt file. Your requirements.txt should include all of the packages listed above.</p>
+</section>
+<section id="version-control-and-compatibility">
+<h2>Version Control and Compatibility<a class="headerlink" href="#version-control-and-compatibility" title="Link to this heading">¶</a></h2>
+<p>Ensure that the virtual environment is set up with the correct version of Python (3.11.4) as expected by the Redwood Prototype. Compatibility issues may arise if the versions do not match. Each package should be tested within the development environment to verify that there are no conflicts or issues.</p>
+</section>
+<section id="best-practices-for-package-management">
+<h2>Best Practices for Package Management<a class="headerlink" href="#best-practices-for-package-management" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Always activate your virtual environment before installing packages to avoid conflicts with the system-wide Python installation.</p></li>
+<li><p>Keep the requirements.txt file updated as packages are added, removed, or updated within the project.</p></li>
+<li><p>Consider using package versioning in requirements.txt to lock dependencies to specific versions, enhancing consistency across development environments.</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">Modules Overview</span></a> for understanding the broader system architecture.</p></li>
+<li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for how these scripts integrate with the backend.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Environment Setup and Required Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#psycopg2">psycopg2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pandas">pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#faker">Faker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scipy">scipy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geopy">geopy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-profiler">memory_profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matplotlib">matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cupy-cuda12x">cupy-cuda12x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flask">flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surprise">surprise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flask-apscheduler">Flask-APScheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#firebase-admin">firebase_admin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-instructions">Installation Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-control-and-compatibility">Version Control and Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices-for-package-management">Best Practices for Package Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="design_rationale.html" title="previous chapter">Design Rationale</a></li>
+      <li>Next: <a href="future_work.html" title="next chapter">Future Work and Development Roadmap</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/environment_setup.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

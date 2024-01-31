@@ -1,0 +1,105 @@
+.. _environment-setup-label:
+
+Environment Setup and Required Packages
+========================================
+
+For new developers setting up their development environment for the Redwood Prototype, it is essential to install a list of Python packages that the system depends on. These packages provide the necessary functionality for database interaction, data manipulation, machine learning algorithms, and more.
+
+Below is the list of required packages with a brief description of their purpose within the Redwood Prototype:
+
+psycopg2
+--------
+
+This package provides a Python adapter for PostgreSQL. It's used for all database interactions within the application, including queries and updates.
+
+pandas
+------
+
+A powerful data manipulation and analysis library. It's utilized for handling dataframes and performing data processing tasks.
+
+scikit-learn
+------------
+
+An extensive machine learning library. It's used for implementing various machine learning algorithms that underpin the recommendation system.
+
+Faker
+-----
+
+A library for generating fake data, useful for populating the system with mock data for testing purposes.
+
+scipy
+-----
+
+A library for scientific and technical computing. It provides functions for working with sparse matrices, which are crucial for efficient computation in the recommendation algorithms.
+
+geopy
+-----
+
+Used for geospatial calculations, this library helps in handling location-based filtering and distance calculations between users.
+
+memory_profiler
+---------------
+
+This tool helps in profiling the memory usage of the application, ensuring efficient use of resources.
+
+matplotlib
+----------
+
+A library for creating static, animated, and interactive visualizations in Python. It can be used for visualizing data and debugging purposes.
+
+cupy-cuda12x
+------------
+
+Offers GPU-accelerated computing capabilities, particularly for matrix operations, which can significantly speed up computations.
+
+flask
+-----
+
+A micro web framework for Python, it's the backbone of the web development portion of the Redwood Prototype.
+
+surprise
+--------
+
+A Python scikit for building and analyzing recommender systems that deal with explicit rating data. It's used for collaborative filtering algorithms like Singular Value Decomposition (SVD).
+
+Flask-APScheduler
+-----------------
+
+An extension for Flask that adds support for the APScheduler. It's used for scheduling tasks, such as the daily rebuilding of recommendation matrices.
+
+firebase_admin
+--------------
+
+The Firebase Admin Python SDK enables server-side (backend) Python applications to interact with Firebase. It's essential for managing user authentication.
+
+Installation Instructions
+-------------------------
+
+To install these packages, you'll need to use pip, the package installer for Python. Within your virtual environment, execute the following command:
+
+.. code-block:: shell
+
+   pip install -r requirements.txt
+
+This command will automatically download and install all the packages listed in your requirements.txt file. Your requirements.txt should include all of the packages listed above.
+
+Version Control and Compatibility
+----------------------------------
+
+Ensure that the virtual environment is set up with the correct version of Python (3.11.4) as expected by the Redwood Prototype. Compatibility issues may arise if the versions do not match. Each package should be tested within the development environment to verify that there are no conflicts or issues.
+
+Best Practices for Package Management
+--------------------------------------
+
+- Always activate your virtual environment before installing packages to avoid conflicts with the system-wide Python installation.
+
+- Keep the requirements.txt file updated as packages are added, removed, or updated within the project.
+
+- Consider using package versioning in requirements.txt to lock dependencies to specific versions, enhancing consistency across development environments.
+
+See Also
+--------
+
+- :ref:`Modules Overview <modules-overview-label>` for understanding the broader system architecture.
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for how these scripts integrate with the backend.
+

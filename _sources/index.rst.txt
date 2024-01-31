@@ -1,0 +1,24 @@
+Welcome to Redwood Prototype's documentation!
+=============================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   introduction
+   modules_overview
+   frontend_backend_interaction
+   database_schema
+   form-scripts
+   main-scripts
+   python_modules
+   design_rationale
+   environment_setup
+   future_work
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

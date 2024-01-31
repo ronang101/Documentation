@@ -1,0 +1,120 @@
+.. _modules-overview-label:
+
+Modules Overview
+================
+
+The Redwood Prototype is composed of several key modules, each playing a vital role in the functionality of the platform. This section provides an overview of these modules, detailing their purpose and functionality.
+
+**Frontend Modules**
+--------------------
+
+The frontend of Redwood Prototype is developed using HTML, CSS, and JavaScript to provide a dynamic and interactive user interface. Key JavaScript files include:
+
+additional/
+~~~~~~~~~~~
+
+- **jquery.min.js**: Provides essential functionalities for DOM manipulation and event handling, enhancing the user interface.
+- **pikaday.min.js**: A JavaScript date picker library that improves date selection within the application (used for displaying user move in dates).
+- **redwood-f9f87-firebase-adminsdk-w4dk2-c53a064263.json**: Firebase Admin SDK configuration file used for server-side interaction with Firebase services.
+- **select2.min.js**: Enhances select input elements by adding features like searching and tagging.
+
+form-scripts/
+~~~~~~~~~~~~~
+
+- :ref:`editScript.js <edit-script-label>`: Facilitates profile editing, repopulating form fields with existing user data for updates.
+- :ref:`login.js <login-label>`: Manages user authentication with Firebase and Google sign-in integration.
+- :ref:`userCreation.js <userCreation-label>`: Handles user profile creation, including feature/preference selections and image upload validation.
+- **userCreationLists.js**:  Contains predefined lists of cities, universities, and features for user profiles, used in user creation/editing process.
+
+
+main-scripts/
+~~~~~~~~~~~~~
+
+- :ref:`api.js <api-label>`: Serves as an interface for backend API requests, including fetching recommendations and recording interactions.
+- :ref:`dom.js <dom-label>`: Responsible for DOM manipulations, displaying user recommendations, and managing modals.
+- **features.js**: Contains predefined dicts which allow us to decide which section a users features belong to.
+- :ref:`matches.js <matches-label>`: Manages match display and interactions.
+- :ref:`recommendations.js <recommendations-label>`: Core to the recommendation feature, managing user recommendations and interactions.
+
+HTML Documents
+--------------
+
+- **login.html**: This is the entry point for users to log in to the system. It features a simple and intuitive interface for users to sign in with their Google account.
+
+- **signup.html**: Provides a form for new users to create a profile. It includes fields for personal details, preferences, and a profile picture upload.
+
+- **recommendations.html**: Displays personalized user recommendations. It contains complex UI elements for profile cards, including bio, budget, and calendar views.
+
+- **matches.html**: Shows a list of matched profiles. Users can view their matches and access detailed information about each match, most of this is generated dynamically from the matches.js script.
+
+- **edit.html**: Allows users to edit their profile information. It includes the same fields as the signup page, pre-filled with the user's current data.
+
+CSS Stylesheets
+---------------
+
+The stylesheets are organized into two main directories: form-pages for styling forms and main-design for the main interface components.
+
+**form-pages/login.css**: Styles the login page with Redwood's design language.
+
+**form-pages/user-creation.css**: Provides styling for the signup and edit profile forms, ensuring consistency in the form design.
+
+**main-design/recommendations.css**: Applies styles to the recommendations view, handling layout and visual hierarchy, also used for match cards.
+
+**main-design/matches.css**: Similar to recommendations.css but tailored for specifics of the matches view.
+
+**main-design/about.css, budget.css, calendar.css, contact.css, mutual.css, side-menu.css, bio-extra-info.css, report.css**: These stylesheets manage specific components within the user interface, such as the about section, budget constraints, calendar interface, contact details, mutual interests, side navigation menu, additional bio information, and reporting functionality.
+
+**additional/pikaday.min.css, select2.min.css**: Style third-party plugins used for enhanced select inputs and for showing calendar dates.
+
+Integration with Backend
+------------------------
+
+These frontend components are seamlessly integrated with the Flask backend, with HTML templates receiving context data from Flask views. This enables dynamic content rendering based on user data and interactions, which is pivotal for the recommendation system's functionality.
+
+**Backend Modules**
+-------------------
+
+The backend, developed in Python with Flask, orchestrates the application's core logic, database operations, recommendation algorithms, and API interactions:
+
+
+algorithms/
+~~~~~~~~~~~
+
+- :ref:`collaborative_filtering_web.py <collaborative-filtering-web-label>`: Uses collaborative filtering techniques to identify user similarities for recommendations.
+
+- :ref:`web-recommendations.py <web-recommendations-label>`: Implements the mixed filtering algorithm, combining collaborative and content-based filtering for enhanced recommendation accuracy.
+
+
+database/
+~~~~~~~~~
+
+- :ref:`apply_filters.py <apply-filters-label>`: This module is used for filtering out recommendations to find candidates when trying to generate recommendations for a target user.
+
+- :ref:`db_connection_web.py <db-connection-web-label>`:  Manages database interactions, including user data retrieval, match fetching, and account deletion.
+
+- :ref:`user_creation.py <userCreation-label>`: Facilitates the addition and updating of user profiles in the database, including handling of user preferences and profile images.
+
+
+utils/
+~~~~~~
+
+- :ref:`interactions.py <interactions-label>`: Manages user interactions with the system, such as recording likes, dislikes, and user reports.
+
+- :ref:`similarity_metrics.py <similarity-metrics-label>`: This module is used for calculation the similarity of users, through preferences or features, through the use of cosine similarity.
+
+- :ref:`update_data_structures.py <update-data-structures-label>`: Ensures the timely update of data structures used in the recommendation process.
+
+
+web/
+~~~~
+
+- :ref:`app.py <app-label>`: Serves as the central hub for routing requests and integrating backend functionalities. It handles user authentication, account management, and orchestrates recommendation processes.
+
+
+See Also
+--------
+   
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for details on how these modules interact with each other.
+- :ref:`Python Modules <python-modules-label>` for a deep dive into backend modules.
+- :ref:`Environment Setup <environment-setup-label>` for setup details relevant to the frontend and backend.
+

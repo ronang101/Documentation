@@ -1,0 +1,52 @@
+.. _database-label:
+
+Database package
+=============================
+
+Module Contents
+---------------
+
+This section contains detailed documentation of the database package, encompassing a variety of modules designed for interacting with the database through, select, insert and delete statements.
+
+- :ref:`apply_filters.py <apply-filters-label>`
+
+- :ref:`db_connection_web.py <db-connection-web-label>`
+
+- :ref:`user_creation.py <user-creation-label>`
+
+.. _apply-filters-label:
+
+database.apply\_filters module
+-----------------------------------
+
+.. automodule:: database.apply_filters
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. _db-connection-web-label:
+
+database.db\_connection\_web module
+-----------------------------------
+
+.. automodule:: database.db_connection_web
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. _user-creation-label:
+
+database.user\_creation module
+------------------------------
+
+.. automodule:: database.user_creation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+See Also
+--------
+- :ref:`Utils Module <utils-label>`
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <modules-overview-label>`.

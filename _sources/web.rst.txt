@@ -1,0 +1,27 @@
+.. _web-label:
+
+Web package
+========================
+
+Module Contents
+---------------
+
+This section contains detailed documentation of the web package, this package contains the flask app which is the central hub for connecting the back end to the front end of the prototype.
+
+- :ref:`app.py <app-label>`
+
+.. _app-label:
+
+web.app module
+--------------
+
+.. automodule:: web.app
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+See Also
+--------
+- :ref:`Algorithms Module <algorithms-label>`
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <modules-overview-label>`.

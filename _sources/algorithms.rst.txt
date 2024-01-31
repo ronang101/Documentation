@@ -1,0 +1,39 @@
+.. _algorithms-label:
+
+Algorithms package
+===============================
+
+Module Contents
+---------------
+
+This section contains detailed documentation of the algorithms package, encompassing a variety of modules designed for generating recommendations.
+
+- :ref:`collaborative_filtering_web.py <collaborative-filtering-web-label>`
+
+- :ref:`web_recommendations.py <web-recommendations-label>`
+
+.. _collaborative-filtering-web-label:
+
+algorithms.collaborative\_filtering\_web module
+-----------------------------------------------
+
+.. automodule:: algorithms.collaborative_filtering_web
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. _web-recommendations-label:
+
+algorithms.web\_recommendations module
+---------------------------------------
+
+.. automodule:: algorithms.web_recommendations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+See Also
+--------
+- :ref:`Database Module <database-label>`
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <modules-overview-label>`.

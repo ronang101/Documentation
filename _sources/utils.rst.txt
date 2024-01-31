@@ -1,0 +1,55 @@
+.. _utils-label:
+
+Utils package
+==========================
+
+Module Contents
+---------------
+
+This section contains detailed documentation of the utils package, encompassing a variety of modules designed for many processes. This is a more general package with functions for calculating similarity scores, filtering, rebuilding structures and more.
+
+- :ref:`interactions.py <interactions-label>`
+
+- :ref:`similarity_metrics.py <similarity-metrics-label>`
+
+- :ref:`update_data_structures.py <update-data-structures-label>`
+
+
+.. _interactions-label:
+
+utils.interactions module
+--------------------------
+
+.. automodule:: utils.interactions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. _similarity-metrics-label:
+
+utils.similarity\_metrics module
+---------------------------------
+
+.. automodule:: utils.similarity_metrics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. _update-data-structures-label:
+
+utils.update\_data\_structures module
+-------------------------------------
+
+.. automodule:: utils.update_data_structures
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+
+See Also
+--------
+- :ref:`Web Module <web-label>`
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <modules-overview-label>`.

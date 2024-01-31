@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Design Rationale &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/design_rationale.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Environment Setup and Required Packages" href="environment_setup.html" />
+    <link rel="prev" title="Web package" href="web.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="design-rationale">
+<h1>Design Rationale<a class="headerlink" href="#design-rationale" title="Link to this heading">¶</a></h1>
+<p>This section provides insight into the key decisions made during the development of the Redwood Prototype. For each decision, we explore the reasoning, alternatives considered, and their alignment with the project’s goals.</p>
+<section id="decisions">
+<h2>Decisions:<a class="headerlink" href="#decisions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#decision-1"><span class="std std-ref">Decision 1: Choosing Python for Backend Development</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-2"><span class="std std-ref">Decision 2: Generating and Storing Sets of 30 Recommendations for Dynamic Updates</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-3"><span class="std std-ref">Decision 3: Using Cosine Similarity for Recommendation Metrics</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-4"><span class="std std-ref">Decision 4: Calculating Cosine Similarity in the Database for Efficiency</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-5"><span class="std std-ref">Decision 5: Database Connection Pooling</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-6"><span class="std std-ref">Decision 6: User Authentication Method</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-7"><span class="std std-ref">Decision 7: Flask as the Web Framework</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-8"><span class="std std-ref">Decision 8: Data Structure for User Preferences and Features</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-9"><span class="std std-ref">Decision 9: Handling User Interactions</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-10"><span class="std std-ref">Decision 10: Recommendation Update Strategy</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-11"><span class="std std-ref">Decision 11: Image Processing for User Profiles</span></a></p></li>
+<li><p><a class="reference internal" href="#decision-12"><span class="std std-ref">Decision 12: Front-End to Back-End Communication</span></a></p></li>
+</ul>
+</section>
+<section id="decision-1-choosing-python-for-backend-development">
+<span id="decision-1"></span><h2>Decision 1: Choosing Python for Backend Development<a class="headerlink" href="#decision-1-choosing-python-for-backend-development" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>The backend of the Redwood Prototype is developed using Python.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>Python is known for its extensive support and libraries in machine learning and data processing, making it an ideal choice for developing simple or complex recommendation systems. Its simplicity and readability also contribute to easier maintenance and collaborative development. Moreover, Python’s widespread adoption in the tech community ensures a robust support network and continuous updates, which are vital for a project focusing on cutting-edge features.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Node.js: Known for its high performance and scalability in handling numerous connections simultaneously, making it a strong contender for backend development. However, it may not have as straightforward integration with machine learning libraries compared to Python.</p>
+<p>Java: Offers robust performance and is widely used in large-scale systems. However, it does not provide the same ease of use for machine learning and data processing tasks as Python.</p>
+<p>Ruby: Known for its easy syntax and rapid development capabilities, but it also lacks the extensive machine learning libraries and community support that Python offers.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>Python’s strengths in machine learning and data processing align well with Redwood’s need for an advanced recommendation system. Its ease of use and readability support collaborative development, which is crucial for a growing project. Python’s extensive libraries, such as scikit-learn and TensorFlow, provide the necessary tools to build and refine the recommendation algorithms, directly contributing to the project’s core mission.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>The choice of Python offers scalability and flexibility for future enhancements, especially in the realm of machine learning and data analytics. It ensures that the backend can be  easily adapted and expanded as new features and algorithms are introduced. Additionally, Python’s popularity and large community support mean that emerging trends and advancements in technology can be readily integrated into Redwood.</p>
+</section>
+<section id="decision-2-generating-and-storing-sets-of-30-recommendations-for-dynamic-updates">
+<span id="decision-2"></span><h2>Decision 2: Generating and Storing Sets of 30 Recommendations for Dynamic Updates<a class="headerlink" href="#decision-2-generating-and-storing-sets-of-30-recommendations-for-dynamic-updates" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>The system generates and stores 30 recommendations at a time for each user. After the user has interacted with all 30 recommendations, their preferences are updated, and a new set of 30 recommendations is generated.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>This approach balances the efficiency of batch processing with the need for dynamic, real-time updates. By processing a set number of recommendations in batches, the system can manage computational resources more effectively. This number (30) is chosen based on the assumption that a user’s preferences are unlikely to change significantly within a smaller set of interactions, thus providing a more stable basis for generating relevant recommendations.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Real-Time Recommendation Generation: Generating recommendations in real-time for each user interaction. While this ensures the most up-to-date recommendations, it can be computationally intensive and may not significantly improve the user experience due to the relatively stable nature of user preferences.</p>
+<p>Larger Batch Processing: Generating a larger batch of recommendations at a time. This could reduce the frequency of updates but might lead to less relevant recommendations over time as user preferences evolve.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>This strategy aligns well with the core objective of providing relevant and personalized roommate recommendations. It ensures that the recommendations are updated frequently enough to reflect changing user preferences while maintaining system efficiency.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>This approach provides a scalable framework for the recommendation system. It allows for adjustments in the batch size based on future insights into user behavior and system performance. The balance between batch processing and real-time updates offers flexibility to adapt to changing user needs and technological advancements.
+However it is worth noting that each time we have to fetch another set of 30 recommendations we must re-filter the set of users to get candidates and then recalculate dot products for cosine similarity which may not be the most efficient. In the future when the user base grows too large we may have to strike a balance between up to date exact recommendations vs approximate recommendations where we generate recommendations in a large batch and make small updates as we go.</p>
+</section>
+<section id="decision-3-using-cosine-similarity-for-recommendation-metrics">
+<span id="decision-3"></span><h2>Decision 3: Using Cosine Similarity for Recommendation Metrics<a class="headerlink" href="#decision-3-using-cosine-similarity-for-recommendation-metrics" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Implementing cosine similarity as the primary metric for collaborative and content-based filtering in the recommendation system.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>Cosine similarity is particularly effective for high-dimensional data, common in recommendation systems. It measures the cosine of the angle between two vectors, in this case, user preference or feature vectors, which is a robust indicator of similarity in user preferences or characteristics. This metric is advantageous for its insensitivity to the magnitude of the vectors, focusing solely on orientation, which is ideal for comparing user profiles.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Euclidean Distance: While useful for measuring direct distances between points, it can be less effective in high-dimensional spaces where the notion of ‘distance’ becomes less intuitive.</p>
+<p>Pearson Correlation: Measures linear correlation between two variables but may not perform as well in scenarios where the relationship is not linear.</p>
+<p>Jaccard Index: Useful for measuring similarities between sets, but less effective for the type of numerical, high-dimensional data typically found in user profiles.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>Using cosine similarity aligns with the objective of creating an effective and user-friendly roommate matching system. It ensures that the recommendations are based on meaningful similarities in user preferences and characteristics, leading to more compatible matches.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>The choice of cosine similarity lays a solid foundation for the recommendation algorithm, capable of handling diverse and complex user data. It offers a scalable metric that can adapt to an expanding feature set and user base, ensuring the long-term efficacy of the recommendation system.</p>
+</section>
+<section id="decision-4-calculating-cosine-similarity-in-the-database-for-efficiency">
+<span id="decision-4"></span><h2>Decision 4: Calculating Cosine Similarity in the Database for Efficiency<a class="headerlink" href="#decision-4-calculating-cosine-similarity-in-the-database-for-efficiency" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Transitioning from calculating cosine similarity in Python to directly computing the dot product in the database after L2 normalization of user data.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>Concurrency Issues with Global Variables: Initially, using sparse matrices in Python and storing them as global variables offered efficiency but led to concurrency issues. Multiple simultaneous recommendation requests accessing the same global variables could lead to conflicts or race conditions.</p>
+<p>Overhead in Data Transfer to Python: Shifting to fetching necessary data from the database for each recommendation request and calculating cosine similarity in Python introduced significant data transfer overhead, impacting system performance.</p>
+<p>Efficiency of Database Computation: Ultimately, preprocessing data for L2 normalization and calculating the dot product directly in the database was chosen. This approach significantly reduces data transfer overhead and leverages the database’s optimized computation capabilities, leading to faster and more efficient recommendation generation.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Maintaining Sparse Matrices in Python: Despite its efficiency for single requests, this approach’s limitations in handling concurrent requests made it less viable for a scalable system.</p>
+<p>On-the-fly Calculation in Python: While offering flexibility in data processing, the added latency due to data transfer proved to be a significant bottleneck.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>This decision aligns with the project’s goal of providing efficient and responsive roommate matching services. By optimizing the recommendation algorithm for concurrency and minimizing data transfer overhead, the system can handle multiple requests simultaneously without performance degradation.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>This approach sets a scalable foundation for the recommendation system. It accommodates an increasing user base and the accompanying rise in concurrent requests. Moreover, database-level computations ensure that the system can adapt to evolving data structures and user interaction patterns while maintaining performance.</p>
+</section>
+<section id="decision-5-database-connection-pooling">
+<span id="decision-5"></span><h2>Decision 5: Database Connection Pooling<a class="headerlink" href="#decision-5-database-connection-pooling" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Implementing a database connection pool using PostgreSQL and Python’s psycopg2 library.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>Database connection pooling is crucial for managing multiple simultaneous database connections efficiently. By maintaining a pool of connections, the system can reuse existing connections, reducing the overhead of establishing a new connection for each database query. This approach significantly improves the application’s performance, especially under heavy load. PostgreSQL, known for its reliability and robustness, was chosen as the database system, and Python’s psycopg2 library was selected for its compatibility and ease of integration with PostgreSQL.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Single Connection per Request: Each request establishes and closes its database connection. While simple, this method is inefficient under high load, leading to increased latency and resource consumption.</p>
+<p>Other Database Systems: Alternative databases like MySQL or NoSQL databases like MongoDB were considered. However, PostgreSQL was preferred for its advanced features, reliability, and support for complex queries and data types.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>Implementing database connection pooling aligns with the need for a scalable, efficient backend system capable of handling multiple user requests simultaneously. It ensures that the system remains responsive and efficient as the user base grows.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>This decision provides a scalable infrastructure foundation, allowing for efficient management of database connections as the application grows. It also opens up possibilities for future enhancements in database management and optimization.</p>
+</section>
+<section id="decision-6-user-authentication-method">
+<span id="decision-6"></span><h2>Decision 6: User Authentication Method<a class="headerlink" href="#decision-6-user-authentication-method" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Choosing Firebase for user authentication and session management.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>Firebase was selected for its comprehensive set of features, including authentication, real-time database, and cloud functions. It provides a secure and scalable solution for managing user sessions and authentication across different platforms. Firebase’s ease of integration with various front-end and back-end technologies makes it a versatile choice for the project.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Custom Authentication System: Building an in-house authentication system using tokens or session-based authentication. While offering control and customization, it requires significant effort to ensure security and scalability.</p>
+<p>OAuth Providers: Using third-party OAuth providers like Google or Facebook for authentication. While easy to implement, relying solely on third-party providers can limit control and flexibility in user management.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>The use of Firebase aligns with the project’s objectives of providing a secure, user-friendly, and seamless experience. Its integration with the backend and frontend ensures a consistent authentication flow, crucial for user trust and engagement.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>Firebase’s scalability and robustness offer a future-proof solution for user authentication and session management. Its flexibility allows for easy integration of additional authentication methods and features, catering to the evolving needs of the application and its users.</p>
+</section>
+<section id="decision-7-flask-as-the-web-framework">
+<span id="decision-7"></span><h2>Decision 7: Flask as the Web Framework<a class="headerlink" href="#decision-7-flask-as-the-web-framework" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Selecting Flask to develop the web application portion of the Redwood Prototype.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>Flask, a lightweight and flexible Python web framework, was chosen for its simplicity and adaptability. Its minimalist nature allows for greater control over the application structure and the choice of components, making it suitable for a project like Redwood that requires a tailored approach. Flask’s extensive compatibility with various libraries and tools in the Python ecosystem, including machine learning and database interaction libraries, played a significant role in this decision.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Django: A more feature-rich and opinionated web framework. While Django offers a comprehensive set of tools and a built-in ORM, its complexity and rigid structure could have constrained the custom development needed for the Redwood Prototype.</p>
+<p>Node.js with Express: Offers high performance and is well-suited for real-time applications. However, it would require a shift from Python, which is central to the project’s machine learning and data processing capabilities.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>Using Flask aligns with the project’s need for a customizable, efficient, and scalable web framework that seamlessly integrates with the Python-based backend logic. Its lightweight nature ensures that the focus remains on the application’s unique functionalities without unnecessary overhead.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>Choosing Flask provides a solid foundation for the web application, ensuring scalability and flexibility. As the project evolves, Flask’s adaptability will allow for the integration of new features and technologies without significant constraints.</p>
+</section>
+<section id="decision-8-data-structure-for-user-preferences-and-features">
+<span id="decision-8"></span><h2>Decision 8: Data Structure for User Preferences and Features<a class="headerlink" href="#decision-8-data-structure-for-user-preferences-and-features" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Developing a structured format for storing user preferences and features in the PostgreSQL database using JSONB and relational data models.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>The choice to use JSONB and relational data models was driven by the need for flexibility in storing and querying diverse and dynamic user data. JSONB format in PostgreSQL allows for efficient storage of unstructured data like user preferences and features, which can vary significantly between users. This format supports quick retrieval and easy updates, which are crucial for the recommendation system. Additionally, the use of a relational data model for structured data ensures data integrity and efficient querying for standard user attributes.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Fully Normalized Relational Model: While offering benefits in data integrity and normalization, it could become complex and inefficient for handling dynamic and diverse user data like preferences and features.</p>
+<p>NoSQL Databases: These databases excel in handling unstructured data but might lack in transactional integrity and complex querying capabilities compared to relational databases like PostgreSQL.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>This data structure approach supports the project’s goal of providing personalized and adaptable roommate matching services. The flexibility in handling user data variations is crucial for the recommendation system’s effectiveness and responsiveness to user preferences.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>The chosen data structure offers scalability and adaptability for future developments. As user data and application requirements evolve, this approach will accommodate changes in data types and structures, ensuring the system remains robust and efficient.</p>
+</section>
+<section id="decision-9-handling-user-interactions">
+<span id="decision-9"></span><h2>Decision 9: Handling User Interactions<a class="headerlink" href="#decision-9-handling-user-interactions" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Developing a system within the Redwood Prototype to record and process user interactions, such as likes, dislikes, and superlikes.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>The decision to create a robust system for tracking user interactions was driven by the need to understand user preferences and behaviors accurately. This system includes a dedicated database schema to record every interaction. Each interaction is stored with details including the user IDs involved and the type of interaction. This data is crucial for refining user recommendations and enhancing the matching algorithm.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Simpler Logging Mechanism: Only tracking the number of interactions without detailed records. While less resource-intensive, this approach would provide less insight into user behavior and preferences.</p>
+<p>Third-Party Analytics Services: Utilizing external services for interaction tracking. This option could simplify development but might limit customization and data control.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>Recording detailed user interactions aligns with the project’s core objective of delivering personalized and relevant roommate recommendations. This system enables the application to adapt recommendations based on real user feedback, enhancing the matching accuracy.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>This approach lays the groundwork for a data-rich environment conducive to machine learning and data analysis. Over time, the accumulated interaction data can be leveraged for more sophisticated analytics and recommendation strategies, aligning with the project’s long-term vision for adaptability and user-centric enhancements.</p>
+</section>
+<section id="decision-10-recommendation-update-strategy">
+<span id="decision-10"></span><h2>Decision 10: Recommendation Update Strategy<a class="headerlink" href="#decision-10-recommendation-update-strategy" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Establishing a strategy for updating user recommendations in the Redwood Prototype based on user interactions, balancing between real-time updates and computational efficiency.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>The chosen strategy involves updating recommendations in a semi-batch process. After a user interacts with a predetermined number of recommendations (e.g., 30), the system updates their preference profile and generates a new set of recommendations. This approach offers a middle ground between the responsiveness of real-time updates and the efficiency of batch processing, ensuring recommendations remain relevant without overloading the system.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Real-Time Updates: Updating recommendations immediately after each interaction. While highly responsive, this could lead to significant computational overhead and might not significantly enhance user experience due to the relatively stable nature of preferences.</p>
+<p>Larger Batch Processing: Updating recommendations after a larger set of interactions. More efficient but potentially less responsive to quick changes in user preferences.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>This strategy aligns with the objective of providing personalized and adaptive roommate matching services. It ensures that recommendations are refreshed frequently enough to reflect evolving user preferences while maintaining operational efficiency.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>The chosen update strategy provides a scalable framework for the recommendation system. As the user base grows and technological capabilities evolve, the strategy can be adjusted for optimal balance between responsiveness and efficiency. This approach also opens avenues for implementing more advanced machine learning techniques that can further refine the recommendation process based on user interactions.</p>
+</section>
+<section id="decision-11-image-processing-for-user-profiles">
+<span id="decision-11"></span><h2>Decision 11: Image Processing for User Profiles<a class="headerlink" href="#decision-11-image-processing-for-user-profiles" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Implementing a strategy for handling user profile images within the Redwood Prototype, which includes resizing, cropping, and appropriate storage.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>The decision to incorporate a robust image processing system for user profiles was driven by the need for consistency in user experience and efficient use of server resources. This includes automating the process of resizing and cropping images to a standard format and size, ensuring uniformity across all user profiles. Efficient image processing also contributes to faster page load times and a smoother user interface.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>Client-Side Image Processing: Allowing users to edit and resize images on their end before uploading. While this approach could reduce server load, it might lead to inconsistencies in image quality and format.</p>
+<p>External Image Processing Services: Using third-party services for image processing. This option could offload computational work from the server but might increase dependencies and raise concerns about data privacy.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>Having a consistent and efficient image processing system aligns with the project’s goal of providing a seamless and visually appealing user interface. It enhances user experience by ensuring that profile images across the platform are standardized and of high quality.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>This decision ensures the scalability of the image handling process as the user base grows. It allows for potential future enhancements, such as implementing more advanced image processing techniques or integrating AI-based features like facial recognition to improve user profile authenticity.</p>
+</section>
+<section id="decision-12-front-end-to-back-end-communication">
+<span id="decision-12"></span><h2>Decision 12: Front-End to Back-End Communication<a class="headerlink" href="#decision-12-front-end-to-back-end-communication" title="Link to this heading">¶</a></h2>
+<p><strong>Decision Made</strong>:</p>
+<p>Establishing a structured approach for front-end to back-end communication in the Redwood Prototype, focusing on efficient API design and standardized data exchange formats.</p>
+<p><strong>Reasoning</strong>:</p>
+<p>A well-defined communication protocol between the front-end and back-end is crucial for the smooth operation of the application. This involves designing RESTful APIs that handle requests and responses in a standardized format, typically JSON. This approach ensures that data exchange is efficient, secure, and easily manageable. The use of RESTful principles also facilitates scalability and maintainability of the application.</p>
+<p><strong>Alternatives Considered</strong>:</p>
+<p>GraphQL: An alternative to RESTful APIs, offering more flexibility in querying data. However, it might introduce complexity in implementation and require additional learning for the development team.</p>
+<p>WebSocket Communication: Ideal for real-time data exchange but might be overkill for the current scope of the application and could introduce complexity in handling stateful connections.</p>
+<p><strong>Project Objectives Alignment</strong>:</p>
+<p>Adopting RESTful APIs for communication aligns with the project’s objectives of creating a scalable, efficient, and user-friendly platform. Standardized data exchange formats ensure consistency across different parts of the application and facilitate easier debugging and testing.</p>
+<p><strong>Future Implications</strong>:</p>
+<p>This decision provides a solid foundation for future development and expansion of the Redwood Prototype. It allows for easier integration of new features and modules, as well as potential scaling to accommodate a growing user base. The choice of RESTful APIs also ensures compatibility with a wide range of tools and technologies, offering flexibility for future technological advancements.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
+<p>The design decisions made during the development of the Redwood Prototype reflect a thoughtful and strategic approach to creating a robust and scalable roommate matching platform. Each decision, from choosing Python for backend development to establishing efficient communication between front-end and back-end, was guided by a commitment to achieving the project’s core objectives: providing a user-friendly, efficient, and adaptable service.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Design Rationale</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#decisions">Decisions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-1-choosing-python-for-backend-development">Decision 1: Choosing Python for Backend Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-2-generating-and-storing-sets-of-30-recommendations-for-dynamic-updates">Decision 2: Generating and Storing Sets of 30 Recommendations for Dynamic Updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-3-using-cosine-similarity-for-recommendation-metrics">Decision 3: Using Cosine Similarity for Recommendation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-4-calculating-cosine-similarity-in-the-database-for-efficiency">Decision 4: Calculating Cosine Similarity in the Database for Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-5-database-connection-pooling">Decision 5: Database Connection Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-6-user-authentication-method">Decision 6: User Authentication Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-7-flask-as-the-web-framework">Decision 7: Flask as the Web Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-8-data-structure-for-user-preferences-and-features">Decision 8: Data Structure for User Preferences and Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-9-handling-user-interactions">Decision 9: Handling User Interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-10-recommendation-update-strategy">Decision 10: Recommendation Update Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-11-image-processing-for-user-profiles">Decision 11: Image Processing for User Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decision-12-front-end-to-back-end-communication">Decision 12: Front-End to Back-End Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="web.html" title="previous chapter">Web package</a></li>
+      <li>Next: <a href="environment_setup.html" title="next chapter">Environment Setup and Required Packages</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/design_rationale.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

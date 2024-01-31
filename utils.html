@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Utils package &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/utils.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Web package" href="web.html" />
+    <link rel="prev" title="Database package" href="database.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="utils-package">
+<span id="utils-label"></span><h1>Utils package<a class="headerlink" href="#utils-package" title="Link to this heading">¶</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<p>This section contains detailed documentation of the utils package, encompassing a variety of modules designed for many processes. This is a more general package with functions for calculating similarity scores, filtering, rebuilding structures and more.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#interactions-label"><span class="std std-ref">interactions.py</span></a></p></li>
+<li><p><a class="reference internal" href="#similarity-metrics-label"><span class="std std-ref">similarity_metrics.py</span></a></p></li>
+<li><p><a class="reference internal" href="#update-data-structures-label"><span class="std std-ref">update_data_structures.py</span></a></p></li>
+</ul>
+</section>
+<section id="module-utils.interactions">
+<span id="utils-interactions-module"></span><span id="interactions-label"></span><h2>utils.interactions module<a class="headerlink" href="#module-utils.interactions" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.interactions.record_interaction">
+<span class="sig-prename descclassname"><span class="pre">utils.interactions.</span></span><span class="sig-name descname"><span class="pre">record_interaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.interactions.record_interaction" title="Link to this definition">¶</a></dt>
+<dd><p>Records a user interaction with a recommendation in the database.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>interaction_data (dict): Dictionary containing interaction details including user ID, recommendation ID, and interaction type.</p></li>
+<li><p>cur: Database cursor object for executing queries.</p></li>
+<li><p>conn: Database connection object.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Response: JSON response indicating the success or failure of the operation.</p></li>
+</ul>
+<p>This function takes interaction data from a user and records it in the database, it also checks if this interaction is a match (mutual likes). 
+It handles exceptions and returns a JSON response to indicate the status of the operation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.interactions.record_report">
+<span class="sig-prename descclassname"><span class="pre">utils.interactions.</span></span><span class="sig-name descname"><span class="pre">record_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.interactions.record_report" title="Link to this definition">¶</a></dt>
+<dd><p>Records a user report in the database and handles match deletions if necessary.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>report_data (dict): Data about the report, including reported user ID and reason.</p></li>
+<li><p>user_id (int): ID of the user making the report.</p></li>
+<li><p>cur: Database cursor for executing queries.</p></li>
+<li><p>conn: Database connection object.</p></li>
+<li><p>match (bool): Indicates if there is a match between the reporting and reported users.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Response: JSON response indicating the result of the operation.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.interactions.remove_matches">
+<span class="sig-prename descclassname"><span class="pre">utils.interactions.</span></span><span class="sig-name descname"><span class="pre">remove_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">removed_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.interactions.remove_matches" title="Link to this definition">¶</a></dt>
+<dd><p>Removes match records from the database involving the specified users.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>removed_id (int): ID of the user whose matches are to be removed.</p></li>
+<li><p>user_id (int): ID of the user initiating the removal.</p></li>
+<li><p>cur: Database cursor for executing queries.</p></li>
+<li><p>conn: Database connection object.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Response: JSON response indicating the result of the operation.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-utils.similarity_metrics">
+<span id="utils-similarity-metrics-module"></span><span id="similarity-metrics-label"></span><h2>utils.similarity_metrics module<a class="headerlink" href="#module-utils.similarity_metrics" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.similarity_metrics.get_top_matches">
+<span class="sig-prename descclassname"><span class="pre">utils.similarity_metrics.</span></span><span class="sig-name descname"><span class="pre">get_top_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.similarity_metrics.get_top_matches" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the top ‘n’ matching candidates based on specific data types preferences or features (depending on which form of filtering we’re doing).</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>cur: Database cursor for executing SQL queries.</p></li>
+<li><p>user_id (int): ID of the current user for whom matches are being found.</p></li>
+<li><p>candidate_ids (list): List of potential candidate user IDs for matching.</p></li>
+<li><p>data_type (str): Type of data to use for matching (e.g., ‘preference’, ‘feature’).</p></li>
+<li><p>n (int, optional): Number of top matches to retrieve. Default is 5.</p></li>
+</ul>
+<p>Returns:
+- list: List of top recommendation candidate IDs.</p>
+</dd></dl>
+
+</section>
+<section id="module-utils.update_data_structures">
+<span id="utils-update-data-structures-module"></span><span id="update-data-structures-label"></span><h2>utils.update_data_structures module<a class="headerlink" href="#module-utils.update_data_structures" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.update_data_structures.update_preferences_web">
+<span class="sig-prename descclassname"><span class="pre">utils.update_data_structures.</span></span><span class="sig-name descname"><span class="pre">update_preferences_web</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.update_data_structures.update_preferences_web" title="Link to this definition">¶</a></dt>
+<dd><p>Updates user preferences in the database based on their recent interactions.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>conn: Database connection object.</p></li>
+<li><p>cur: Database cursor object for executing queries.</p></li>
+<li><p>user_id (int): ID of the user whose preferences are being updated.</p></li>
+<li><p>interactions (list of tuples): List of tuples containing interaction data (user_id, interaction_type).</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>dict: Updated preferences dictionary after processing interactions.</p></li>
+</ul>
+<p>This function first retrieves the features of all users interacted with and updates the preferences based on the type of interaction (like, dislike, superlike). Preferences with negative values are removed. Finally, it updates the user’s preferences in the database.</p>
+</dd></dl>
+
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="web.html#web-label"><span class="std std-ref">Web Module</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="python_modules.html">Python Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html">Database package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web.html">Web package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="python_modules.html">Python Modules</a><ul>
+      <li>Previous: <a href="database.html" title="previous chapter">Database package</a></li>
+      <li>Next: <a href="web.html" title="next chapter">Web package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

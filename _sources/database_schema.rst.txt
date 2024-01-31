@@ -1,0 +1,265 @@
+.. _databaase-schema-label:
+
+Database Schema Documentation
+=============================
+
+The Redwood Prototype uses several tables in its PostgreSQL database to manage user data, interactions, reports, and matches. Below is a detailed description of each table, including their columns, data types, constraints, and indexes.
+
+Tables:
+-------
+
+- :ref:`User Reports Table <user-reports-label>`
+
+- :ref:`User Interactions Table <user-interactions-label>`
+
+- :ref:`User Base Table <user-base-label>`
+
+- :ref:`User Matches Table <user-matches-label>`
+
+- :ref:`User Features Table <user-features-label>`
+
+- :ref:`User Preferences Table <user-preferences-label>`
+
+- :ref:`User Filter Data Table <user-filter-data-label>`
+
+- :ref:`User Recommendations Table <user-recommendations-label>`
+
+ER diagram:
+-----------
+
+.. figure:: _static/database-er-diagram.png
+   :align: center
+   :alt: User Flow Diagram
+   :figclass: align-center
+   :target: _static/database-er-diagram.png
+
+   Figure 1: Database ER diagram
+
+.. _user-reports-label:
+
+**user_reports Table**
+----------------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **id**: integer (Primary Key, Auto Increment)
+- **user_id1**: integer (Not Null)
+- **user_id2**: integer (Not Null)
+- **report_reason**: character varying(20)
+- **report_date**: timestamp without time zone (Default: now())
+
+Constraints
+^^^^^^^^^^^
+
+- Primary Key: **id**
+- Unique Constraint: **user_id1, user_id2**
+- Foreign Key: **user_id1** references **user_base(id)**
+- Foreign Key: **user_id2** references **user_base(id)**
+
+Indexes
+^^^^^^^
+
+- **idx_user_reports_user_id1**: Index on **user_id1**
+- **idx_user_reports_user_id2**: Index on **user_id2**
+
+.. _user-interactions-label:
+
+**user_base_interactions Table**
+--------------------------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **id**: integer (Primary Key, Auto Increment)
+- **user_id1**: integer
+- **user_id2**: integer
+- **interaction_type**: character varying(20)
+- **interaction_date**: timestamp without time zone (Default: CURRENT_TIMESTAMP)
+
+Constraints
+^^^^^^^^^^^
+
+- Primary Key: **id**
+- Unique Constraint: **user_id1, user_id2**
+- Foreign Key: **user_id1** references **user_base(id)**
+- Foreign Key: **user_id2** references **user_base(id)**
+
+Indexes
+^^^^^^^
+
+- **idx_user_interactions_user_id1**: Index on **user_id1**
+- **idx_user_interactions_user_id2**: Index on **user_id2**
+
+.. _user-base-label:
+
+**user_base Table**
+-------------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **id**: integer (Primary Key, Auto Increment)
+- **name**: character varying(255)
+- **location**: geometry(Point,4326)
+- **rent_amount**: integer
+- **age**: integer
+- **features**: jsonb
+- **users_user_preferences**: jsonb
+- **total_interactions**: integer
+- **filters**: jsonb
+- **latitude**: double precision
+- **longitude**: double precision
+- **users_properties_preferences**: jsonb
+- **contact_info**: text
+- **firebase_uid**: character varying(255)
+- **bio**: character varying(300)
+- **duration**: character varying(50)
+- **filter_university**: boolean
+- **filter_occupation**: boolean
+
+Indexes
+^^^^^^^
+
+- **idx_firebase_uid**: Index on **firebase_uid**
+- **idx_user_base_age**: Index on **age**
+- **idx_user_base_location**: Index on **location** using GIST
+- **idx_user_base_rent_amount**: Index on **rent_amount**
+
+.. _user-matches-label:
+
+**matches Table**
+-----------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **match_id**: integer (Primary Key, Auto Increment)
+- **user_id1**: integer (Not Null)
+- **user_id2**: integer (Not Null)
+- **match_time**: timestamp without time zone (Default: CURRENT_TIMESTAMP)
+
+Constraints
+^^^^^^^^^^^
+
+- Primary Key: **match_id**
+- Foreign Key: **user_id1** references **user_base(id)**
+- Foreign Key: **user_id2** references **user_base(id)**
+
+Indexes
+^^^^^^^
+
+- **idx_matches_user_id1**: Index on **user_id1**
+- **idx_matches_user_id2**: Index on **user_id2**
+
+.. _user-features-label:
+
+**user_features Table**
+-----------------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **user_id**: integer (Not Null)
+- **feature_id**: integer (Not Null)
+- **feature_value**: real
+
+Constraints
+^^^^^^^^^^^
+
+- Primary Key: **user_id, feature_id**
+- Foreign Key: **user_id** references **user_base(id)**
+
+Indexes
+^^^^^^^
+
+- **idx_user_features_new_feature_id**: Index on **feature_id**
+- **idx_user_features_new_user_id**: Index on **user_id**
+
+.. _user-preferences-label:
+
+**user_preferences Table**
+--------------------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **user_id**: integer (Not Null)
+- **feature_id**: integer (Not Null)
+- **preference_value**: real
+
+Constraints
+^^^^^^^^^^^
+
+- Primary Key: **user_id, feature_id**
+- Foreign Key: **user_id** references **user_base(id)**
+
+Indexes
+^^^^^^^
+
+- **idx_user_preferences_new_feature_id**: Index on **feature_id**
+- **idx_user_preferences_new_user_id**: Index on **user_id**
+
+.. _user-filter-data-label:
+
+**user _filter_data Table**
+---------------------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **user_id**: integer (Primary Key, Not Null)
+- **age**: integer
+- **rent_amount**: integer
+- **city**: character varying(255)
+- **profession**: character varying(255)
+- **university**: character varying(255)
+- **move_in_date_start**: date
+- **move_in_date_end**: date
+
+Constraints
+^^^^^^^^^^^
+
+- Primary Key: **user_id, feature_id**
+- Foreign Key: **user_id** references **user_base(id)**
+
+Indexes
+^^^^^^^
+
+- **idx_user_filter_data_age**: Index on **age**
+- **idx_user_filter_data_city**: Index on **city**
+- **idx_user_filter_data_move_in_date_end**: Index on **move_in_date_end**
+- **idx_user_filter_data_move_in_date_start**: Index on **move_in_date_start**
+- **idx_user_filter_data_profession**: Index on **profession**
+- **idx_user_filter_data_rent_amount**: Index on **rent_amount**
+- **idx_user_filter_data_university**: Index on **university**
+
+.. _user-recommendations-label:
+
+**user_recommendations Table**
+------------------------------
+
+Table Structure
+^^^^^^^^^^^^^^^
+
+- **user_id**: integer (Primary Key, Not Null)
+- **recommendation_ids**: integer[] (Not Null)
+- **last_updated**: timestamp without time zone (Default: CURRENT_TIMESTAMP)
+
+Constraints
+^^^^^^^^^^^
+
+- Primary Key: **user_id**
+- Foreign Key: **user_id** references **user_base(id)**
+
+Indexes
+^^^^^^^
+
+None
+
+See Also
+--------
+   
+- :ref:`Modules Overview <modules-overview-label>` for an overview of related modules.
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for details on how these modules interact with each other.
+

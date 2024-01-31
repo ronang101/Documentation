@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modules Overview &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/modules_overview.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frontend-Backend Interaction Documentation" href="frontend_backend_interaction.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="modules-overview">
+<span id="modules-overview-label"></span><h1>Modules Overview<a class="headerlink" href="#modules-overview" title="Link to this heading">¶</a></h1>
+<p>The Redwood Prototype is composed of several key modules, each playing a vital role in the functionality of the platform. This section provides an overview of these modules, detailing their purpose and functionality.</p>
+<section id="frontend-modules">
+<h2><strong>Frontend Modules</strong><a class="headerlink" href="#frontend-modules" title="Link to this heading">¶</a></h2>
+<p>The frontend of Redwood Prototype is developed using HTML, CSS, and JavaScript to provide a dynamic and interactive user interface. Key JavaScript files include:</p>
+<section id="additional">
+<h3>additional/<a class="headerlink" href="#additional" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>jquery.min.js</strong>: Provides essential functionalities for DOM manipulation and event handling, enhancing the user interface.</p></li>
+<li><p><strong>pikaday.min.js</strong>: A JavaScript date picker library that improves date selection within the application (used for displaying user move in dates).</p></li>
+<li><p><strong>redwood-f9f87-firebase-adminsdk-w4dk2-c53a064263.json</strong>: Firebase Admin SDK configuration file used for server-side interaction with Firebase services.</p></li>
+<li><p><strong>select2.min.js</strong>: Enhances select input elements by adding features like searching and tagging.</p></li>
+</ul>
+</section>
+<section id="form-scripts">
+<h3>form-scripts/<a class="headerlink" href="#form-scripts" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="form-scripts.html#edit-script-label"><span class="std std-ref">editScript.js</span></a>: Facilitates profile editing, repopulating form fields with existing user data for updates.</p></li>
+<li><p><a class="reference internal" href="form-scripts.html#login-label"><span class="std std-ref">login.js</span></a>: Manages user authentication with Firebase and Google sign-in integration.</p></li>
+<li><p><a class="reference internal" href="form-scripts.html#usercreation-label"><span class="std std-ref">userCreation.js</span></a>: Handles user profile creation, including feature/preference selections and image upload validation.</p></li>
+<li><p><strong>userCreationLists.js</strong>:  Contains predefined lists of cities, universities, and features for user profiles, used in user creation/editing process.</p></li>
+</ul>
+</section>
+<section id="main-scripts">
+<h3>main-scripts/<a class="headerlink" href="#main-scripts" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="main-scripts.html#api-label"><span class="std std-ref">api.js</span></a>: Serves as an interface for backend API requests, including fetching recommendations and recording interactions.</p></li>
+<li><p><a class="reference internal" href="main-scripts.html#dom-label"><span class="std std-ref">dom.js</span></a>: Responsible for DOM manipulations, displaying user recommendations, and managing modals.</p></li>
+<li><p><strong>features.js</strong>: Contains predefined dicts which allow us to decide which section a users features belong to.</p></li>
+<li><p><a class="reference internal" href="main-scripts.html#matches-label"><span class="std std-ref">matches.js</span></a>: Manages match display and interactions.</p></li>
+<li><p><a class="reference internal" href="main-scripts.html#recommendations-label"><span class="std std-ref">recommendations.js</span></a>: Core to the recommendation feature, managing user recommendations and interactions.</p></li>
+</ul>
+</section>
+</section>
+<section id="html-documents">
+<h2>HTML Documents<a class="headerlink" href="#html-documents" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>login.html</strong>: This is the entry point for users to log in to the system. It features a simple and intuitive interface for users to sign in with their Google account.</p></li>
+<li><p><strong>signup.html</strong>: Provides a form for new users to create a profile. It includes fields for personal details, preferences, and a profile picture upload.</p></li>
+<li><p><strong>recommendations.html</strong>: Displays personalized user recommendations. It contains complex UI elements for profile cards, including bio, budget, and calendar views.</p></li>
+<li><p><strong>matches.html</strong>: Shows a list of matched profiles. Users can view their matches and access detailed information about each match, most of this is generated dynamically from the matches.js script.</p></li>
+<li><p><strong>edit.html</strong>: Allows users to edit their profile information. It includes the same fields as the signup page, pre-filled with the user’s current data.</p></li>
+</ul>
+</section>
+<section id="css-stylesheets">
+<h2>CSS Stylesheets<a class="headerlink" href="#css-stylesheets" title="Link to this heading">¶</a></h2>
+<p>The stylesheets are organized into two main directories: form-pages for styling forms and main-design for the main interface components.</p>
+<p><strong>form-pages/login.css</strong>: Styles the login page with Redwood’s design language.</p>
+<p><strong>form-pages/user-creation.css</strong>: Provides styling for the signup and edit profile forms, ensuring consistency in the form design.</p>
+<p><strong>main-design/recommendations.css</strong>: Applies styles to the recommendations view, handling layout and visual hierarchy, also used for match cards.</p>
+<p><strong>main-design/matches.css</strong>: Similar to recommendations.css but tailored for specifics of the matches view.</p>
+<p><strong>main-design/about.css, budget.css, calendar.css, contact.css, mutual.css, side-menu.css, bio-extra-info.css, report.css</strong>: These stylesheets manage specific components within the user interface, such as the about section, budget constraints, calendar interface, contact details, mutual interests, side navigation menu, additional bio information, and reporting functionality.</p>
+<p><strong>additional/pikaday.min.css, select2.min.css</strong>: Style third-party plugins used for enhanced select inputs and for showing calendar dates.</p>
+</section>
+<section id="integration-with-backend">
+<h2>Integration with Backend<a class="headerlink" href="#integration-with-backend" title="Link to this heading">¶</a></h2>
+<p>These frontend components are seamlessly integrated with the Flask backend, with HTML templates receiving context data from Flask views. This enables dynamic content rendering based on user data and interactions, which is pivotal for the recommendation system’s functionality.</p>
+</section>
+<section id="backend-modules">
+<h2><strong>Backend Modules</strong><a class="headerlink" href="#backend-modules" title="Link to this heading">¶</a></h2>
+<p>The backend, developed in Python with Flask, orchestrates the application’s core logic, database operations, recommendation algorithms, and API interactions:</p>
+<section id="algorithms">
+<h3>algorithms/<a class="headerlink" href="#algorithms" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="algorithms.html#collaborative-filtering-web-label"><span class="std std-ref">collaborative_filtering_web.py</span></a>: Uses collaborative filtering techniques to identify user similarities for recommendations.</p></li>
+<li><p><a class="reference internal" href="algorithms.html#web-recommendations-label"><span class="std std-ref">web-recommendations.py</span></a>: Implements the mixed filtering algorithm, combining collaborative and content-based filtering for enhanced recommendation accuracy.</p></li>
+</ul>
+</section>
+<section id="database">
+<h3>database/<a class="headerlink" href="#database" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="database.html#apply-filters-label"><span class="std std-ref">apply_filters.py</span></a>: This module is used for filtering out recommendations to find candidates when trying to generate recommendations for a target user.</p></li>
+<li><p><a class="reference internal" href="database.html#db-connection-web-label"><span class="std std-ref">db_connection_web.py</span></a>:  Manages database interactions, including user data retrieval, match fetching, and account deletion.</p></li>
+<li><p><a class="reference internal" href="form-scripts.html#usercreation-label"><span class="std std-ref">user_creation.py</span></a>: Facilitates the addition and updating of user profiles in the database, including handling of user preferences and profile images.</p></li>
+</ul>
+</section>
+<section id="utils">
+<h3>utils/<a class="headerlink" href="#utils" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="utils.html#interactions-label"><span class="std std-ref">interactions.py</span></a>: Manages user interactions with the system, such as recording likes, dislikes, and user reports.</p></li>
+<li><p><a class="reference internal" href="utils.html#similarity-metrics-label"><span class="std std-ref">similarity_metrics.py</span></a>: This module is used for calculation the similarity of users, through preferences or features, through the use of cosine similarity.</p></li>
+<li><p><a class="reference internal" href="utils.html#update-data-structures-label"><span class="std std-ref">update_data_structures.py</span></a>: Ensures the timely update of data structures used in the recommendation process.</p></li>
+</ul>
+</section>
+<section id="web">
+<h3>web/<a class="headerlink" href="#web" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>: Serves as the central hub for routing requests and integrating backend functionalities. It handles user authentication, account management, and orchestrates recommendation processes.</p></li>
+</ul>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for details on how these modules interact with each other.</p></li>
+<li><p><a class="reference internal" href="python_modules.html#python-modules-label"><span class="std std-ref">Python Modules</span></a> for a deep dive into backend modules.</p></li>
+<li><p><a class="reference internal" href="environment_setup.html#environment-setup-label"><span class="std std-ref">Environment Setup</span></a> for setup details relevant to the frontend and backend.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modules Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#frontend-modules"><strong>Frontend Modules</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#html-documents">HTML Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#css-stylesheets">CSS Stylesheets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-with-backend">Integration with Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backend-modules"><strong>Backend Modules</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="frontend_backend_interaction.html" title="next chapter">Frontend-Backend Interaction Documentation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/modules_overview.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

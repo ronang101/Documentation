@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Web package &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/web.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Design Rationale" href="design_rationale.html" />
+    <link rel="prev" title="Utils package" href="utils.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="web-package">
+<span id="web-label"></span><h1>Web package<a class="headerlink" href="#web-package" title="Link to this heading">¶</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<p>This section contains detailed documentation of the web package, this package contains the flask app which is the central hub for connecting the back end to the front end of the prototype.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#app-label"><span class="std std-ref">app.py</span></a></p></li>
+</ul>
+</section>
+<section id="module-web.app">
+<span id="web-app-module"></span><span id="app-label"></span><h2>web.app module<a class="headerlink" href="#module-web.app" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.api_check_recommendation">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">api_check_recommendation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.api_check_recommendation" title="Link to this definition">¶</a></dt>
+<dd><p>API endpoint to handle recommendation check requests for a user to avoid calculating recommendations again.</p>
+<ul class="simple">
+<li><p>Checks if the user is authenticated (user_id in session).</p></li>
+<li><p>If not authenticated, returns a 401 Unauthorized error.</p></li>
+<li><p>Parses request data (JSON) which contains user interactions.</p></li>
+<li><p>Calls <cite>api_check_recommendations</cite> to fetch recommendations.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON: Response containing a list of recommendations containg dicts or an error message.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.api_matches">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">api_matches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.api_matches" title="Link to this definition">¶</a></dt>
+<dd><p>API endpoint to fetch match recommendations for the authenticated user.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON: Response containing a list of matches for the authenticated user.</p></li>
+<li><p>Redirects to the login page if the user is not authenticated.</p></li>
+</ul>
+<p>Verifies if the user is authenticated.
+Calls <cite>get_matches</cite> to retrieve the user’s match recommendations from the database.
+Returns a JSON response containing the user’s match recommendations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.api_recommendation">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">api_recommendation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.api_recommendation" title="Link to this definition">¶</a></dt>
+<dd><p>API endpoint to handle recommendation requests for a user.</p>
+<ul class="simple">
+<li><p>Checks if the user is authenticated (user_id in session).</p></li>
+<li><p>If not authenticated, returns a 401 Unauthorized error.</p></li>
+<li><p>Parses request data (JSON) which contains user interactions.</p></li>
+<li><p>Calls <cite>api_recommendations</cite> to process the data and fetch recommendations.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON: Response containing a list of recommendations containg dicts or an error message.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.create_account">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">create_account</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.create_account" title="Link to this definition">¶</a></dt>
+<dd><p>Route to render the account creation page.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Rendered HTML: The signup page for new users.</p></li>
+</ul>
+<p>Checks if the user’s Firebase UID is in the session and redirects to the login page if not.
+Redirects to recommendations if the user has already signed up.
+Renders the account creation page if the user has not signed up.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.delete_account">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">delete_account</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.delete_account" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint for deleting the authenticated user’s account.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Redirect: To the account creation page after account deletion.</p></li>
+<li><p>If not authenticated, redirects to the login page.</p></li>
+</ul>
+<p>Verifies if the user is authenticated.
+Calls <cite>account_deletion</cite> to remove the user’s data from the database.
+Clears the session and redirects to the account creation page upon successful deletion.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.edit_profile">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">edit_profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.edit_profile" title="Link to this definition">¶</a></dt>
+<dd><p>Route to render the profile editing page for the authenticated user.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Rendered HTML: The profile editing page populated with the current user’s data.</p></li>
+</ul>
+<p>Checks if the user is authenticated and redirects to the login page if not.
+Retrieves the current user’s data from the database (using “get_user_data”).
+Renders the profile editing template with the retrieved user data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.handle_add_user">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">handle_add_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.handle_add_user" title="Link to this definition">¶</a></dt>
+<dd><p>Flask route handler to add a new user to the system.</p>
+<ul class="simple">
+<li><p>Extracts Firebase UID from session.</p></li>
+<li><p>If UID is not found, redirects to the login page.</p></li>
+<li><p>Calls <cite>add_user</cite> to insert new user data into the database.</p></li>
+<li><p>Redirects to recommendations page with the new user’s ID on successful addition.</p></li>
+<li><p>On exception, returns an error message with HTTP status 500.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>On success: Redirect to the recommendations page for the new user.</p></li>
+<li><p>On failure: Error message with status code 500.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.index">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.index" title="Link to this definition">¶</a></dt>
+<dd><p>Flask route to render the login page.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Rendered HTML: The ‘login.html’ template, serving as the application’s login page.</p></li>
+</ul>
+<p>This is the default route for the web application, which renders the login page.
+It acts as the entry point for users accessing the site.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.login">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.login" title="Link to this definition">¶</a></dt>
+<dd><p>Route to render the login page.</p>
+<p>Renders and returns the login template.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Rendered HTML: The login page of the application.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.logout">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">logout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.logout" title="Link to this definition">¶</a></dt>
+<dd><p>Route to handle user logout.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Redirect: To the login page.</p></li>
+</ul>
+<p>Clears the user session to log out the user.
+Redirects to the login page after logout.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.record_interactions">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">record_interactions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.record_interactions" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint for recording user interactions with recommendations in the system.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON response indicating the status of the interaction recording.</p></li>
+<li><p>If the user is not authenticated, returns a 401 Unauthorized error.</p></li>
+</ul>
+<p>Verifies if the user is authenticated by checking the session.
+Parses the JSON data from the POST request, which includes interaction details (user ids, like, dislike, etc.).
+Calls the <cite>record_interaction</cite> function to update the database with these interactions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.remove_match">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">remove_match</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.remove_match" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint to remove a match from the user’s list.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON: Response indicating the status of the match removal.</p></li>
+</ul>
+<p>Checks if the user is authenticated.
+Processes the removal request and updates the database to reflect the match removal by calling “remove_matches”.
+Returns a JSON response indicating the result of the removal process.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.report">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.report" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint for users to report other users or interactions.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON: Response indicating the status of the report submission.</p></li>
+</ul>
+<p>Verifies if the user is authenticated.
+Processes the report details from the POST request.
+Calls <cite>record_report</cite> to log the report in the database.
+Returns a JSON response indicating the result of the report process.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.report_match">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">report_match</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.report_match" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint for users to report matches.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON: Response indicating the status of the match report submission.</p></li>
+</ul>
+<p>Similar to <cite>/report</cite>, but specifically handles reporting of matches.
+Verifies authentication, processes the report, and logs it in the database.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.show_matches">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">show_matches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.show_matches" title="Link to this definition">¶</a></dt>
+<dd><p>Route to display match recommendations for the authenticated user.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Rendered HTML: Match recommendations page for the authenticated user.</p></li>
+<li><p>Redirects to the login page if the user is not authenticated.</p></li>
+</ul>
+<p>Verifies if the user is logged in and has a valid session.
+Renders the matches template for the logged-in user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.show_recommendations">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">show_recommendations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.show_recommendations" title="Link to this definition">¶</a></dt>
+<dd><p>Route to display recommendations for the authenticated user.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Rendered HTML: Recommendations page for the authenticated user.</p></li>
+<li><p>Redirects to the login page if the user is not authenticated.</p></li>
+</ul>
+<p>Verifies if the user is logged in and has a valid session.
+Renders the recommendations template for the logged-in user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.update_user">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">update_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.update_user" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint for updating the user’s profile information.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>Redirect: To the user’s recommendations page after the profile is updated.</p></li>
+</ul>
+<p>Calls <cite>update_user_data</cite> to process the form data submitted by the user and update their profile in the database.
+Redirects the user to the recommendations page upon successful update.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web.app.verify_token">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">verify_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.verify_token" title="Link to this definition">¶</a></dt>
+<dd><p>Endpoint to verify the Firebase token for user authentication.</p>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>JSON: Response with success status and redirection URL.</p></li>
+</ul>
+<p>Parses the ID token from the POST request.
+Verifies the token using Firebase authentication.
+Updates the session with the Firebase UID and checks if the user exists in the database.
+Redirects the user based on their authentication status.</p>
+</dd></dl>
+
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="algorithms.html#algorithms-label"><span class="std std-ref">Algorithms Module</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="python_modules.html">Python Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html">Database package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="python_modules.html">Python Modules</a><ul>
+      <li>Previous: <a href="utils.html" title="previous chapter">Utils package</a></li>
+      <li>Next: <a href="design_rationale.html" title="next chapter">Design Rationale</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/web.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

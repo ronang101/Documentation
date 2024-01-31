@@ -1,0 +1,14 @@
+.. _python-modules-label:
+
+Python Modules
+==============
+
+In-depth details of the Python modules, encompassing functionalities such as database interactions, recommendation algorithms, and utility functions.
+
+.. toctree::
+   :maxdepth: 2
+
+   algorithms
+   database
+   utils
+   web

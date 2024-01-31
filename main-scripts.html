@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>main-scripts &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/main-scripts.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python Modules" href="python_modules.html" />
+    <link rel="prev" title="form-scripts" href="form-scripts.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="main-scripts">
+<span id="main-scripts-label"></span><h1>main-scripts<a class="headerlink" href="#main-scripts" title="Link to this heading">¶</a></h1>
+<p>This section of the documentation elaborates on the JavaScript files within the <cite>main-scripts</cite> directory. These scripts are crucial for the dynamic operation of the platform, including API communication, DOM manipulations, and user interaction handling.</p>
+<section id="api-js">
+<span id="api-label"></span><h2><strong>api.js</strong><a class="headerlink" href="#api-js" title="Link to this heading">¶</a></h2>
+<p>The <cite>api.js</cite> script serves as the interface for server-side API requests. It encapsulates the following functionality:</p>
+<ul class="simple">
+<li><p>Fetching recommendations based on seen user IDs and interactions.</p></li>
+<li><p>Recording user interactions with a recommendation.</p></li>
+<li><p>Fetching matches and sending reports to the server.</p></li>
+</ul>
+</section>
+<section id="key-functions">
+<h2>Key Functions<a class="headerlink" href="#key-functions" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fetchRecommendations">
+<span class="sig-name descname"><span class="pre">fetchRecommendations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seenUserIds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fetchRecommendations" title="Link to this definition">¶</a></dt>
+<dd><p>Initiates a POST request to the server to fetch new recommendations based on user interactions and previously seen user IDs. It returns a promise that resolves to the fetched data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="checkRecommendations">
+<span class="sig-name descname"><span class="pre">checkRecommendations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#checkRecommendations" title="Link to this definition">¶</a></dt>
+<dd><p>Initiates a GET request to the server to fetch stored recommendations in order to avoid recaculaitons. It returns a promise that resolves to the fetched data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="recordInteraction">
+<span class="sig-name descname"><span class="pre">recordInteraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recommendationId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactionType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#recordInteraction" title="Link to this definition">¶</a></dt>
+<dd><p>Sends a POST request to the server to record a user interaction (like, dislike, superlike) with a recommendation. This function helps in updating the server about user preferences and choices.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fetchMatches">
+<span class="sig-name descname"><span class="pre">fetchMatches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fetchMatches" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the current user’s matches from the server through a GET request. It is used to populate the user interface with matches for further interaction.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#report" title="Link to this definition">¶</a></dt>
+<dd><p>Submits a user report to the server. This function is called when a user reports inappropriate content, abuse, or other issues. It handles the form data and sends a POST request with the report details.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reportMatch">
+<span class="sig-name descname"><span class="pre">reportMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reportMatch" title="Link to this definition">¶</a></dt>
+<dd><p>Similar to <cite>report</cite>, but specifically for reporting issues related to a particular match. This function takes form data and sends a report regarding a specific user match.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="removeMatch">
+<span class="sig-name descname"><span class="pre">removeMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#removeMatch" title="Link to this definition">¶</a></dt>
+<dd><p>Sends a request to the server to remove a specific match from the user’s list. This function is used when a user decides to unmatch or remove a connection with another user.</p>
+</dd></dl>
+
+</section>
+<section id="exposed-methods">
+<h2>Exposed Methods<a class="headerlink" href="#exposed-methods" title="Link to this heading">¶</a></h2>
+<p>The <cite>API</cite> module exposes the following methods, making them accessible to other scripts in the application:</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fetchRecommendations(seenUserIds,</span> <span class="pre">interactions)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recordInteraction(recommendationId,</span> <span class="pre">interactionType)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fetchMatches()</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">report(formData)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reportMatch(formData)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">removeMatch(id)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+</section>
+<section id="dom-js">
+<span id="dom-label"></span><h2><strong>dom.js</strong><a class="headerlink" href="#dom-js" title="Link to this heading">¶</a></h2>
+<p><cite>dom.js</cite> manages the Document Object Model (DOM) related operations:</p>
+<ul class="simple">
+<li><p>Dynamically displaying user recommendations with detailed information.</p></li>
+<li><p>Handling image loading and errors, budget displays, and user interactions.</p></li>
+<li><p>Utilizing the Pikaday library for calendar elements.</p></li>
+<li><p>Displaying modals for mutual likes and reporting, with all the associated UI logic.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>Key Functions<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="displayRecommendation">
+<span class="sig-name descname"><span class="pre">displayRecommendation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#displayRecommendation" title="Link to this definition">¶</a></dt>
+<dd><p>This function updates the DOM with the details of a user recommendation, this creates the recommendation card. It sets text content for various elements like name, age, city, and dynamically updates the user interface based on the recommendation data. It also manages the profile image, including loading and error handling, and updates budget limits with corresponding gauge graphics.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="showModal">
+<span class="sig-name descname"><span class="pre">showModal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#showModal" title="Link to this definition">¶</a></dt>
+<dd><p>Displays a modal when there’s a mutual match (like) between users. This function controls the display of the modal and includes logic for closing it through various UI elements.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="showReportModal">
+<span class="sig-name descname"><span class="pre">showReportModal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#showReportModal" title="Link to this definition">¶</a></dt>
+<dd><p>Sets up and manages the user interface for reporting other users. This includes form submission handling and displaying a thank-you modal upon submission.</p>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h2>Exposed Methods<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>The <cite>DOM</cite> module exposes the following methods, making them accessible to other scripts within the application:</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">displayRecommendation(rec)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">showModal(recName)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">showReportModal()</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+</section>
+<section id="matches-js">
+<span id="matches-label"></span><h2><strong>matches.js</strong><a class="headerlink" href="#matches-js" title="Link to this heading">¶</a></h2>
+<p>The <cite>matches.js</cite> script handles the display and interaction with matched user profiles:</p>
+<ul class="simple">
+<li><p>Fetching and displaying matched profiles using API calls.</p></li>
+<li><p>Setting up Pikaday calendars for each match to display available move-in dates.</p></li>
+<li><p>Constructing HTML for match cards and initializing UI elements like budget gauges and feature sections.</p></li>
+<li><p>Managing reports and match removals.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Key Functions<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="displayMatches">
+<span class="sig-name descname"><span class="pre">displayMatches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#displayMatches" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves and displays the user’s matches from the server. This function makes an API call to fetch the matches and then creates a match card for each user. It also sets up Pikaday calendars for each match and initializes various UI elements.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="createMatchCard">
+<span class="sig-name descname"><span class="pre">createMatchCard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#createMatchCard" title="Link to this definition">¶</a></dt>
+<dd><p>Constructs and returns the HTML content for a single match card. This includes the profile picture, bio, and other user information. It sets up budget gauges and initializes feature sections like About Me, Lifestyle, and Interests.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="initializePikadayForMatch">
+<span class="sig-name descname"><span class="pre">initializePikadayForMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#initializePikadayForMatch" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the Pikaday calendar for a specific match card. This function sets the calendar’s maximum and minimum dates and customizes its appearance and behavior.</p>
+</dd></dl>
+
+</section>
+<section id="event-listeners-and-ui-handling">
+<h2>Event Listeners and UI Handling<a class="headerlink" href="#event-listeners-and-ui-handling" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>The script listens for the ‘DOMContentLoaded’ event to initialize the display of matches and sets up the report modal functionality.</p></li>
+<li><p>Event listeners are added for various interactions within the match card, such as toggling between budget and calendar views, reporting matches, and removing matches.</p></li>
+<li><p>The script includes functions like <cite>reportInitialize(match)</cite> and <cite>removeInitialize(match)</cite> to handle reporting and removal of matches, respectively.</p></li>
+<li><p>Modals for contact information and reporting are managed, ensuring they are displayed and hidden appropriately based on user actions.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Exposed Methods<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>The <cite>matches.js</cite> script exposes certain methods to the global scope for interaction with other components of the application:</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">displayMatches()</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">createMatchCard(match,</span> <span class="pre">index)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">initializePikadayForMatch(match,</span> <span class="pre">index)</span> <span class="pre">:no-index:</span></span></dt>
+<dd></dd></dl>
+
+</section>
+<section id="recommendations-js">
+<span id="recommendations-label"></span><h2><strong>recommendations.js</strong><a class="headerlink" href="#recommendations-js" title="Link to this heading">¶</a></h2>
+<p>The <cite>recommendations.js</cite> script is the central script of the platform, it utilizes functions from other scripts and unifies all of them to create the main UI users will see. Its key functionalities include:</p>
+<ul class="simple">
+<li><p>Managing the state of user recommendations, tracking seen IDs and user interactions.</p></li>
+<li><p>Fetching new recommendations from the server as the user navigates through them.</p></li>
+<li><p>Creating recommendation cards which display all public information on a recommended user.</p></li>
+<li><p>Initializing the Pikaday calendar for viewing move-in dates.</p></li>
+<li><p>Recording user interactions such as likes, dislikes, and superlikes.</p></li>
+<li><p>Handling the UI transitions between budget and calendar views.</p></li>
+<li><p>Managing modals for reporting and matching notifications.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>Key Functions<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="initializeCalendar">
+<span class="sig-name descname"><span class="pre">initializeCalendar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#initializeCalendar" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the Pikaday calendar with a custom rendering function to highlight and disable dates. It sets the range of valid dates and binds the calendar to a specific DOM container.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="toggleBudgetView">
+<span class="sig-name descname"><span class="pre">toggleBudgetView</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#toggleBudgetView" title="Link to this definition">¶</a></dt>
+<dd><p>Toggles the user interface to display the budget view, hiding the calendar and adjusting button states to reflect the current view.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="toggleCalendarView">
+<span class="sig-name descname"><span class="pre">toggleCalendarView</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#toggleCalendarView" title="Link to this definition">¶</a></dt>
+<dd><p>Switches the user interface to display the calendar view, concealing the budget information and toggling button states accordingly.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="loadNextRecommendation">
+<span class="sig-name descname"><span class="pre">loadNextRecommendation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#loadNextRecommendation" title="Link to this definition">¶</a></dt>
+<dd><p>Loads and displays the next recommendation from the pre-fetched list. If the end of the list is reached, it triggers fetching new recommendations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fetchRecommendations()</span> <span class="pre">:no-index:</span></span></dt>
+<dd><p>Makes an API call to retrieve new recommendations based on previously seen user IDs and user interactions. Updates the list of recommendations and resets interaction tracking.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fetchRecommendationsEarly">
+<span class="sig-name descname"><span class="pre">fetchRecommendationsEarly</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fetchRecommendationsEarly" title="Link to this definition">¶</a></dt>
+<dd><p>Fetches new recommendations without immediately displaying them, designed to pre-load recommendations for a smoother user experience.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recordInteraction(recommendationId,</span> <span class="pre">recName,</span> <span class="pre">interactionType)</span> <span class="pre">:no-index:</span></span></dt>
+<dd><p>Records a user interaction (like, dislike, superlike) with a recommendation. It updates the local interaction state and sends the interaction to the server for processing.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="disableInteractionButtons">
+<span class="sig-name descname"><span class="pre">disableInteractionButtons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#disableInteractionButtons" title="Link to this definition">¶</a></dt>
+<dd><p>Disables interaction buttons (like, dislike, superlike) to prevent repeated interactions during data processing.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="enableInteractionButtons">
+<span class="sig-name descname"><span class="pre">enableInteractionButtons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#enableInteractionButtons" title="Link to this definition">¶</a></dt>
+<dd><p>Re-enables the interaction buttons after data processing is complete.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">toggleMenu()</span> <span class="pre">:no-index:</span></span></dt>
+<dd><p>Displays or hides the side menu in response to user interactions with the hamburger menu icon.</p>
+</dd></dl>
+
+</section>
+<section id="event-listeners">
+<h2>Event Listeners<a class="headerlink" href="#event-listeners" title="Link to this heading">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">DOMContentLoaded()</span> <span class="pre">:no-index:</span></span></dt>
+<dd><p>Fetches the initial set of recommendations and sets up event listeners for the budget and calendar view toggle buttons, as well as the side menu.</p>
+</dd></dl>
+
+</section>
+<section id="id6">
+<h2>Exposed Methods<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>The following methods are exposed by the <cite>Main</cite> module for use in other scripts:</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recordInteraction(recommendationId,</span> <span class="pre">recName,</span> <span class="pre">interactionType)</span> <span class="pre">:no-index:</span></span></dt>
+<dd><p>Allows other scripts to record interactions with recommendations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">loadNextRecommendation()</span> <span class="pre">:no-index:</span></span></dt>
+<dd><p>Enables other scripts to trigger the loading of the next recommendation in the list.</p>
+</dd></dl>
+
+</section>
+<section id="private-variables">
+<h2>Private Variables<a class="headerlink" href="#private-variables" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="currentRecIndex">
+<span class="sig-name descname"><span class="pre">currentRecIndex</span></span><a class="headerlink" href="#currentRecIndex" title="Link to this definition">¶</a></dt>
+<dd><p>Tracks the index of the currently displayed recommendation.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="recommendations">
+<span class="sig-name descname"><span class="pre">recommendations</span></span><a class="headerlink" href="#recommendations" title="Link to this definition">¶</a></dt>
+<dd><p>An array holding the currently loaded set of recommendations.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="seenUserIds">
+<span class="sig-name descname"><span class="pre">seenUserIds</span></span><a class="headerlink" href="#seenUserIds" title="Link to this definition">¶</a></dt>
+<dd><p>An array of user IDs that have already been displayed to prevent repeat recommendations.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="interactions">
+<span class="sig-name descname"><span class="pre">interactions</span></span><a class="headerlink" href="#interactions" title="Link to this definition">¶</a></dt>
+<dd><p>An array of recorded interactions that the user has made with recommendations.</p>
+</dd></dl>
+
+</section>
+<section id="html-integration">
+<h2>HTML Integration<a class="headerlink" href="#html-integration" title="Link to this heading">¶</a></h2>
+<p>The scripts interact with various HTML elements defined in <cite>recommendations.html</cite> and <cite>matches.html</cite>. These elements include buttons, containers, and modals, which are manipulated based on user actions and server responses.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Sample of script inclusion in HTML for recommendations --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../static/scripts/main-scripts/recommendations.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>For more detailed instructions on usage and customization, refer to the usage and comments within each script and the associated HTML files for context.</p>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for how these scripts integrate with the backend.</p></li>
+<li><p><a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">Modules Overview</span></a> for an overview of related modules.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">main-scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api-js"><strong>api.js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-functions">Key Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exposed-methods">Exposed Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dom-js"><strong>dom.js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Key Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Exposed Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matches-js"><strong>matches.js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Key Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-listeners-and-ui-handling">Event Listeners and UI Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Exposed Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommendations-js"><strong>recommendations.js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Key Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-listeners">Event Listeners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Exposed Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#private-variables">Private Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#html-integration">HTML Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="form-scripts.html" title="previous chapter">form-scripts</a></li>
+      <li>Next: <a href="python_modules.html" title="next chapter">Python Modules</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/main-scripts.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

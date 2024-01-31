@@ -1,0 +1,126 @@
+.. _form-scripts-label:
+
+form-scripts
+============
+
+This section of the documentation provides details on the JavaScript files within the `form-scripts` directory. These scripts are crucial for handling form interactions, user authentication, and profile creation/editing functionalities.
+
+.. _edit-script-label:
+
+**editScript.js**
+-----------------
+
+The `editScript.js` is responsible for facilitating user profile editing. It provides the following functionalities:
+
+- Populating form fields with existing user data for updates.
+- Setting up dropdowns for user preferences such as age filter, rent filter, and duration.
+- Initializing Select2 for enhanced dropdown UI (this works for user features, preferences, city select, university select and other options).
+- Handling image upload and validation to ensure the image meets the specified criteria.
+- Validating the move-in date range upon form submission.
+- Managing account deletion confirmation through modal interactions.
+- Toggling the side menu for mobile viewports (works for desktop view too but set up for mobile).
+
+Key Features and Functionalities
+---------------------------------
+
+.. function:: toggleMenu()
+   
+   Responsible for showing or hiding the side panel, which is particularly useful for mobile responsiveness.
+
+.. function:: setPreferencesDisabled(disabled)
+   
+   Enables or disables the 'preferences' select element based on user interactions, and clears selections when disabled.
+
+.. method:: DOMContentLoaded()
+   
+   Activates once the DOM is fully loaded, initializing dropdowns and setting up event listeners for profile editing.
+
+
+.. _login-label:
+
+**login.js**
+------------
+
+The `login.js` script manages user authentication through Google sign-in:
+
+- Configuring Firebase for the project.
+- Handling the sign-in process with a popup and Google provider.
+- Sending the Google ID token to the server for verification and handling post-authentication user redirection.
+
+Key Features and Functionalities
+---------------------------------
+
+.. function:: signInWithGoogle()
+   
+   Initiates the sign-in process with Firebase using a Google provider popup and manages the authentication flow.
+
+Implementation Details
+----------------------
+
+1. **Firebase Configuration**:
+   Sets up the Firebase configuration specific to your project, including keys and project identifiers.
+
+2. **Firebase Initialization**:
+   Initializes Firebase with the provided configuration, enabling its services for the application.
+
+3. **Google Sign-In Process**:
+   - Leverages Firebase Authentication to initiate a Google sign-in process.
+   - Utilizes a popup window for users to select their Google account and authenticate.
+   - On successful sign-in, the user's ID token is retrieved.
+
+4. **Server Communication**:
+   - The Google ID token is sent to the server via a POST request.
+   - This is essential for verifying the user's identity on the server-side and maintaining session integrity.
+
+5. **Post-Authentication Redirection**:
+   - Upon successful authentication and server verification, the user is redirected to a specific route, as dictated by the server response.
+
+6. **Error Handling**:
+   Catches and logs any errors that may occur during the sign-in process, ensuring robustness in authentication.
+
+7. **Event Listener on Sign-In Button**:
+   Attaches a click event listener to the Google sign-in button, activating the `signInWithGoogle` function.
+
+.. _userCreation-label:
+
+**userCreation.js**
+-------------------
+
+The `userCreation.js` script is similar to `editScript.js` but is tailored for the user profile creation process (no pre populated fields):
+
+- Populating dropdowns for user preferences such as age, rent, and duration.
+- Handling image upload and validation for new profile creation.
+- Validating the move-in date range and file size upon form submission.
+
+Key Features and Functionalities
+---------------------------------
+
+.. function:: initializeFormElements()
+   
+   Sets up the dropdowns for various user preferences and filters, and initializes Select2 for enhanced dropdown functionality.
+
+.. function:: handleImageUpload()
+   
+   Manages the image upload process, including validation for image size and dimensions.
+
+.. function:: validateFormSubmission()
+   
+   Ensures that the form submission adheres to specific criteria, including valid date ranges and file size limits.
+
+Integration with HTML
+---------------------
+
+Each script is linked to its respective HTML file, where form elements are defined and the script is included at the bottom of the HTML document to ensure the DOM is loaded before the script runs. Interaction with these elements is managed via the document's event listeners, allowing for real-time, client-side validation and UI updates.
+
+.. code-block:: html
+
+   <!-- Example of script inclusion in HTML -->
+   <script src="../static/scripts/form-scripts/login.js"></script>
+
+For more detailed instructions on usage and customization, refer to the usage and comments within each script and the associated HTML files for context.
+
+See Also
+--------
+
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for how these scripts integrate with the backend.
+- :ref:`Modules Overview <modules-overview-label>` for an overview of related modules.

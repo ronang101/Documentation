@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Algorithms package &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/algorithms.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Database package" href="database.html" />
+    <link rel="prev" title="Python Modules" href="python_modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="algorithms-package">
+<span id="algorithms-label"></span><h1>Algorithms package<a class="headerlink" href="#algorithms-package" title="Link to this heading">¶</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<p>This section contains detailed documentation of the algorithms package, encompassing a variety of modules designed for generating recommendations.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#collaborative-filtering-web-label"><span class="std std-ref">collaborative_filtering_web.py</span></a></p></li>
+<li><p><a class="reference internal" href="#web-recommendations-label"><span class="std std-ref">web_recommendations.py</span></a></p></li>
+</ul>
+</section>
+<section id="module-algorithms.collaborative_filtering_web">
+<span id="algorithms-collaborative-filtering-web-module"></span><span id="collaborative-filtering-web-label"></span><h2>algorithms.collaborative_filtering_web module<a class="headerlink" href="#module-algorithms.collaborative_filtering_web" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="algorithms.collaborative_filtering_web.aggregate_interactions">
+<span class="sig-prename descclassname"><span class="pre">algorithms.collaborative_filtering_web.</span></span><span class="sig-name descname"><span class="pre">aggregate_interactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interactions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.collaborative_filtering_web.aggregate_interactions" title="Link to this definition">¶</a></dt>
+<dd><p>Aggregates interaction data to calculate a score for each candidate based on likes
+and superlikes received from the target user. The purpose is to find which candidates have been interacted with most in order to recommend them to the user</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>interactions (list): A list of tuples containing interaction data (user_id, interaction_type).</p></li>
+<li><p>candidate_ids (list): A list of candidate user IDs to aggregate interactions for.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>dict: A dictionary mapping candidate IDs to their aggregated interaction scores.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algorithms.collaborative_filtering_web.collab_filtering">
+<span class="sig-prename descclassname"><span class="pre">algorithms.collaborative_filtering_web.</span></span><span class="sig-name descname"><span class="pre">collab_filtering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_matches</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.collaborative_filtering_web.collab_filtering" title="Link to this definition">¶</a></dt>
+<dd><p>Implements collaborative filtering to identify top ‘n’ candidates based on user interactions.
+Fetches and aggregates interaction data, then selects the candidates with the highest interaction scores.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>cur: Database cursor for executing SQL queries.</p></li>
+<li><p>candidate_ids (list): A list of candidate user IDs for filtering.</p></li>
+<li><p>top_matches (list): A list of top matched user IDs.</p></li>
+<li><p>n (int): Number of top candidates to return.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list: A list of top ‘n’ candidate user IDs based on aggregated interaction scores.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algorithms.collaborative_filtering_web.fetch_user_interactions">
+<span class="sig-prename descclassname"><span class="pre">algorithms.collaborative_filtering_web.</span></span><span class="sig-name descname"><span class="pre">fetch_user_interactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_matches</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.collaborative_filtering_web.fetch_user_interactions" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves interactions of types ‘liked’ and ‘superliked’ for users with similar preferences to the target user for use in collab filtering.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>cur: Database cursor for executing SQL queries.</p></li>
+<li><p>top_matches (list): A list of user IDs representing the top matches.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list: A list of tuples with user interactions (user_id, interaction_type).</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-algorithms.web_recommendations">
+<span id="algorithms-web-recommendations-module"></span><span id="web-recommendations-label"></span><h2>algorithms.web_recommendations module<a class="headerlink" href="#module-algorithms.web_recommendations" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="algorithms.web_recommendations.api_recommendations">
+<span class="sig-prename descclassname"><span class="pre">algorithms.web_recommendations.</span></span><span class="sig-name descname"><span class="pre">api_recommendations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.web_recommendations.api_recommendations" title="Link to this definition">¶</a></dt>
+<dd><p>Handles the API request for generating user recommendations.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>request_data (dict): Data from the API request (contains user interactions).</p></li>
+<li><p>user_id (int): ID of the user requesting recommendations.</p></li>
+<li><p>conn: Database connection object.</p></li>
+<li><p>cur: Database cursor for executing SQL queries.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list: JSON formatted list of recommendations.</p></li>
+</ul>
+<p>Before obtaining formatted recommendations from “get_recommendations_for_user” this function
+checks for any interactions sent from the front end in order to update the users preferences.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algorithms.web_recommendations.get_recommendations_for_user">
+<span class="sig-prename descclassname"><span class="pre">algorithms.web_recommendations.</span></span><span class="sig-name descname"><span class="pre">get_recommendations_for_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.web_recommendations.get_recommendations_for_user" title="Link to this definition">¶</a></dt>
+<dd><p>Fetches personalized recommendations for a specific user based on their preferences and then formats the recommendations by querying the database for return to the front end.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>cur: Database cursor for executing SQL queries.</p></li>
+<li><p>conn: Database connection object.</p></li>
+<li><p>user_id (int): ID of the user for whom recommendations are being fetched.</p></li>
+<li><p>generate (Booleon): Indicator for the need of generated recommendations or fetched recommendations.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list: A list of formatted recommendations including user details.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="algorithms.web_recommendations.mixed_filtering">
+<span class="sig-prename descclassname"><span class="pre">algorithms.web_recommendations.</span></span><span class="sig-name descname"><span class="pre">mixed_filtering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_uni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_prof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">125</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.web_recommendations.mixed_filtering" title="Link to this definition">¶</a></dt>
+<dd><p>Performs multiple forms of recommendation generation to generate personalized recommendations for a user.
+Combines collaborative filtering, content-based filtering, and random selection.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>user_id (int): ID of the current user.</p></li>
+<li><p>cur: Database cursor for executing SQL queries.</p></li>
+<li><p>conn: Database connection object.</p></li>
+<li><p>filters (dict): Dictionary of user-specific filtering criteria.</p></li>
+<li><p>filter_uni (bool): Flag to indicate if university-based filtering is applied.</p></li>
+<li><p>filter_prof (bool): Flag to indicate if profession-based filtering is applied.</p></li>
+<li><p>n (int, optional): Number of recommendations to generate. Default is 125.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>list: List of recommended user IDs after applying mixed filtering.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="database.html#database-label"><span class="std std-ref">Database Module</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="python_modules.html">Python Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Algorithms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html">Database package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web.html">Web package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="python_modules.html">Python Modules</a><ul>
+      <li>Previous: <a href="python_modules.html" title="previous chapter">Python Modules</a></li>
+      <li>Next: <a href="database.html" title="next chapter">Database package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/algorithms.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
