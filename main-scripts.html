@@ -131,6 +131,7 @@
 <li><p>Dynamically displaying user recommendations with detailed information.</p></li>
 <li><p>Handling image loading and errors, budget displays, and user interactions.</p></li>
 <li><p>Utilizing the Pikaday library for calendar elements.</p></li>
+<li><p>Utilizes turf.js to calculate intersections for overlapping isochrones</p></li>
 <li><p>Displaying modals for mutual likes and reporting, with all the associated UI logic.</p></li>
 </ul>
 </section>
@@ -139,7 +140,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="displayRecommendation">
 <span class="sig-name descname"><span class="pre">displayRecommendation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#displayRecommendation" title="Link to this definition">¶</a></dt>
-<dd><p>This function updates the DOM with the details of a user recommendation, this creates the recommendation card. It sets text content for various elements like name, age, city, and dynamically updates the user interface based on the recommendation data. It also manages the profile image, including loading and error handling, and updates budget limits with corresponding gauge graphics.</p>
+<dd><p>This function updates the DOM with the details of a user recommendation, this creates the recommendation card. It sets text content for various elements like name, age, city, and dynamically updates the user interface based on the recommendation data. It also manages the profile image, including loading and error handling, it handles displaying the users isochrone intersection with the recommendation and updates budget limits with corresponding gauge graphics.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -174,6 +175,31 @@
 <dd></dd></dl>
 
 </section>
+<section id="map-js">
+<span id="map-label"></span><h2><strong>map.js</strong><a class="headerlink" href="#map-js" title="Link to this heading">¶</a></h2>
+<p>The <cite>map.js</cite> script enhances the user experience by integrating map functionalities, allowing users to interact with geographical data and visualize specific areas of interest directly on the platform. It is designed to work seamlessly with the <cite>maplibregl</cite> library, ensuring a rich, interactive map experience. The purpose is to enable users to see their isochrones in order to visualize where they could live and where their overlap with other users desired locations are.</p>
+<ul class="simple">
+<li><p>Displaying a users isochrone on a map to show areas the user could rent in.</p></li>
+<li><p>Setting up the user info and map tabs to allow users to switch between what they are viewing.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Key Functions<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="displayIsochrones">
+<span class="sig-name descname"><span class="pre">displayIsochrones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">isochroneData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#displayIsochrones" title="Link to this definition">¶</a></dt>
+<dd><p>Adds isochrone data as a GeoJSON layer to the map, enhancing the map’s utility by displaying areas accessible within a certain time frame or distance. The function configures the layer’s appearance, including fill color and opacity, to ensure clear visualization.</p>
+</dd></dl>
+
+</section>
+<section id="event-listeners-and-ui-handling">
+<h2>Event Listeners and UI Handling<a class="headerlink" href="#event-listeners-and-ui-handling" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>DOMContentLoaded Listener: Ensures that DOM elements related to the map and user information tabs are fully loaded before executing the script. This listener facilitates the dynamic display of content based on user interactions with the tabbed interface.</p></li>
+<li><p>Tab Click Event Listeners: Attached to both the User Info and Map tabs, these listeners manage the display of corresponding content areas by toggling visibility and applying active state styling. This approach allows users to seamlessly switch between viewing their information and the map.</p></li>
+<li><p>Map Load Event Listener: Activates once the map is fully loaded, calling the <cite>displayIsochrones</cite> function to add isochrone data to the map. This listener ensures that geospatial visualizations are only attempted once the map is ready, preventing errors and enhancing the user experience.</p></li>
+</ul>
+</section>
 <section id="matches-js">
 <span id="matches-label"></span><h2><strong>matches.js</strong><a class="headerlink" href="#matches-js" title="Link to this heading">¶</a></h2>
 <p>The <cite>matches.js</cite> script handles the display and interaction with matched user profiles:</p>
@@ -184,8 +210,8 @@
 <li><p>Managing reports and match removals.</p></li>
 </ul>
 </section>
-<section id="id3">
-<h2>Key Functions<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h2>Key Functions<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="displayMatches">
 <span class="sig-name descname"><span class="pre">displayMatches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#displayMatches" title="Link to this definition">¶</a></dt>
@@ -205,8 +231,8 @@
 </dd></dl>
 
 </section>
-<section id="event-listeners-and-ui-handling">
-<h2>Event Listeners and UI Handling<a class="headerlink" href="#event-listeners-and-ui-handling" title="Link to this heading">¶</a></h2>
+<section id="id5">
+<h2>Event Listeners and UI Handling<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>The script listens for the ‘DOMContentLoaded’ event to initialize the display of matches and sets up the report modal functionality.</p></li>
 <li><p>Event listeners are added for various interactions within the match card, such as toggling between budget and calendar views, reporting matches, and removing matches.</p></li>
@@ -214,8 +240,8 @@
 <li><p>Modals for contact information and reporting are managed, ensuring they are displayed and hidden appropriately based on user actions.</p></li>
 </ul>
 </section>
-<section id="id4">
-<h2>Exposed Methods<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h2>Exposed Methods<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
 <p>The <cite>matches.js</cite> script exposes certain methods to the global scope for interaction with other components of the application:</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -246,8 +272,8 @@
 <li><p>Managing modals for reporting and matching notifications.</p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>Key Functions<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<section id="id7">
+<h2>Key Functions<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="initializeCalendar">
 <span class="sig-name descname"><span class="pre">initializeCalendar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#initializeCalendar" title="Link to this definition">¶</a></dt>
@@ -318,8 +344,8 @@
 </dd></dl>
 
 </section>
-<section id="id6">
-<h2>Exposed Methods<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h2>Exposed Methods<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <p>The following methods are exposed by the <cite>Main</cite> module for use in other scripts:</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -410,14 +436,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#dom-js"><strong>dom.js</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Key Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">Exposed Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#matches-js"><strong>matches.js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#map-js"><strong>map.js</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">Key Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#event-listeners-and-ui-handling">Event Listeners and UI Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">Exposed Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recommendations-js"><strong>recommendations.js</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Key Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#event-listeners">Event Listeners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matches-js"><strong>matches.js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Key Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Event Listeners and UI Handling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">Exposed Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommendations-js"><strong>recommendations.js</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Key Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-listeners">Event Listeners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Exposed Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#private-variables">Private Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#html-integration">HTML Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>

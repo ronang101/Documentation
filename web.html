@@ -47,7 +47,8 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="web.app.api_check_recommendation">
 <span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">api_check_recommendation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.api_check_recommendation" title="Link to this definition">¶</a></dt>
-<dd><p>API endpoint to handle recommendation check requests for a user to avoid calculating recommendations again.</p>
+<dd><p>API endpoint to handle recommendation check requests for a user to avoid
+calculating recommendations again.</p>
 <ul class="simple">
 <li><p>Checks if the user is authenticated (user_id in session).</p></li>
 <li><p>If not authenticated, returns a 401 Unauthorized error.</p></li>
@@ -56,7 +57,8 @@
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>JSON: Response containing a list of recommendations containg dicts or an error message.</p></li>
+<li><p>JSON: Response containing a list of recommendations containg dicts or an
+error message.</p></li>
 </ul>
 </dd></dl>
 
@@ -70,7 +72,8 @@
 <li><p>Redirects to the login page if the user is not authenticated.</p></li>
 </ul>
 <p>Verifies if the user is authenticated.
-Calls <cite>get_matches</cite> to retrieve the user’s match recommendations from the database.
+Calls <cite>get_matches</cite> to retrieve the user’s match recommendations from the
+database.
 Returns a JSON response containing the user’s match recommendations.</p>
 </dd></dl>
 
@@ -82,11 +85,13 @@ Returns a JSON response containing the user’s match recommendations.</p>
 <li><p>Checks if the user is authenticated (user_id in session).</p></li>
 <li><p>If not authenticated, returns a 401 Unauthorized error.</p></li>
 <li><p>Parses request data (JSON) which contains user interactions.</p></li>
-<li><p>Calls <cite>api_recommendations</cite> to process the data and fetch recommendations.</p></li>
+<li><p>Calls <cite>api_recommendations</cite> to process the data and fetch
+recommendations.</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>JSON: Response containing a list of recommendations containg dicts or an error message.</p></li>
+<li><p>JSON: Response containing a list of recommendations containg dicts or an
+error message.</p></li>
 </ul>
 </dd></dl>
 
@@ -98,7 +103,8 @@ Returns a JSON response containing the user’s match recommendations.</p>
 <ul class="simple">
 <li><p>Rendered HTML: The signup page for new users.</p></li>
 </ul>
-<p>Checks if the user’s Firebase UID is in the session and redirects to the login page if not.
+<p>Checks if the user’s Firebase UID is in the session and redirects to the
+login page if not.
 Redirects to recommendations if the user has already signed up.
 Renders the account creation page if the user has not signed up.</p>
 </dd></dl>
@@ -114,7 +120,8 @@ Renders the account creation page if the user has not signed up.</p>
 </ul>
 <p>Verifies if the user is authenticated.
 Calls <cite>account_deletion</cite> to remove the user’s data from the database.
-Clears the session and redirects to the account creation page upon successful deletion.</p>
+Clears the session and redirects to the account creation page upon
+successful deletion.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -123,10 +130,12 @@ Clears the session and redirects to the account creation page upon successful de
 <dd><p>Route to render the profile editing page for the authenticated user.</p>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>Rendered HTML: The profile editing page populated with the current user’s data.</p></li>
+<li><p>Rendered HTML: The profile editing page populated with the current
+user’s data.</p></li>
 </ul>
 <p>Checks if the user is authenticated and redirects to the login page if not.
-Retrieves the current user’s data from the database (using “get_user_data”).
+Retrieves the current user’s data from the database
+(using “get_user_data”).
 Renders the profile editing template with the retrieved user data.</p>
 </dd></dl>
 
@@ -134,11 +143,16 @@ Renders the profile editing template with the retrieved user data.</p>
 <dt class="sig sig-object py" id="web.app.handle_add_user">
 <span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">handle_add_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.handle_add_user" title="Link to this definition">¶</a></dt>
 <dd><p>Flask route handler to add a new user to the system.</p>
+<p>This route handler extracts the Firebase UID from the session, adds new
+user data to the database, and redirects to the recommendations page
+with the new user’s ID on successful addition.
+It returns an error message with HTTP status 500 upon failure.</p>
 <ul class="simple">
 <li><p>Extracts Firebase UID from session.</p></li>
 <li><p>If UID is not found, redirects to the login page.</p></li>
 <li><p>Calls <cite>add_user</cite> to insert new user data into the database.</p></li>
-<li><p>Redirects to recommendations page with the new user’s ID on successful addition.</p></li>
+<li><p>Redirects to recommendations page with the new user’s ID on successful
+addition.</p></li>
 <li><p>On exception, returns an error message with HTTP status 500.</p></li>
 </ul>
 <p>Returns:</p>
@@ -149,14 +163,41 @@ Renders the profile editing template with the retrieved user data.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="web.app.image">
+<span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">requested_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#web.app.image" title="Link to this definition">¶</a></dt>
+<dd><p>Serves a pre-signed URL for an image stored in S3, allowing for secure,
+temporary access to the image.</p>
+<p>This endpoint checks if the user requesting the image is authenticated by
+verifying the presence of ‘user_id’ in the session.
+If the user is authenticated, it generates a pre-signed URL for the
+requested image from an S3 bucket, which is valid for a limited time.
+The client is then redirected to this pre-signed URL to directly access
+the image.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>requested_id (str): The ID of the user who’s profile picture has been
+requested for viewing, used to construct the object name in the S3 bucket.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>A redirect to the pre-signed URL of the image if the user is
+authenticated and authorized.</p></li>
+<li><p>A JSON response with an ‘Unauthorized’ error message and a 401 status
+code if the user is not authenticated.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="web.app.index">
 <span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.index" title="Link to this definition">¶</a></dt>
 <dd><p>Flask route to render the login page.</p>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>Rendered HTML: The ‘login.html’ template, serving as the application’s login page.</p></li>
+<li><p>Rendered HTML: The ‘login.html’ template, serving as the application’s
+login page.</p></li>
 </ul>
-<p>This is the default route for the web application, which renders the login page.
+<p>This is the default route for the web application, which renders the login
+page.
 It acts as the entry point for users accessing the site.</p>
 </dd></dl>
 
@@ -186,15 +227,18 @@ Redirects to the login page after logout.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="web.app.record_interactions">
 <span class="sig-prename descclassname"><span class="pre">web.app.</span></span><span class="sig-name descname"><span class="pre">record_interactions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web.app.record_interactions" title="Link to this definition">¶</a></dt>
-<dd><p>Endpoint for recording user interactions with recommendations in the system.</p>
+<dd><p>Endpoint for recording user interactions with recommendations in the
+system.</p>
 <p>Returns:</p>
 <ul class="simple">
 <li><p>JSON response indicating the status of the interaction recording.</p></li>
 <li><p>If the user is not authenticated, returns a 401 Unauthorized error.</p></li>
 </ul>
 <p>Verifies if the user is authenticated by checking the session.
-Parses the JSON data from the POST request, which includes interaction details (user ids, like, dislike, etc.).
-Calls the <cite>record_interaction</cite> function to update the database with these interactions.</p>
+Parses the JSON data from the POST request, which includes interaction
+details (user ids, like, dislike, etc.).
+Calls the <cite>record_interaction</cite> function to update the database with these
+interactions.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -206,7 +250,8 @@ Calls the <cite>record_interaction</cite> function to update the database with t
 <li><p>JSON: Response indicating the status of the match removal.</p></li>
 </ul>
 <p>Checks if the user is authenticated.
-Processes the removal request and updates the database to reflect the match removal by calling “remove_matches”.
+Processes the removal request and updates the database to reflect the
+match removal by calling “remove_matches”.
 Returns a JSON response indicating the result of the removal process.</p>
 </dd></dl>
 
@@ -268,9 +313,11 @@ Renders the recommendations template for the logged-in user.</p>
 <dd><p>Endpoint for updating the user’s profile information.</p>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>Redirect: To the user’s recommendations page after the profile is updated.</p></li>
+<li><p>Redirect: To the user’s recommendations page after the profile is
+updated.</p></li>
 </ul>
-<p>Calls <cite>update_user_data</cite> to process the form data submitted by the user and update their profile in the database.
+<p>Calls <cite>update_user_data</cite> to process the form data submitted by the user
+and update their profile in the database.
 Redirects the user to the recommendations page upon successful update.</p>
 </dd></dl>
 
@@ -284,7 +331,8 @@ Redirects the user to the recommendations page upon successful update.</p>
 </ul>
 <p>Parses the ID token from the POST request.
 Verifies the token using Firebase authentication.
-Updates the session with the Firebase UID and checks if the user exists in the database.
+Updates the session with the Firebase UID and checks if the user exists in
+the database.
 Redirects the user based on their authentication status.</p>
 </dd></dl>
 

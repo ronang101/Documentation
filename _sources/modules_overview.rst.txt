@@ -33,6 +33,7 @@ main-scripts/
 - :ref:`api.js <api-label>`: Serves as an interface for backend API requests, including fetching recommendations and recording interactions.
 - :ref:`dom.js <dom-label>`: Responsible for DOM manipulations, displaying user recommendations, and managing modals.
 - **features.js**: Contains predefined dicts which allow us to decide which section a users features belong to.
+- :ref:`map.js <map-label>`: Generates the map which will display isochrones of users and recommendations, also populates the map with the users isochrone and handles visibility switches.
 - :ref:`matches.js <matches-label>`: Manages match display and interactions.
 - :ref:`recommendations.js <recommendations-label>`: Core to the recommendation feature, managing user recommendations and interactions.
 
@@ -54,17 +55,20 @@ CSS Stylesheets
 
 The stylesheets are organized into two main directories: form-pages for styling forms and main-design for the main interface components.
 
+**additional/pikaday.min.css, select2.min.css**: Style third-party plugins used for enhanced select inputs and for showing calendar dates.
+
+**animations/animations.css**: This file contains any animations we use within the css files in order to store them in one place.
+
 **form-pages/login.css**: Styles the login page with Redwood's design language.
 
 **form-pages/user-creation.css**: Provides styling for the signup and edit profile forms, ensuring consistency in the form design.
 
 **main-design/recommendations.css**: Applies styles to the recommendations view, handling layout and visual hierarchy, also used for match cards.
 
-**main-design/matches.css**: Similar to recommendations.css but tailored for specifics of the matches view.
+**main-design/map.css**: This css specifically handles the visuals of the map we display for user isochrones.
 
 **main-design/about.css, budget.css, calendar.css, contact.css, mutual.css, side-menu.css, bio-extra-info.css, report.css**: These stylesheets manage specific components within the user interface, such as the about section, budget constraints, calendar interface, contact details, mutual interests, side navigation menu, additional bio information, and reporting functionality.
 
-**additional/pikaday.min.css, select2.min.css**: Style third-party plugins used for enhanced select inputs and for showing calendar dates.
 
 Integration with Backend
 ------------------------

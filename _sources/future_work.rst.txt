@@ -16,22 +16,17 @@ Planned Features
    - *Objective*: Introduce a feature allowing users to view and get recommendations for properties.
    - *Description*: This enhancement will expand the platform's scope from user matching to property recommendations, providing a more holistic experience in finding suitable living arrangements.
 
-2. **Chat Functionality**
-   
-   - *Objective*: Implement a real-time chat feature for users.
-   - *Description*: This feature will facilitate communication between matched users, allowing them to discuss and coordinate more efficiently. The chat module will support text messages, potentially expanding to include voice and photo/video capabilities.
-
-3. **Advanced Machine Learning Techniques**
+2. **Advanced Machine Learning Techniques**
    
    - *Objective*: Incorporate advanced machine learning algorithms for improved recommendation accuracy.
    - *Description*: We plan to explore and integrate more sophisticated ML models to enhance the recommendation engine. This could include deep learning techniques, more complex collaborative filtering algorithms, and personalization based on user behavior.
 
-4. **User Interface and Experience Enhancements**
+3. **User Interface and Experience Enhancements**
    
    - *Objective*: Continuously improve the user interface and experience.
    - *Description*: The platform will undergo iterative design improvements to enhance usability, aesthetics, and overall user engagement.
 
-5. **Scalability and Performance Optimizations**
+4. **Scalability and Performance Optimizations**
    
    - *Objective*: Enhance the scalability and performance of the platform.
    - *Description*: As the user base grows, we aim to optimize the system's architecture and database management to handle increased traffic and data volume efficiently.

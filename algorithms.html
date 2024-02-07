@@ -48,24 +48,31 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="algorithms.collaborative_filtering_web.aggregate_interactions">
 <span class="sig-prename descclassname"><span class="pre">algorithms.collaborative_filtering_web.</span></span><span class="sig-name descname"><span class="pre">aggregate_interactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interactions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.collaborative_filtering_web.aggregate_interactions" title="Link to this definition">¶</a></dt>
-<dd><p>Aggregates interaction data to calculate a score for each candidate based on likes
-and superlikes received from the target user. The purpose is to find which candidates have been interacted with most in order to recommend them to the user</p>
+<dd><p>Aggregates interaction data to calculate a score for each candidate based
+on likes and superlikes received from the target user. The purpose is to
+find which candidates have been interacted with most in order to recommend
+them to the user.</p>
 <p>Args:</p>
 <ul class="simple">
-<li><p>interactions (list): A list of tuples containing interaction data (user_id, interaction_type).</p></li>
-<li><p>candidate_ids (list): A list of candidate user IDs to aggregate interactions for.</p></li>
+<li><p>interactions (list): A list of tuples containing interaction data
+(user_id, interaction_type).</p></li>
+<li><p>candidate_ids (list): A list of candidate user IDs to aggregate
+interactions for.</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>dict: A dictionary mapping candidate IDs to their aggregated interaction scores.</p></li>
+<li><p>dict: A dictionary mapping candidate IDs to their aggregated interaction
+scores.</p></li>
 </ul>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algorithms.collaborative_filtering_web.collab_filtering">
 <span class="sig-prename descclassname"><span class="pre">algorithms.collaborative_filtering_web.</span></span><span class="sig-name descname"><span class="pre">collab_filtering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_matches</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.collaborative_filtering_web.collab_filtering" title="Link to this definition">¶</a></dt>
-<dd><p>Implements collaborative filtering to identify top ‘n’ candidates based on user interactions.
-Fetches and aggregates interaction data, then selects the candidates with the highest interaction scores.</p>
+<dd><p>Implements collaborative filtering to identify top ‘n’ candidates based on
+user interactions.
+Fetches and aggregates interaction data, then selects the candidates with
+the highest interaction scores.</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>cur: Database cursor for executing SQL queries.</p></li>
@@ -75,14 +82,16 @@ Fetches and aggregates interaction data, then selects the candidates with the hi
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>list: A list of top ‘n’ candidate user IDs based on aggregated interaction scores.</p></li>
+<li><p>list: A list of top ‘n’ candidate user IDs based on aggregated
+interaction scores.</p></li>
 </ul>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algorithms.collaborative_filtering_web.fetch_user_interactions">
 <span class="sig-prename descclassname"><span class="pre">algorithms.collaborative_filtering_web.</span></span><span class="sig-name descname"><span class="pre">fetch_user_interactions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_matches</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.collaborative_filtering_web.fetch_user_interactions" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieves interactions of types ‘liked’ and ‘superliked’ for users with similar preferences to the target user for use in collab filtering.</p>
+<dd><p>Retrieves interactions of types ‘liked’ and ‘superliked’ for users with
+similar preferences to the target user for use in collab filtering.</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>cur: Database cursor for executing SQL queries.</p></li>
@@ -90,7 +99,8 @@ Fetches and aggregates interaction data, then selects the candidates with the hi
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>list: A list of tuples with user interactions (user_id, interaction_type).</p></li>
+<li><p>list: A list of tuples with user interactions
+(user_id, interaction_type).</p></li>
 </ul>
 </dd></dl>
 
@@ -103,7 +113,8 @@ Fetches and aggregates interaction data, then selects the candidates with the hi
 <dd><p>Handles the API request for generating user recommendations.</p>
 <p>Args:</p>
 <ul class="simple">
-<li><p>request_data (dict): Data from the API request (contains user interactions).</p></li>
+<li><p>request_data (dict): Data from the API request (contains user
+interactions).</p></li>
 <li><p>user_id (int): ID of the user requesting recommendations.</p></li>
 <li><p>conn: Database connection object.</p></li>
 <li><p>cur: Database cursor for executing SQL queries.</p></li>
@@ -112,20 +123,24 @@ Fetches and aggregates interaction data, then selects the candidates with the hi
 <ul class="simple">
 <li><p>list: JSON formatted list of recommendations.</p></li>
 </ul>
-<p>Before obtaining formatted recommendations from “get_recommendations_for_user” this function
-checks for any interactions sent from the front end in order to update the users preferences.</p>
+<p>Before obtaining formatted recommendations from
+“get_recommendations_for_user” this function checks for any interactions
+sent from the front end in order to update the users preferences.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="algorithms.web_recommendations.get_recommendations_for_user">
 <span class="sig-prename descclassname"><span class="pre">algorithms.web_recommendations.</span></span><span class="sig-name descname"><span class="pre">get_recommendations_for_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.web_recommendations.get_recommendations_for_user" title="Link to this definition">¶</a></dt>
-<dd><p>Fetches personalized recommendations for a specific user based on their preferences and then formats the recommendations by querying the database for return to the front end.</p>
+<dd><p>Fetches personalized recommendations for a specific user based on their
+preferences and then formats the recommendations by querying the database
+for return to the front end.</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>cur: Database cursor for executing SQL queries.</p></li>
 <li><p>conn: Database connection object.</p></li>
 <li><p>user_id (int): ID of the user for whom recommendations are being fetched.</p></li>
-<li><p>generate (Booleon): Indicator for the need of generated recommendations or fetched recommendations.</p></li>
+<li><p>generate (Booleon): Indicator for the need of generated recommendations
+or fetched recommendations.</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
@@ -136,16 +151,20 @@ checks for any interactions sent from the front end in order to update the users
 <dl class="py function">
 <dt class="sig sig-object py" id="algorithms.web_recommendations.mixed_filtering">
 <span class="sig-prename descclassname"><span class="pre">algorithms.web_recommendations.</span></span><span class="sig-name descname"><span class="pre">mixed_filtering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_uni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_prof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">125</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#algorithms.web_recommendations.mixed_filtering" title="Link to this definition">¶</a></dt>
-<dd><p>Performs multiple forms of recommendation generation to generate personalized recommendations for a user.
-Combines collaborative filtering, content-based filtering, and random selection.</p>
+<dd><p>Performs multiple forms of recommendation generation to generate
+personalized recommendations for a user.
+Combines collaborative filtering, content-based filtering, and random
+selection.</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>user_id (int): ID of the current user.</p></li>
 <li><p>cur: Database cursor for executing SQL queries.</p></li>
 <li><p>conn: Database connection object.</p></li>
 <li><p>filters (dict): Dictionary of user-specific filtering criteria.</p></li>
-<li><p>filter_uni (bool): Flag to indicate if university-based filtering is applied.</p></li>
-<li><p>filter_prof (bool): Flag to indicate if profession-based filtering is applied.</p></li>
+<li><p>filter_uni (bool): Flag to indicate if university-based filtering is
+applied.</p></li>
+<li><p>filter_prof (bool): Flag to indicate if profession-based filtering is
+applied.</p></li>
 <li><p>n (int, optional): Number of recommendations to generate. Default is 125.</p></li>
 </ul>
 <p>Returns:</p>

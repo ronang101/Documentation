@@ -52,29 +52,35 @@
 <dd><p>Records a user interaction with a recommendation in the database.</p>
 <p>Args:</p>
 <ul class="simple">
-<li><p>interaction_data (dict): Dictionary containing interaction details including user ID, recommendation ID, and interaction type.</p></li>
+<li><p>interaction_data (dict): Dictionary containing interaction details
+including user ID, recommendation ID, and interaction type.</p></li>
 <li><p>cur: Database cursor object for executing queries.</p></li>
 <li><p>conn: Database connection object.</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>Response: JSON response indicating the success or failure of the operation.</p></li>
+<li><p>Response: JSON response indicating if there was a match or not.</p></li>
 </ul>
-<p>This function takes interaction data from a user and records it in the database, it also checks if this interaction is a match (mutual likes). 
-It handles exceptions and returns a JSON response to indicate the status of the operation.</p>
+<p>This function takes interaction data from a user and records it in the
+database, it also checks if this interaction is a match (mutual likes).
+It handles exceptions and returns a JSON response to indicate the status
+of the operation.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.interactions.record_report">
 <span class="sig-prename descclassname"><span class="pre">utils.interactions.</span></span><span class="sig-name descname"><span class="pre">record_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.interactions.record_report" title="Link to this definition">¶</a></dt>
-<dd><p>Records a user report in the database and handles match deletions if necessary.</p>
+<dd><p>Records a user report in the database and handles match deletions if
+necessary.</p>
 <p>Args:</p>
 <ul class="simple">
-<li><p>report_data (dict): Data about the report, including reported user ID and reason.</p></li>
+<li><p>report_data (dict): Data about the report, including reported user ID
+and reason.</p></li>
 <li><p>user_id (int): ID of the user making the report.</p></li>
 <li><p>cur: Database cursor for executing queries.</p></li>
 <li><p>conn: Database connection object.</p></li>
-<li><p>match (bool): Indicates if there is a match between the reporting and reported users.</p></li>
+<li><p>match (bool): Indicates if there is a match between the reporting and
+reported users.</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
@@ -105,13 +111,15 @@ It handles exceptions and returns a JSON response to indicate the status of the 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.similarity_metrics.get_top_matches">
 <span class="sig-prename descclassname"><span class="pre">utils.similarity_metrics.</span></span><span class="sig-name descname"><span class="pre">get_top_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.similarity_metrics.get_top_matches" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieves the top ‘n’ matching candidates based on specific data types preferences or features (depending on which form of filtering we’re doing).</p>
+<dd><p>Retrieves the top ‘n’ matching candidates based on specific data types
+preferences or features (depending on which form of filtering we’re doing).</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>cur: Database cursor for executing SQL queries.</p></li>
 <li><p>user_id (int): ID of the current user for whom matches are being found.</p></li>
 <li><p>candidate_ids (list): List of potential candidate user IDs for matching.</p></li>
-<li><p>data_type (str): Type of data to use for matching (e.g., ‘preference’, ‘feature’).</p></li>
+<li><p>data_type (str): Type of data to use for matching (e.g., ‘preference’,
+‘feature’).</p></li>
 <li><p>n (int, optional): Number of top matches to retrieve. Default is 5.</p></li>
 </ul>
 <p>Returns:
@@ -124,19 +132,24 @@ It handles exceptions and returns a JSON response to indicate the status of the 
 <dl class="py function">
 <dt class="sig sig-object py" id="utils.update_data_structures.update_preferences_web">
 <span class="sig-prename descclassname"><span class="pre">utils.update_data_structures.</span></span><span class="sig-name descname"><span class="pre">update_preferences_web</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.update_data_structures.update_preferences_web" title="Link to this definition">¶</a></dt>
-<dd><p>Updates user preferences in the database based on their recent interactions.</p>
+<dd><p>Updates user preferences in the database based on their recent
+interactions.</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>conn: Database connection object.</p></li>
 <li><p>cur: Database cursor object for executing queries.</p></li>
 <li><p>user_id (int): ID of the user whose preferences are being updated.</p></li>
-<li><p>interactions (list of tuples): List of tuples containing interaction data (user_id, interaction_type).</p></li>
+<li><p>interactions (list of tuples): List of tuples containing interaction
+data (user_id, interaction_type).</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
 <li><p>dict: Updated preferences dictionary after processing interactions.</p></li>
 </ul>
-<p>This function first retrieves the features of all users interacted with and updates the preferences based on the type of interaction (like, dislike, superlike). Preferences with negative values are removed. Finally, it updates the user’s preferences in the database.</p>
+<p>This function first retrieves the features of all users interacted with
+and updates the preferences based on the type of interaction (like,
+dislike, superlike). Preferences with negative values are removed.
+Finally, it updates the user’s preferences in the database.</p>
 </dd></dl>
 
 </section>

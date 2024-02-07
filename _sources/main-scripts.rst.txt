@@ -69,6 +69,7 @@ The `API` module exposes the following methods, making them accessible to other 
 - Dynamically displaying user recommendations with detailed information.
 - Handling image loading and errors, budget displays, and user interactions.
 - Utilizing the Pikaday library for calendar elements.
+- Utilizes turf.js to calculate intersections for overlapping isochrones
 - Displaying modals for mutual likes and reporting, with all the associated UI logic.
 
 Key Functions
@@ -76,7 +77,7 @@ Key Functions
 
 .. function:: displayRecommendation(rec)
 
-   This function updates the DOM with the details of a user recommendation, this creates the recommendation card. It sets text content for various elements like name, age, city, and dynamically updates the user interface based on the recommendation data. It also manages the profile image, including loading and error handling, and updates budget limits with corresponding gauge graphics.
+   This function updates the DOM with the details of a user recommendation, this creates the recommendation card. It sets text content for various elements like name, age, city, and dynamically updates the user interface based on the recommendation data. It also manages the profile image, including loading and error handling, it handles displaying the users isochrone intersection with the recommendation and updates budget limits with corresponding gauge graphics.
 
 .. function:: showModal(recName)
 
@@ -94,6 +95,32 @@ The `DOM` module exposes the following methods, making them accessible to other 
 .. method:: displayRecommendation(rec) :no-index:
 .. method:: showModal(recName) :no-index:
 .. method:: showReportModal() :no-index:
+
+.. _map-label:
+
+**map.js**
+----------
+
+The `map.js` script enhances the user experience by integrating map functionalities, allowing users to interact with geographical data and visualize specific areas of interest directly on the platform. It is designed to work seamlessly with the `maplibregl` library, ensuring a rich, interactive map experience. The purpose is to enable users to see their isochrones in order to visualize where they could live and where their overlap with other users desired locations are.
+
+- Displaying a users isochrone on a map to show areas the user could rent in.
+- Setting up the user info and map tabs to allow users to switch between what they are viewing.
+
+Key Functions
+-------------
+
+.. function:: displayIsochrones(isochroneData)
+
+   Adds isochrone data as a GeoJSON layer to the map, enhancing the map's utility by displaying areas accessible within a certain time frame or distance. The function configures the layer's appearance, including fill color and opacity, to ensure clear visualization.
+
+Event Listeners and UI Handling
+-------------------------------
+
+- DOMContentLoaded Listener: Ensures that DOM elements related to the map and user information tabs are fully loaded before executing the script. This listener facilitates the dynamic display of content based on user interactions with the tabbed interface.
+
+- Tab Click Event Listeners: Attached to both the User Info and Map tabs, these listeners manage the display of corresponding content areas by toggling visibility and applying active state styling. This approach allows users to seamlessly switch between viewing their information and the map.
+
+- Map Load Event Listener: Activates once the map is fully loaded, calling the `displayIsochrones` function to add isochrone data to the map. This listener ensures that geospatial visualizations are only attempted once the map is ready, preventing errors and enhancing the user experience.
 
 .. _matches-label:
 

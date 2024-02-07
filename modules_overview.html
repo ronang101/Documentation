@@ -63,6 +63,7 @@
 <li><p><a class="reference internal" href="main-scripts.html#api-label"><span class="std std-ref">api.js</span></a>: Serves as an interface for backend API requests, including fetching recommendations and recording interactions.</p></li>
 <li><p><a class="reference internal" href="main-scripts.html#dom-label"><span class="std std-ref">dom.js</span></a>: Responsible for DOM manipulations, displaying user recommendations, and managing modals.</p></li>
 <li><p><strong>features.js</strong>: Contains predefined dicts which allow us to decide which section a users features belong to.</p></li>
+<li><p><a class="reference internal" href="main-scripts.html#map-label"><span class="std std-ref">map.js</span></a>: Generates the map which will display isochrones of users and recommendations, also populates the map with the users isochrone and handles visibility switches.</p></li>
 <li><p><a class="reference internal" href="main-scripts.html#matches-label"><span class="std std-ref">matches.js</span></a>: Manages match display and interactions.</p></li>
 <li><p><a class="reference internal" href="main-scripts.html#recommendations-label"><span class="std std-ref">recommendations.js</span></a>: Core to the recommendation feature, managing user recommendations and interactions.</p></li>
 </ul>
@@ -81,12 +82,13 @@
 <section id="css-stylesheets">
 <h2>CSS Stylesheets<a class="headerlink" href="#css-stylesheets" title="Link to this heading">¶</a></h2>
 <p>The stylesheets are organized into two main directories: form-pages for styling forms and main-design for the main interface components.</p>
+<p><strong>additional/pikaday.min.css, select2.min.css</strong>: Style third-party plugins used for enhanced select inputs and for showing calendar dates.</p>
+<p><strong>animations/animations.css</strong>: This file contains any animations we use within the css files in order to store them in one place.</p>
 <p><strong>form-pages/login.css</strong>: Styles the login page with Redwood’s design language.</p>
 <p><strong>form-pages/user-creation.css</strong>: Provides styling for the signup and edit profile forms, ensuring consistency in the form design.</p>
 <p><strong>main-design/recommendations.css</strong>: Applies styles to the recommendations view, handling layout and visual hierarchy, also used for match cards.</p>
-<p><strong>main-design/matches.css</strong>: Similar to recommendations.css but tailored for specifics of the matches view.</p>
+<p><strong>main-design/map.css</strong>: This css specifically handles the visuals of the map we display for user isochrones.</p>
 <p><strong>main-design/about.css, budget.css, calendar.css, contact.css, mutual.css, side-menu.css, bio-extra-info.css, report.css</strong>: These stylesheets manage specific components within the user interface, such as the about section, budget constraints, calendar interface, contact details, mutual interests, side navigation menu, additional bio information, and reporting functionality.</p>
-<p><strong>additional/pikaday.min.css, select2.min.css</strong>: Style third-party plugins used for enhanced select inputs and for showing calendar dates.</p>
 </section>
 <section id="integration-with-backend">
 <h2>Integration with Backend<a class="headerlink" href="#integration-with-backend" title="Link to this heading">¶</a></h2>

@@ -122,9 +122,6 @@ Indexes
 ^^^^^^^
 
 - **idx_firebase_uid**: Index on **firebase_uid**
-- **idx_user_base_age**: Index on **age**
-- **idx_user_base_location**: Index on **location** using GIST
-- **idx_user_base_rent_amount**: Index on **rent_amount**
 
 .. _user-matches-label:
 

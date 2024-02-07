@@ -19,6 +19,7 @@ The `editScript.js` is responsible for facilitating user profile editing. It pro
 - Validating the move-in date range upon form submission.
 - Managing account deletion confirmation through modal interactions.
 - Toggling the side menu for mobile viewports (works for desktop view too but set up for mobile).
+- Allows users to specify their preferred renting location by clicking on a map. Updates latitude and longitude in hidden form fields.
 
 Key Features and Functionalities
 ---------------------------------
@@ -91,6 +92,7 @@ The `userCreation.js` script is similar to `editScript.js` but is tailored for t
 - Populating dropdowns for user preferences such as age, rent, and duration.
 - Handling image upload and validation for new profile creation.
 - Validating the move-in date range and file size upon form submission.
+- Allows users to specify their preferred renting location by clicking on a map. Updates latitude and longitude in hidden form fields.
 
 Key Features and Functionalities
 ---------------------------------

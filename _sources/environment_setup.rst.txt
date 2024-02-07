@@ -47,11 +47,6 @@ matplotlib
 
 A library for creating static, animated, and interactive visualizations in Python. It can be used for visualizing data and debugging purposes.
 
-cupy-cuda12x
-------------
-
-Offers GPU-accelerated computing capabilities, particularly for matrix operations, which can significantly speed up computations.
-
 flask
 -----
 
@@ -71,6 +66,26 @@ firebase_admin
 --------------
 
 The Firebase Admin Python SDK enables server-side (backend) Python applications to interact with Firebase. It's essential for managing user authentication.
+
+gunicorn
+--------
+
+A WSGI HTTP Server for UNIX, providing a robust, efficient, and secure way to deploy the Flask application.
+
+Pillow
+------
+
+The Python Imaging Library adds image processing capabilities to your Python interpreter. This library is essential for handling image files and performing image manipulations.
+
+flask_cors
+----------
+
+A Flask extension for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible. This is crucial for web applications that need to access resources from different domains.
+
+boto3
+-----
+
+The Amazon Web Services (AWS) SDK for Python. It allows Python developers to write software that uses services like Amazon S3 and Amazon EC2.
 
 Installation Instructions
 -------------------------

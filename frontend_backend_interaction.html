@@ -53,7 +53,7 @@
 <li><p><em>Frontend</em>: <a class="reference internal" href="form-scripts.html#login-label"><span class="std std-ref">login.js</span></a>
 - Handles user authentication using Firebase and Google sign-in.
 - Communicates with <cite>/verify-token</cite> endpoint to verify user identity.</p></li>
-<li><p><em>Backend</em>: <cite>app.py</cite>
+<li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
 - Endpoint <cite>/verify-token</cite> for Firebase token verification.
 - Session management for user authentication status.</p></li>
 </ul>
@@ -70,7 +70,7 @@
 - <cite>userCreation.js</cite> handles new user profile creation.
 - <cite>editScript.js</cite> facilitates user profile editing.
 - Communicates with <cite>/add_user</cite> and <cite>/update_user</cite> endpoints.</p></li>
-<li><p><em>Backend</em>: <cite>app.py</cite>
+<li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
 - Endpoints <cite>/add_user</cite> and <cite>/update_user</cite> for handling user data insertion and updates.</p></li>
 </ul>
 </li>
@@ -79,7 +79,7 @@
 <li><p><em>Frontend</em>: <a class="reference internal" href="main-scripts.html#recommendations-label"><span class="std std-ref">recommendations.js</span></a>
 - Manages the display and interaction with user recommendations.
 - Communicates with <cite>/api/recommendations</cite> for generating recommendations and <cite>/api/check_recommendations</cite> for fetching recommendations</p></li>
-<li><p><em>Backend</em>: <cite>app.py</cite>
+<li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
 - Endpoint <cite>/api/recommendations</cite> to generate user-specific recommendations and <cite>/api/check_recommendations</cite> for user-specific fetching recommendations</p></li>
 </ul>
 <figure class="align-center" id="id3">
@@ -94,7 +94,7 @@
 <li><p><em>Frontend</em>: <a class="reference internal" href="main-scripts.html#matches-label"><span class="std std-ref">matches.js</span></a>
 - Handles the display and management of user matches.
 - Communicates with <cite>/api/matches</cite>, <cite>/remove_match</cite>, and <cite>/report_match</cite> endpoints.</p></li>
-<li><p><em>Backend</em>: <cite>app.py</cite>
+<li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
 - Endpoints for fetching matches, removing matches, and reporting matches.</p></li>
 </ul>
 </li>
@@ -103,7 +103,7 @@
 <li><p><em>Frontend</em>: <a class="reference internal" href="main-scripts.html#recommendations-label"><span class="std std-ref">recommendations.js</span></a>
 - Record user interactions such as likes, dislikes, and reports.
 - Interacts with <cite>/record_interaction</cite> and <cite>/report</cite> endpoints.</p></li>
-<li><p><em>Backend</em>: <cite>app.py</cite>
+<li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
 - Endpoints <cite>/record_interaction</cite> and <cite>/report</cite> for logging user interactions in the database.</p></li>
 </ul>
 </li>
@@ -112,8 +112,18 @@
 <li><p><em>Frontend</em>: <a class="reference internal" href="form-scripts.html#edit-script-label"><span class="std std-ref">editScript.js</span></a>
 - Provides functionality for users to delete their accounts.
 - Communicates with <cite>/delete-account</cite> endpoint.</p></li>
-<li><p><em>Backend</em>: <cite>app.py</cite>
+<li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
 - Endpoint <cite>/delete-account</cite> for handling account deletion requests.</p></li>
+</ul>
+</li>
+<li><p><strong>Image Handling and Secure Access</strong></p>
+<ul class="simple">
+<li><p><em>Frontend</em>: <a class="reference internal" href="main-scripts.html#dom-label"><span class="std std-ref">dom.js</span></a>
+- Calls the <cite>/images/&lt;requested_id&gt;</cite> endpoint to fetch a pre-signed URL for the user’s profile image.
+- Implements error handling for scenarios where image fetching fails, ensuring a fallback to a placeholder image if necessary.</p></li>
+<li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
+- Endpoint <cite>/images/&lt;requested_id&gt;</cite> generates pre-signed URLs for secure, temporary access to images stored in S3. It ensures that only authenticated users can request and access user profile images by checking the session for ‘user_id’.
+- Utilizes boto3 to interact with AWS S3, creating pre-signed URLs that grant temporary access to private objects in the bucket.</p></li>
 </ul>
 </li>
 </ol>

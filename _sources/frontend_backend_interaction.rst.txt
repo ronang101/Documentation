@@ -24,7 +24,7 @@ API Endpoints and Frontend Handlers
      - Handles user authentication using Firebase and Google sign-in.
      - Communicates with `/verify-token` endpoint to verify user identity.
 
-   - *Backend*: `app.py`
+   - *Backend*: :ref:`app.py <app-label>`
      - Endpoint `/verify-token` for Firebase token verification.
      - Session management for user authentication status.
 
@@ -43,7 +43,7 @@ API Endpoints and Frontend Handlers
      - `editScript.js` facilitates user profile editing.
      - Communicates with `/add_user` and `/update_user` endpoints.
 
-   - *Backend*: `app.py`
+   - *Backend*: :ref:`app.py <app-label>`
      - Endpoints `/add_user` and `/update_user` for handling user data insertion and updates.
 
 3. **Recommendation System Interaction**
@@ -52,7 +52,7 @@ API Endpoints and Frontend Handlers
      - Manages the display and interaction with user recommendations.
      - Communicates with `/api/recommendations` for generating recommendations and `/api/check_recommendations` for fetching recommendations 
 
-   - *Backend*: `app.py`
+   - *Backend*: :ref:`app.py <app-label>`
      - Endpoint `/api/recommendations` to generate user-specific recommendations and `/api/check_recommendations` for user-specific fetching recommendations 
 
    .. figure:: _static/recommendation-diagram.png
@@ -69,7 +69,7 @@ API Endpoints and Frontend Handlers
      - Handles the display and management of user matches.
      - Communicates with `/api/matches`, `/remove_match`, and `/report_match` endpoints.
 
-   - *Backend*: `app.py`
+   - *Backend*: :ref:`app.py <app-label>`
      - Endpoints for fetching matches, removing matches, and reporting matches.
 
 5. **User Interaction Recording**
@@ -78,7 +78,7 @@ API Endpoints and Frontend Handlers
      - Record user interactions such as likes, dislikes, and reports.
      - Interacts with `/record_interaction` and `/report` endpoints.
 
-   - *Backend*: `app.py`
+   - *Backend*: :ref:`app.py <app-label>`
      - Endpoints `/record_interaction` and `/report` for logging user interactions in the database.
 
 6. **Account Deletion**
@@ -87,8 +87,20 @@ API Endpoints and Frontend Handlers
      - Provides functionality for users to delete their accounts.
      - Communicates with `/delete-account` endpoint.
 
-   - *Backend*: `app.py`
+   - *Backend*: :ref:`app.py <app-label>`
      - Endpoint `/delete-account` for handling account deletion requests.
+
+7. **Image Handling and Secure Access**
+  
+   - *Frontend*: :ref:`dom.js <dom-label>`
+     - Calls the `/images/<requested_id>` endpoint to fetch a pre-signed URL for the user's profile image.
+     - Implements error handling for scenarios where image fetching fails, ensuring a fallback to a placeholder image if necessary.
+
+   - *Backend*: :ref:`app.py <app-label>`
+     - Endpoint `/images/<requested_id>` generates pre-signed URLs for secure, temporary access to images stored in S3. It ensures that only authenticated users can request and access user profile images by checking the session for 'user_id'.
+     - Utilizes boto3 to interact with AWS S3, creating pre-signed URLs that grant temporary access to private objects in the bucket.
+
+
 
 Data Flow and Interaction Patterns
 ----------------------------------

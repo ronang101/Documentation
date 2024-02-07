@@ -61,21 +61,26 @@ already interacted with by the current user.</p>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>tuple: A tuple containing two lists - all_users (all filtered users which will be used for collab filtering) and non_interacted_users (users not yet interacted with).</p></li>
+<li><p>tuple: A tuple containing two lists - all_users (all filtered users
+which will be used for collab filtering) and non_interacted_users
+(users not yet interacted with).</p></li>
 </ul>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="database.apply_filters.create_filter_query">
 <span class="sig-prename descclassname"><span class="pre">database.apply_filters.</span></span><span class="sig-name descname"><span class="pre">create_filter_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_uni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_prof</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.apply_filters.create_filter_query" title="Link to this definition">¶</a></dt>
-<dd><p>Constructs an SQL query to filter users based on specified criteria and excludes users
-who have already interacted with the current user.</p>
+<dd><p>Constructs an SQL query to filter users based on specified criteria and
+excludes users who have already interacted with the current user.</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>filters (dict): A dictionary containing the user’s filter preferences.</p></li>
-<li><p>user_id (int): The ID of the current user, used to exclude their previous interactions.</p></li>
-<li><p>filter_uni (bool): Flag to determine if university filter should be applied.</p></li>
-<li><p>filter_prof (bool): Flag to determine if profession filter should be applied.</p></li>
+<li><p>user_id (int): The ID of the current user, used to exclude their
+previous interactions.</p></li>
+<li><p>filter_uni (bool): Flag to determine if university filter should be
+applied.</p></li>
+<li><p>filter_prof (bool): Flag to determine if profession filter should be
+applied.</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
@@ -128,14 +133,17 @@ who have already interacted with the current user.</p>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>list: A list of dictionaries, each containing detailed information about a match. All infromation included is required to populate a match card on the front end.</p></li>
+<li><p>list: A list of dictionaries, each containing detailed information about
+a match. All infromation included is required to populate a match card on
+the front end.</p></li>
 </ul>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="database.db_connection_web.get_user_data">
 <span class="sig-prename descclassname"><span class="pre">database.db_connection_web.</span></span><span class="sig-name descname"><span class="pre">get_user_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.db_connection_web.get_user_data" title="Link to this definition">¶</a></dt>
-<dd><p>Fetches and formats a specific user’s data from the database, this is used for the edit page in order to pre populate the form fields.</p>
+<dd><p>Fetches and formats a specific user’s data from the database, this is used
+for the edit page in order to pre populate the form fields.</p>
 <p>Args:</p>
 <ul class="simple">
 <li><p>cur: Database cursor for executing queries.</p></li>
@@ -144,6 +152,29 @@ who have already interacted with the current user.</p>
 <p>Returns:</p>
 <ul class="simple">
 <li><p>dict: A dictionary containing detailed information of the user.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.db_connection_web.get_user_isochrone_data">
+<span class="sig-prename descclassname"><span class="pre">database.db_connection_web.</span></span><span class="sig-name descname"><span class="pre">get_user_isochrone_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cur</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.db_connection_web.get_user_isochrone_data" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the isochrone data along with latitude and longitude for a given
+user from the database.</p>
+<p>This function executes a SQL query to fetch the isochrone data, which
+represents the geographic area accessible within a certain time frame
+from the user’s location. It also retrieves the user’s latitude and
+longitude coordinates.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>cur: The database cursor used to execute the query.</p></li>
+<li><p>user_id (int): The ID of the user for whom to retrieve the isochrone
+data.</p></li>
+</ul>
+<p>Returns:</p>
+<ul class="simple">
+<li><p>tuple: A tuple containing the isochrone data as a JSON object (or other
+format depending on the database), and the latitude and longitude
+coordinates of the user as floats.</p></li>
 </ul>
 </dd></dl>
 
@@ -169,23 +200,31 @@ who have already interacted with the current user.</p>
 <dd><p>Adds a new user to the database from a web form submission.</p>
 <p>Args:</p>
 <ul class="simple">
-<li><p>firebase_uid (str): A string representing the users firebase_uid, this will be provided upon signing in.</p></li>
+<li><p>firebase_uid (str): A string representing the users firebase_uid, this
+will be provided upon signing in.</p></li>
+<li><p>conn: Database connection object.</p></li>
 </ul>
 <p>Returns:</p>
 <ul class="simple">
-<li><p>tuple: This tuple contains information about the user in order to add them into the systems global variables used for recommendations</p></li>
+<li><p>int: An integer representing the users ID in order to add to the session.</p></li>
 </ul>
-<p>This function extracts user information from a submitted web form, including personal details, preferences, and filters. It then creates a new user record in the database and returns the new user’s information
-in order to add them to the global structures. This function also handles the standard formatting of profile pictures (300x300px).</p>
+<p>This function extracts user information from a submitted web form,
+including personal details, preferences, and filters. It then creates
+a new user record in the database and returns the new user’s id
+in order to add them to the session. This function also handles
+the standard formatting of profile pictures (300x300px) and fetching
+a users isochrone.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="database.user_creation.parse_filter_range">
 <span class="sig-prename descclassname"><span class="pre">database.user_creation.</span></span><span class="sig-name descname"><span class="pre">parse_filter_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.user_creation.parse_filter_range" title="Link to this definition">¶</a></dt>
-<dd><p>Parses a filter range string and calculates the minimum and maximum values based on a base value.</p>
+<dd><p>Parses a filter range string and calculates the minimum and maximum values
+based on a base value.</p>
 <p>Args:</p>
 <ul class="simple">
-<li><p>filter_range (str): A string representing the range filter, e.g., “+/- 100”.</p></li>
+<li><p>filter_range (str): A string representing the range filter, e.g.,
+“+/- 100”.</p></li>
 <li><p>base_value (int): The base value to calculate the range from.</p></li>
 </ul>
 <p>Returns:</p>
@@ -198,12 +237,21 @@ in order to add them to the global structures. This function also handles the st
 <dt class="sig sig-object py" id="database.user_creation.update_user_data">
 <span class="sig-prename descclassname"><span class="pre">database.user_creation.</span></span><span class="sig-name descname"><span class="pre">update_user_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.user_creation.update_user_data" title="Link to this definition">¶</a></dt>
 <dd><p>Updates an existing user’s data in the database.</p>
+<p>Args:</p>
+<ul class="simple">
+<li><p>conn: Database connection object.</p></li>
+</ul>
 <p>Returns:</p>
 <ul class="simple">
 <li><p>int: The ID of the user whose data was updated.</p></li>
 </ul>
-<p>This function extracts updated user information from a submitted web form and updates the user record in the database. It handles updates to personal details, preferences, and filters, and returns the user’s ID.
-This function also handles the standard formatting of profile pictures (300x300px). Also it updates the recommendations database by calculating recommendations for the user based on their updated information.</p>
+<p>This function extracts updated user information from a submitted web form
+and updates the user record in the database. It handles updates to personal
+details, preferences, and filters, and returns the user’s ID.
+This function also handles the standard formatting of profile pictures
+(300x300px), fetching of a new isochrone and it updates the recommendations
+database by calculating recommendations for the user based on their updated
+information.</p>
 </dd></dl>
 
 </section>
