@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>recommendations &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/recommendations.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="signUp" href="signUp.html" />
+    <link rel="prev" title="matches" href="matches.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="recommendations">
+<span id="recommendations-page-label"></span><h1>recommendations<a class="headerlink" href="#recommendations" title="Link to this heading">¶</a></h1>
+<p>This section of the documentation elaborates on the JavaScript files within the <cite>modules/recommendations</cite> directory. The scripts contained within here are responsible for managing user recommendations. This includes the display of recommendations, the ability to interact and any other functionality related to recommendations.</p>
+<section id="recommendationhandler-js">
+<span id="recommendation-handler-label"></span><h2><strong>recommendationHandler.js</strong><a class="headerlink" href="#recommendationhandler-js" title="Link to this heading">¶</a></h2>
+<p><cite>recommendationHandler.js</cite> introduces the <cite>RecommendationHandler</cite> class, pivotal for managing the recommendation system’s frontend logic on the Redwood Prototype. This class is instrumental in fetching, displaying, and interacting with user recommendations, creating a dynamic and personalized user experience through the integration of various APIs and UI components.</p>
+</section>
+<section id="key-functionalities">
+<h2>Key Functionalities<a class="headerlink" href="#key-functionalities" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Dynamic Recommendation Fetching and Display:</strong> Manages the lifecycle of user recommendations, from fetching and updating recommendations based on user interaction history to dynamic display.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="loadNextRecommendation">
+<span class="sig-name descname"><span class="pre">loadNextRecommendation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#loadNextRecommendation" title="Link to this definition">¶</a></dt>
+<dd><p>Loads and displays the next recommendation, handling the transition between current and upcoming recommendations seamlessly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fetchRecommendations">
+<span class="sig-name descname"><span class="pre">fetchRecommendations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fetchRecommendations" title="Link to this definition">¶</a></dt>
+<dd><p>Fetches new recommendations from the server, updating the state to reflect the latest set of recommendations available for the user.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>User Interaction Recording:</strong> Captures and processes user interactions with recommendations, such as likes, dislikes, and superlikes, influencing the recommendation logic.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="recordInteraction">
+<span class="sig-name descname"><span class="pre">recordInteraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recommendationId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactionType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#recordInteraction" title="Link to this definition">¶</a></dt>
+<dd><p>Records a user’s interaction with a recommendation, updating both the local state and the server-side logic to reflect the user’s preferences.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Geographical Data and Calendar Integration:</strong> Incorporates geographical data visualization and calendar functionalities, enhancing the depth of information available in recommendations.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="displayRecommendation">
+<span class="sig-name descname"><span class="pre">displayRecommendation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#displayRecommendation" title="Link to this definition">¶</a></dt>
+<dd><p>Dynamically updates the UI to display detailed information about a recommendation, incorporating user features, geographical data and more.</p>
+</dd></dl>
+
+</section>
+<section id="integration-and-usage">
+<h2>Integration and Usage<a class="headerlink" href="#integration-and-usage" title="Link to this heading">¶</a></h2>
+<p><cite>RecommendationHandler</cite> serves as a cornerstone for the recommendation system within the Redwood Prototype, integrating tightly with various components of the platform to offer a comprehensive and interactive user experience.</p>
+<ul class="simple">
+<li><p><strong>Integrated with MapManager and DatePicker:</strong> Enhances recommendations with geographical data visualization and calendar visualization, provided by <cite>MapManager</cite> and <cite>DatePicker</cite>, respectively.</p></li>
+<li><p><strong>Utilizes Utility Modules and External Data:</strong> Leverages <cite>recommendationApi.js</cite> for fetching recommendations and recording interactions, <cite>modalDisplay.js</cite> for modals related to mutual interests and reporting, and <cite>api.js</cite> for fetching images.</p></li>
+<li><p><strong>Categorization of User Features:</strong> Through integration with <cite>features.js</cite>, it categorizes user features into “About Me,” “Lifestyle,” and “Interests,” enriching the recommendation profiles.</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for how these scripts integrate with the backend.</p></li>
+<li><p><a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">Modules Overview</span></a> for an overview of related modules.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="javascript.html#javascript-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="javascript.html">JavaScript</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="javascript_modules.html">JavaScript Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="javascript.html">JavaScript</a><ul>
+  <li><a href="javascript_modules.html">JavaScript Modules</a><ul>
+      <li>Previous: <a href="matches.html" title="previous chapter">matches</a></li>
+      <li>Next: <a href="signUp.html" title="next chapter">signUp</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/recommendations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

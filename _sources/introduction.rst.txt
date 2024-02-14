@@ -3,7 +3,7 @@
 Introduction
 ============
 
-Welcome to the Redwood Prototype documentation. The Redwood Prototype is a cutting-edge web platform designed specifically for renters looking to find compatible roommates. It acts as a virtual meeting ground, leveraging advanced recommendation algorithms to pair users with potential roommates who share similar living preferences and habits. This documentation delves into the technical composition of the Redwood Prototype, including its backend logic, frontend architecture, and the recommendation algorithms that constitute the core of its matching system.
+Welcome to the Redwood Prototype documentation. The Redwood Prototype is a cutting-edge web platform designed specifically for renters looking to find compatible roommates. It acts as a virtual meeting ground, leveraging recommendation algorithms to pair users with potential roommates who share similar living preferences and habits. This documentation delves into the technical composition of the Redwood Prototype, including its backend logic, frontend architecture, and the database set up.
 
 Project Overview
 ----------------

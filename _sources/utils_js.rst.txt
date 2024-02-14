@@ -1,0 +1,293 @@
+.. _utils-page-label:
+
+utils
+=====
+
+This section of the documentation elaborates on the JavaScript files within the `modules/utils` directory. The scripts contained within here are more general and cover a wide range of functionalities from incoperating side menu navigation to setting up the ability to chat.
+
+.. _api-label:
+
+**api.js**
+----------
+
+`api.js` serves as the backbone for server communication within the Redwood Prototype platform, facilitating seamless data exchange between the client and server. This script encompasses a range of utility functions crucial for fetching matches, managing match reports, removing unwanted matches, and retrieving user profile images, thereby ensuring a dynamic and responsive user experience.
+
+Key Functionalities
+--------------------
+
+- **Match Fetching:** Responsible for retrieving matches from the server for user interaction.
+
+.. function:: fetchMatches()
+  
+  Initiates an HTTP GET request to /api/matches, efficiently fetching an array of match data and handling any errors encountered during the process.
+  
+- **Match Reporting:** Enables users to report matches for inappropriate content or behavior.
+
+.. function:: reportMatch(formData)
+  
+  Sends a report about a match to the server using a POST request, with formData encapsulating the report details.
+  
+- **Match Removal:** Provides functionality for users to remove unwanted matches from their list.
+
+.. function:: removeMatch(id)
+  
+  Deletes a match based on its unique ID through a POST request, improving the user's control over their match interactions.
+  
+- **Profile Image Retrieval:** Responsible for retrieving profile images to enhance the user experience.
+
+.. function:: getImage(id)
+  
+  Fetches a presigned URL for a user's profile image by their unique ID, ensuring users can view each other's photos securely and efficiently.
+
+Integration and Usage
+----------------------
+
+- **Integral to User Experience Enhancements:** Directly contributes to the platform's core features, including match fetching, user reporting mechanisms, match management, and profile picture visualization.
+  
+- **Dependent on Modern Browser Features:** Utilizes the Fetch API, a modern standard for web requests, ensuring efficient and reliable data exchange without external dependencies.
+  
+- **Adaptable and Scalable:** Designed for easy integration and scalability within the platform, allowing for future enhancements and additional functionalities as the platform evolves.
+
+.. _calendar-label:
+
+**calendarHandler.js**
+----------------------
+
+`calendarHandler.js` is designed to enrich the user interface with interactive calendar views for viewing move-in dates. By leveraging the lightweight and versatile Pikaday JavaScript date picker library, this script provides users with an intuitive and visually appealing way to navigate through available dates within a specified range, enhancing the overall usability and functionality of the match selection process.
+
+Key Functionalities
+-------------------
+
+- **Dynamic Calendar Initialization:** Facilitates the creation of customizable calendar views for each match card and recommendation card, allowing users to visually comprehend and select potential move-in dates.
+
+- **DatePicker:** A class that encapsulates the management of Pikaday date pickers, offering tailored configurations for the platform's requirements. It initializes calendars with specified start and end dates, customizes appearance, and incorporates logic to highlight and disable specific dates.
+
+.. function:: initializePikadayForMatch(match, index)
+  
+  Initializes a Pikaday calendar for an individual match card, applying custom start and end dates derived from the match data. It also customizes the calendar's behavior to highlight available dates, enhancing the user's decision-making process regarding move-in timelines.
+
+Integration and Usage
+----------------------
+
+`calendarHandler.js` contributes to the interactive and user-friendly aspect of the Redwood Prototype platform by integrating detailed calendar views into the match selection process. It not only simplifies date selection but also adds a layer of engagement through visual date exploration.
+
+- **Seamless Integration with Match Cards:** Each match card and recommendation card is equipped with a Pikaday calendar, initialized and configured via `calendarHandler.js`, to display available move-in dates, thereby providing a comprehensive view of each match's availability.
+
+- **Dependence on External Library:** Relies on the inclusion of the Pikaday library within the project, a testament to its modular approach in leveraging existing solutions to enhance platform features.
+
+- **Enhanced User Experience:** Through its functionalities, `calendarHandler.js` plays a pivotal role in facilitating user interaction with potential matches, allowing for a more informed and visually guided selection process.
+
+.. _chat-setup-label:
+
+**chatSetup.js**
+----------------
+
+`chatSetup.js` is a sophisticated module within the Redwood Prototype platform, designed to manage the intricacies of real-time chat functionalities. It harnesses the power of Firebase Firestore for storing and retrieving chat messages and Firebase Authentication to authenticate users and manage sessions. This script is pivotal in enabling seamless communication between users, fostering an interactive and connected community within the platform.
+
+Key Functionalities
+-------------------
+
+- **Firebase Initialization for Messaging:** Sets up Firebase to facilitate real-time messaging, ensuring instant communication between users.
+
+- **ChatManager:** A class dedicated to overseeing chat operations, including message sending, message reception, and chat ID generation. It initializes Firebase services (Firestore for database operations and Authentication for user session management) and sets up listeners for real-time chat updates.
+
+- **Real-time Message Sending and Receiving:** Provides users with the ability to send messages to specific matches and dynamically updates the chat interface with incoming messages.
+
+.. method:: sendMessage(matchIndex, matchUserId)
+  
+  Sends a message to a designated user, creating a unique chat based on user IDs and updating Firestore with the new message.
+
+.. method:: receiveMessages(matchIndex, matchUserId)
+  
+  Listens for new messages in real-time, updating the chat interface accordingly to ensure users have the latest conversation updates.
+
+Integration and Usage
+----------------------
+
+`chatSetup.js` significantly enhances the user experience on the Redwood Prototype platform by enabling real-time interactions between potential roommates. It integrates closely with the platform's UI to provide a seamless chat experience.
+
+- **Essential for User Interactions:** By facilitating real-time conversations, it plays a crucial role in the decision-making process, allowing users to communicate directly and efficiently.
+
+- **Leverages Google's Firebase:** Relies on Firebase Firestore for robust and scalable real-time database capabilities, and Firebase Authentication for secure user management, showcasing the script's integration with third-party services to enhance functionality.
+
+- **Custom UI Updates:** Through its real-time listening and message management capabilities, the script ensures that chat interfaces are always up-to-date, providing users with an engaging and responsive messaging experience.
+
+.. _map-label:
+
+**map.js**
+----------
+
+`map.js` is dedicated to enhancing the user interface with sophisticated map functionalities. This script leverages the capabilities of maplibre-gl for rendering interactive maps and Turf.js for conducting spatial analysis. It plays a pivotal role in visualizing geographical information, such as isochrones, which represent areas reachable within specific time frames, and updating the map to illustrate intersections between user-defined areas and these isochrones.
+
+Key Functionalities
+-------------------
+
+- **Map Initialization with Custom Styles:** Sets up interactive maps using maplibre-gl, configuring them with custom styles, initial centering, and zoom levels to suit the application's needs.
+
+- **MapManager:** A class that encapsulates the logic for map initialization, displaying isochrone data, and updating intersections. It initializes the map with specified parameters, including container ID, style URL, center coordinates, and zoom level.
+
+- **Isochrone Visualization:** Employs isochrone data to delineate areas on the map that are reachable within a given time frame, enhancing the user's understanding of geographical proximities and distances.
+
+.. method:: displayIsochrones(isochroneData)
+  
+  Adds isochrone data to the map as a new layer, allowing users to visually assess areas based on travel time considerations.
+
+- **Intersection Updates:** Updates the map to show the overlay of user-defined geographical areas with isochrones, highlighting intersections that facilitate decision-making regarding location preferences.
+
+.. method:: updateIntersection(recGeoData)
+  
+  Calculates and displays the intersection between user-defined areas and isochrones, using Turf.js for spatial calculations, thereby providing valuable insights into feasible locations.
+
+Integration and Usage
+----------------------
+
+`map.js` enriches the user experience on the Redwood Prototype platform by integrating advanced map and spatial analysis functionalities. It allows users to interactively explore geographical data, aiding in the visualization of potential living areas and their accessibility.
+
+- **Integration with User Interface:** Seamlessly integrates with the platform's UI, enabling users to interact with maps directly, visualize isochrones, and understand the geographical context of their potential roommates or living spaces.
+
+- **Leverages Open-Source Libraries:** Utilizes maplibre-gl for map rendering, providing a robust and flexible solution for interactive maps, and Turf.js for spatial analysis, demonstrating the script's reliance on powerful external libraries to perform complex geographical computations.
+
+- **Facilitates Geographical Decision-Making:** Through its functionalities, `map.js` aids users in making informed decisions regarding location preferences, enhancing the platform's capability to match users with compatible roommates based on geographical criteria.
+
+.. _modal-display-label:
+
+**modalDisplay.js**
+-------------------
+
+`modalDisplay.js` is specifically designed to enhance user interaction through modal functionalities. It focuses on creating a more engaging user interface by providing modal dialogs for mutual interests between users and facilitating user reporting mechanisms. This script uses a combination of DOM manipulation techniques and event listeners to provide a dynamic and responsive modal experience, contributing to a safer and more interactive platform environment.
+
+Key Functionalities
+--------------------
+
+- **Mutual Interest Notification:** Displays a modal to inform users when there is a mutual like between them.
+
+.. function:: showModal(recName) 
+  
+  Activates when a mutual interest is detected, dynamically updating the modal's content with the matched user's name and providing mechanisms to close the modal through UI elements.
+
+- **User Reporting Interface:** Offers a comprehensive UI for reporting users, handling form submissions effectively, and displaying a gratitude message upon submission, thereby supporting platform integrity and user safety.
+
+.. function:: showReportModal(recommendationHandler, matchReport)
+  
+  Prepares and displays the reporting modal, accommodating both general user reports and match-specific reports. It integrates form submission handling and transitions to a "thank you" message post-submission, emphasizing user feedback and platform moderation.
+
+Integration and Usage
+----------------------
+
+`modalDisplay.js` is designed to interact seamlessly with modal elements, providing users with an intuitive and responsive interface for mutual interests and reporting functionalities.
+
+- **Enhances User Experience:** By leveraging modal dialogs, it directly contributes to a more engaging and interactive platform, allowing users to receive immediate feedback on mutual interests and to report concerns with ease.
+
+- **Relies on Backend API Communication:** Works in conjunction with `api.js` and `recommendationApi.js` for backend API communications, showcasing its integration within the platform's broader technical architecture.
+
+- **Supports Platform Safety and Integrity:** Through its reporting functionalities, it empowers users to contribute to the platform's safety, fostering a community where concerns can be addressed promptly and efficiently.
+
+.. _recommendation-api-label:
+
+**recommendationApi.js**
+------------------------
+
+`recommendationApi.js` is a dedicated script within the Redwood Prototype platform designed to manage the interaction with the backend API for recommendation-related functionalities. This script is crucial for the user experience by providing recommendations, recording user interactions, and maintaining a safe platform environment through user reporting mechanisms.
+
+Key Functionalities
+--------------------
+
+- **Dynamic Recommendation Fetching:** Automates the retrieval of new recommendations, ensuring users are continuously presented with relevant and engaging profiles based on their previous interactions and seen IDs.
+
+.. function:: fetchRecommendationsApi(seenUserIds, interactions)
+  
+  Executes a POST request to fetch new recommendations, sending a users' previously seen IDs and their interactions (like, dislike, superlike), to deliver a customized experience.
+
+- **Efficient Recommendation Management:** Aims to optimize server resources by checking stored recommendations before making new calculations, thereby reducing unnecessary server load.
+
+.. function:: checkRecommendations()
+
+  Initiates a GET request to verify the existence of pre-calculated recommendations, facilitating efficient data management and potentially speeding up the recommendation process.
+
+- **User Interaction Recording:** Captures and records users' responses to recommendations (like, dislike, superlike), enabling the platform to refine future recommendations and understand user preferences better.
+
+.. function:: recordInteraction(recommendationId, interactionType) :no-index:
+  
+  Submits a POST request to log the user's interaction with a specific recommendation, enhancing the personalization of the recommendation algorithm.
+
+- **User Report Submission:** Provides a mechanism for users to report inappropriate content or behavior, contributing to the platform's integrity and user safety.
+
+.. function:: report(formData)
+  
+  Handles the submission of user reports to the server via a POST request, using form data to detail the complaint, ensuring the platform remains a respectful and safe environment for all users.
+
+Integration and Usage
+----------------------
+
+`recommendationApi.js` plays a pivotal role in the Redwood Prototype platform by seamlessly integrating with the backend API to support a dynamic and safe user experience. It exemplifies the script's capability to handle complex data interactions and user feedback efficiently.
+
+- **Seamless Backend Integration:** Directly communicates with the server to fetch and manage recommendations, record user interactions, and process user reports, showcasing its integral role in the application's data flow.
+
+- **Reliance on Modern Browser Capabilities:** Utilizes the native fetch API, demonstrating the script's modern approach to handling HTTP requests without the need for external dependencies.
+
+- **Enhances User Experience and Platform Safety:** Through its functionalities, `recommendationApi.js` significantly contributes to customizing the user experience and maintaining a secure platform by addressing user reports and tailoring recommendations.
+
+.. _side-menu-label:
+
+**sideMenu.js**
+---------------
+
+`sideMenu.js` is a script designed to enhance user navigation through effective management of the side navigation menu. This script introduces an intuitive and user-friendly way to access various parts of the application, focusing on the dynamic interaction between the user and the navigation panel.
+
+Key Functionalities
+--------------------
+
+- **Navigation Panel Toggle:** Implements a responsive mechanism for showing or hiding the side navigation panel based on user interaction with the hamburger menu icon.
+
+.. function:: setupSideMenu()
+  
+  Activates the side menu's functionality by listening for clicks on the hamburger menu icon. It toggles the side panel's visibility by adjusting its width, providing an elegant solution for accessing the menu on demand.
+
+- **Intelligent Panel Closure:** Enhances the user experience by closing the side navigation panel automatically when a user clicks outside of it, ensuring a seamless and distraction-free interaction with the application.
+
+Integration and Usage
+----------------------
+
+`sideMenu.js` offers a streamlined and efficient navigation experience. It ensures users can easily access various sections of the platform without compromising the content's visibility or the application's overall aesthetics.
+
+- **User-Centric Design:** By integrating a toggle mechanism for the side navigation panel, the script directly contributes to a more engaging and user-friendly interface, allowing for effortless navigation across the platform.
+
+- **Dependent on Specific HTML Structure:** The script's functionality is closely tied to the presence of HTML elements with specific IDs ('hamburger-menu' and 'side-panel'), demonstrating its integration within the platform's UI architecture.
+
+- **Simplifies User Interaction:** The inclusion of automatic closure when clicking outside the navigation panel underscores the platform's attention to detail in creating an intuitive user experience, minimizing distractions and enhancing content focus.
+
+.. _tab-handler-label:
+
+**tabHandler.js**
+-----------------
+
+`tabHandler.js` is used to facilitate dynamic tab switching. This functionality allows users to navigate between different content areas seamlessly, ensuring a fluid and interactive user experience. By focusing on the dynamic display of content related to selected tabs, this script plays a role in organizing and presenting information in an accessible and intuitive manner.
+
+Key Functionalities
+--------------------
+
+- **Dynamic Tab Switching:** Enables the activation of tabs to display their associated content while concurrently hiding content from inactive tabs.
+
+- **Customizable Activation and Content Management:** Offers flexibility in configuring the active state of tabs and the visibility of their respective content areas, allowing for tailored user interface behaviors.
+
+- **The TabHandler class:** A mechanism that initializes with arrays of tab elements and their corresponding content elements. It includes an option to set the first tab as active by default or the second tab inactive.
+
+Integration and Usage
+----------------------
+
+`tabHandler.js` contributes to the Redwood Prototype platform's usability by streamlining the user interaction with tabbed content. It exemplifies a modern approach to UI design, where information is presented in a compact and organized manner, facilitating ease of navigation and content discovery.
+
+- **Streamlines Content Navigation:** By integrating dynamic tab functionality, the script directly enhances the user's ability to navigate through different sections of content efficiently, promoting a more engaging and user-friendly interface.
+
+- **Depends on Specific HTML Elements:** The functionality of this script is closely tied to the presence of HTML elements designated as tabs and their content areas, highlighting its integration within the platform's structured UI design.
+
+- **Facilitates Information Organization:** The inclusion of the TabHandler class in the platform's architecture underscores a commitment to providing a coherent and organized presentation of information, allowing users to access content relevant to their interests without unnecessary clutter or confusion.
+
+
+See Also
+--------
+
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for how these scripts integrate with the backend.
+- :ref:`Modules Overview <modules-overview-label>` for an overview of related modules.
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <javascript-label>`.

@@ -1,0 +1,82 @@
+.. _matches-page-label:
+
+matches
+=======
+
+This section of the documentation elaborates on the JavaScript files within the `modules/matches` directory. These scripts are modules which are used for displaying, interacting with and chatting with matches.
+
+.. _match-generator-label:
+
+**matchGenerator.js**
+---------------------
+
+`matchGenerator.js` plays a crucial role in the Redwood Prototype platform by dynamically generating HTML content for match cards. This script uses user profile data to create an engaging and informative display of users that have been matched, highlighting key aspects such as personality, lifestyle, interests, budget considerations and more.
+
+Key Functionalities
+--------------------
+
+- **Dynamic Match Card Creation:** Generates HTML content for match cards dynamically, incorporating user data to present a comprehensive overview of potential matches.
+
+.. function:: createMatchCard(match, index)
+    
+  Constructs the HTML content for a single match card, including profile picture, bio, user features, budget gauge and more. It categorizes user features into "About Me", "Lifestyle", and "Interests" for an organized presentation.
+
+- **Feature Categorization:** Utilizes predefined categories to organize user features, enhancing the readability and appeal of match cards.
+
+- **Budget Gauge Visualization:** Implements a budget gauge using custom SVG formatting to visually represent a user's monthly rent budget, aiding in the assessment of financial compatibility.
+
+- **Placeholder Image Utilization:** Employs a placeholder image for user profiles in the absence of a user-uploaded photo, maintaining a consistent aesthetic across all match cards.
+
+Integration and Usage
+----------------------
+
+`matchGenerator.js` is integral to the match display component of the platform, enriching the user experience by providing detailed and visually appealing match cards. Its implementation enhances the platform's capability to facilitate informed decisions regarding potential roommates.
+
+- **Integration with Match Display Component:** The script is directly integrated into the match display logic, invoked to generate match cards as users browse through their potential matches.
+
+- **Utilization of Predefined Feature Categories:** Relies on feature categories defined in `../variables/features.js` to accurately categorize and display user features within match cards.
+
+.. _match-utility-label:
+
+**matchUtilitySetup.js**
+------------------------
+
+`matchUtilitySetup.js` is a core script within the Redwood Prototype platform, designed to manage the display and interactions with user matches. It leverages a variety of utility modules to create a dynamic and interactive match viewing experience.
+
+Key Functionalities
+--------------------
+
+- **Dynamic Match Display:** Fetches and displays user matches dynamically, enhancing user engagement with potential roommates.
+
+.. function:: displayMatches()
+  
+  Initiates the process of fetching user matches from the backend, displaying each match using dynamically generated match cards. Ensures user engagement by providing interactive and informative match profiles.
+
+- **Calendar Initialization for Matches:** Integrates with `calendarHandler.js` to provide calendars for each match, showcasing potential move-in dates and enhancing the decision-making process for users.
+
+- **Tab Management within Match Cards:** Uses `TabHandler` to manage content displayed within match cards, allowing users to toggle between budget and calendar views for a comprehensive understanding of each match.
+
+- **Match Management:** Enables users to manage their matches by removing matches they no longer want to see, or by reporting users.
+
+.. function:: checkIfMatchesLeft()
+  
+  Checks if there are any matches left to display after certain actions (e.g., removal of a match). It updates the UI accordingly, ensuring a seamless user experience.
+
+Integration and Usage
+----------------------
+
+`matchUtilitySetup.js` significantly enhances the match viewing experience on the Redwood Prototype platform by providing a suite of interactive and dynamic functionalities. From fetching matches to setting up detailed match cards with integrated chat functionality, this script ensures users can effectively engage with and manage their matches.
+
+- **Used in Match Display Components:** Integrated within the platform's match display component, this script is instrumental in fetching, displaying, and managing user matches.
+
+- **Leverages External Utility Modules:** Incorporates functionalities from `api.js` for fetching and removing matches, `matchGenerator.js` for generating match card HTML content, `calendarHandler.js` for calendar functionalities, `tabHandler.js` for managing tabs, and `chatSetup.js` for initiating chat with matches.
+
+- **Facilitates User Interaction with Matches:** Through the functionalities provided, users can interact with their matches in various ways, including initiating chats, reporting matches, and viewing detailed match profiles.
+
+See Also
+--------
+
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for how these scripts integrate with the backend.
+- :ref:`Modules Overview <modules-overview-label>` for an overview of related modules.
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <javascript-label>`.

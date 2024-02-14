@@ -1,0 +1,128 @@
+.. _signup-page-label:
+
+signUp
+======
+
+This section of the documentation elaborates on the JavaScript files within the `modules/signUp` directory. The scripts contained within here are responsible for the forms and functionality relating to user sign up and profile editing pages.
+
+.. _isochrone-label:
+
+**isochroneInput.js**
+---------------------
+
+`isochroneInput.js` introduces the `setupIsochroneInput` function, designed to initialize an interactive map feature allowing users to specify their location preferences and transportation modes for isochrone analysis. This functionality is crucial for users in defining their search area based on travel time, enhancing their housing search experience on the Redwood Prototype.
+
+Key Functionalities
+--------------------
+
+- **Interactive Map Initialization:** Leverages Maplibre GL to render an interactive map centered on the user's location or a default location, enhancing user engagement and input accuracy.
+  
+- **Location Specification via Map:** Enables users to place and move a marker on the map, marking their preferred starting point for isochrone analysis, which directly impacts their search parameters.
+  
+- **Transportation Mode Selection:** Offers users the choice of transportation mode (e.g., driving, walking), allowing for tailored isochrone results that align with user preferences and lifestyle.
+  
+- **Form Field Updates:** Automatically updates hidden form fields with the marker's latitude, longitude, and selected transportation mode, ensuring seamless integration with backend processing.
+  
+.. function:: setupIsochroneInput(userLongitude, userLatitude, userTransportMode, userTravelTime)
+  
+  This function is responsible for all of the above, setting up the map, setting up functionality and interactions with the map, transportation selection and more.
+
+Integration and Usage
+----------------------
+
+`setupIsochroneInput` enhances the platform's user interface by providing a visual and interactive method for users to define their search area related to geographical location and accessibility.
+
+- **External Dependencies:** Relies on the Maplibre GL library for map rendering and user interaction handling, and Maptiler for the map style, necessitating an API key.
+
+- **User Experience Enhancement:** By enabling users to visually specify their preferred location and how they plan to travel from that point, this function plays a vital role in personalizing and refining the housing search process on the Redwood Prototype platform.
+
+.. _profile-creation-label:
+
+**profileCreationFormPopulation.js**
+------------------------------------
+
+`profileCreationFormPopulation.js` is dedicated to initializing and populating dropdown menus for age filter, rent filter, duration, university selection, city selection, profession, user features, and preferences in the user profile creation and editing forms on the Redwood Prototype. It enhances user experience by offering a streamlined and intuitive way to input and edit user-specific information.
+
+Key Functionalities
+--------------------
+
+- **Dropdown Initialization:** Dynamically populates dropdown options for various user profile fields, ensuring that users can easily input and edit their information with context-specific choices.
+
+- **Select2 Integration:** Utilizes the Select2 library to enhance select elements, providing users with search capabilities, multi-select options for features and preferences, and a better overall user experience.
+
+- **User Selections Handling:** Accepts an object containing previous user selections or defaults to an empty object, allowing for the pre-population of form fields during the editing process.
+
+.. function:: setupDropdowns(userSelections) 
+  
+  This function is responsible for setting up the form by pre populating fields with previous selections if any are present, and by initializing the form fields and options.
+
+Integration and Usage
+----------------------
+
+This script is a critical component of the Redwood Prototype platform, facilitating easy and intuitive user profile creation and editing. By leveraging Select2 and predefined lists, it ensures a consistent and user-friendly interface for inputting profile information.
+
+- **Predefined Lists Importation:** Imports lists of cities, universities, and features from `../variables/userCreationLists.js`, ensuring that dropdowns are populated with relevant and up-to-date options.
+
+- **Dropdown Population:** Calls `populateDropdown` for each form element, adding options to the select elements and marking appropriate options as selected based on the provided `userSelections`.
+
+- **Enhanced Dropdown Functionality:** Initializes Select2 on each dropdown to provide enhanced functionality, including searchable dropdowns and clear options, significantly improving the usability of the form.
+
+.. _profile-image-label:
+
+**profileImageSetup.js**
+------------------------
+
+`profileImageSetup.js` is designed to streamline the process of uploading and previewing a profile image on user profile creation or editing forms. It provides users with immediate feedback on their selected image, ensuring it meets the platform's requirements for dimensions while presenting a scaled preview.
+
+Key Functionalities
+--------------------
+
+- **Image Selection and Preview:** Enables users to select an image file from their device, providing a seamless interface for uploading profile pictures.
+  
+- **Image Dimension Validation:** Ensures the selected image meets minimum dimension requirements, alerting users if their image does not qualify, thereby maintaining a consistent visual quality across user profiles.
+  
+- **Preview Display and Adjustment:** Dynamically displays a preview of the selected image, scaling it appropriately to fit within a designated preview area without distorting the image's aspect ratio.
+
+.. function:: setupProfileImageUpload()
+  
+  Initializes the event listener for image selection, conducts image dimension validation, and updates the preview area with the selected image.
+
+Integration and Usage
+----------------------
+
+This script is utilized on pages where users are engaged in creating or editing their profiles, it is essential for uploading profile images and handling their display on forms.
+
+- **Real time profile image viewing:** By calling `setupProfileImageUpload` we easily integrate image upload and preview functionality into forms, enhancing the user experience by allowing for real-time feedback on selected profile images.
+
+.. _reset-label:
+
+**resetPreferences.js**
+-----------------------
+
+`resetPreferences.js` specifically focuses on the ability for users to reset their preferences with ease and security.
+
+Key Functionalities
+--------------------
+
+- **User Confirmation for Preferences Reset:** Introduces a checkbox that must be checked to confirm the intention to reset preferences, ensuring that users are making deliberate choices about their profile settings.
+  
+- **Dynamic Preferences Dropdown Control:** Manages the state (enabled/disabled) of the preferences dropdown based on user confirmation, enhancing the user experience by preventing unintended modifications.
+  
+- **Clearing of Preferences Upon Reset:** Automatically clears any selections within the preferences dropdown when the reset action is confirmed, simplifying the reset process for users.
+
+Integration and Usage
+----------------------
+
+This script is an important component of the user profile management system within the Redwood Prototype platform, offering a user-centric approach to resetting preferences.
+
+- **Used in Profile Editing Workflow:** This script is particularly useful in scenarios where users are editing their profiles and wish to reset their preferences to a new state. It contributes to a more intuitive and user-friendly profile editing experience.
+  
+- **Depends on jQuery for DOM Manipulation:** Utilizes jQuery to efficiently handle DOM manipulations and event bindings, ensuring compatibility across browsers and simplifying the script's implementation.
+  
+See Also
+--------
+
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for how these scripts integrate with the backend.
+- :ref:`Modules Overview <modules-overview-label>` for an overview of related modules.
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <javascript-label>`.

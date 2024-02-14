@@ -14,28 +14,81 @@ additional/
 ~~~~~~~~~~~
 
 - **jquery.min.js**: Provides essential functionalities for DOM manipulation and event handling, enhancing the user interface.
+
 - **pikaday.min.js**: A JavaScript date picker library that improves date selection within the application (used for displaying user move in dates).
+
 - **redwood-f9f87-firebase-adminsdk-w4dk2-c53a064263.json**: Firebase Admin SDK configuration file used for server-side interaction with Firebase services.
+
 - **select2.min.js**: Enhances select input elements by adding features like searching and tagging.
 
 form-scripts/
 ~~~~~~~~~~~~~
 
 - :ref:`editScript.js <edit-script-label>`: Facilitates profile editing, repopulating form fields with existing user data for updates.
-- :ref:`login.js <login-label>`: Manages user authentication with Firebase and Google sign-in integration.
-- :ref:`userCreation.js <userCreation-label>`: Handles user profile creation, including feature/preference selections and image upload validation.
-- **userCreationLists.js**:  Contains predefined lists of cities, universities, and features for user profiles, used in user creation/editing process.
 
+- :ref:`login.js <login-label>`: Manages user authentication with Firebase and Google sign-in integration.
+
+- :ref:`userCreation.js <userCreation-label>`: Handles user profile creation, including feature/preference selections, image upload validation, isochrone data collection and other form fields.
 
 main-scripts/
 ~~~~~~~~~~~~~
 
-- :ref:`api.js <api-label>`: Serves as an interface for backend API requests, including fetching recommendations and recording interactions.
-- :ref:`dom.js <dom-label>`: Responsible for DOM manipulations, displaying user recommendations, and managing modals.
-- **features.js**: Contains predefined dicts which allow us to decide which section a users features belong to.
-- :ref:`map.js <map-label>`: Generates the map which will display isochrones of users and recommendations, also populates the map with the users isochrone and handles visibility switches.
-- :ref:`matches.js <matches-label>`: Manages match display and interactions.
-- :ref:`recommendations.js <recommendations-label>`: Core to the recommendation feature, managing user recommendations and interactions.
+- :ref:`matches.js <matches-label>`: Orchestrates the display and interaction with user matches, also allows users to chat with other matches
+
+- :ref:`recommendations.js <recommendations-label>`: Core to the recommendation feature, this script manages the display and interaction with user recommendations, ensuring users are presented with tailored roommate suggestions.
+
+Modules/
+--------
+
+Matches/
+~~~~~~~~
+
+- :ref:`matchGenerator.js <match-generator-label>`: Generates HTML content for match cards, categorizing user features into informative sections, setting up budget gauges, setting up calendars and more.
+
+- :ref:`matchUtilitySetup.js <match-utility-label>`: Provides utility functions for match-related operations, such as fetching matches and setting up match interactions such as chatting abilities, switching between tabs and more.
+
+Recommendations/
+~~~~~~~~~~~~~~~~
+
+- :ref:`recommendationHandler.js <recommendation-handler-label>`: Manages recommendation retrieval, display and interaction, including fetching new recommendations and recording user actions.
+
+SignUp/
+~~~~~~~
+
+- :ref:`isochroneInput.js <isochrone-label>`: Handles isochrone input for the sign-up process, enabling users to define their preferred travel times and methods in order to generate isochrones.
+
+- :ref:`profileCreationFormPopulation.js <profile-creation-label>`: Populates sign-up forms with predefined lists (e.g., cities, universities) in order to allow users to pick their selections, also populates the list with any previously selected data.
+
+- :ref:`profileImageSetup.js <profile-image-label>`: Manages the setup and validation of profile image uploads during the sign-up process.
+
+- :ref:`resetPreferences.js <reset-label>`: Allows users to reset their preferences during profile editing, ensuring users are sure they would like reset this before doing so.
+
+Utils/
+~~~~~~
+
+- :ref:`api.js <api-label>`: Serves as an interface for general backend API requests, facilitating interactions like fetching matches, sending reports and more.
+
+- :ref:`calendarHandler.js <calendar-label>`: Manages calendar-related functionalities, including displaying move-in dates.
+
+- :ref:`chatSetup.js <chat-setup-label>`: Sets up real-time chat functionalities, enabling users to communicate directly within the platform.
+
+- :ref:`map.js <map-label>`: Responsible for generating and managing interactive maps that display isochrones and geographical data relevant to users.
+
+- :ref:`modalDisplay.js <modal-display-label>`: Manages the display and interaction of modals across the platform, such as report modals and match notifications.
+
+- :ref:`recommendationApi.js <recommendation-api-label>`: Handles API interactions specifically related to recommendations, including fetching recommendations and recording interactions.
+
+- :ref:`sideMenu.js <side-menu-label>`: Manages the side menu's behavior, including its display and interaction logic.
+
+- :ref:`tabHandler.js <tab-handler-label>`: Facilitates tabbed interfaces within the platform, enabling seamless navigation between different UI sections.
+
+Variables/
+~~~~~~~~~~
+
+- **features.js:** Defines predefined feature categories used throughout the platform to categorize and display user information.
+
+- **userCreationLists.js:** Contains predefined lists used during user sign-up, such as cities and universities, to streamline the profile creation process.
+
 
 HTML Documents
 --------------
@@ -86,7 +139,7 @@ algorithms/
 
 - :ref:`collaborative_filtering_web.py <collaborative-filtering-web-label>`: Uses collaborative filtering techniques to identify user similarities for recommendations.
 
-- :ref:`web-recommendations.py <web-recommendations-label>`: Implements the mixed filtering algorithm, combining collaborative and content-based filtering for enhanced recommendation accuracy.
+- :ref:`web-recommendations.py <web-recommendations-label>`: Implements the mixed filtering algorithm, combining collaborative and content-based filtering for enhanced recommendation accuracy. Also faciliates the ability to check for pre existing recommendations and formatting of data.
 
 
 database/
@@ -119,6 +172,7 @@ See Also
 --------
    
 - :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for details on how these modules interact with each other.
+- :ref:`JavaScript Modules <javascript-modules-label>` for a deep dive into frontend modules.
 - :ref:`Python Modules <python-modules-label>` for a deep dive into backend modules.
 - :ref:`Environment Setup <environment-setup-label>` for setup details relevant to the frontend and backend.
 

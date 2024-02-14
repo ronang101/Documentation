@@ -118,8 +118,8 @@
 </li>
 <li><p><strong>Image Handling and Secure Access</strong></p>
 <ul class="simple">
-<li><p><em>Frontend</em>: <a class="reference internal" href="main-scripts.html#dom-label"><span class="std std-ref">dom.js</span></a>
-- Calls the <cite>/images/&lt;requested_id&gt;</cite> endpoint to fetch a pre-signed URL for the user’s profile image.
+<li><p><em>Frontend</em>: <a class="reference internal" href="form-scripts.html#edit-script-label"><span class="std std-ref">editScript.js</span></a>, <a class="reference internal" href="main-scripts.html#recommendations-label"><span class="std std-ref">recommendations.js</span></a>, <a class="reference internal" href="main-scripts.html#matches-label"><span class="std std-ref">matches.js</span></a>
+- Calls the <cite>/images/&lt;requested_id&gt;</cite> endpoint to fetch a pre-signed URL for a user’s profile image.
 - Implements error handling for scenarios where image fetching fails, ensuring a fallback to a placeholder image if necessary.</p></li>
 <li><p><em>Backend</em>: <a class="reference internal" href="web.html#app-label"><span class="std std-ref">app.py</span></a>
 - Endpoint <cite>/images/&lt;requested_id&gt;</cite> generates pre-signed URLs for secure, temporary access to images stored in S3. It ensures that only authenticated users can request and access user profile images by checking the session for ‘user_id’.
@@ -170,8 +170,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html">JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>

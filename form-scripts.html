@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="main-scripts" href="main-scripts.html" />
-    <link rel="prev" title="Database Schema Documentation" href="database_schema.html" />
+    <link rel="prev" title="JavaScript" href="javascript.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -38,50 +38,36 @@
 <p>This section of the documentation provides details on the JavaScript files within the <cite>form-scripts</cite> directory. These scripts are crucial for handling form interactions, user authentication, and profile creation/editing functionalities.</p>
 <section id="editscript-js">
 <span id="edit-script-label"></span><h2><strong>editScript.js</strong><a class="headerlink" href="#editscript-js" title="Link to this heading">¶</a></h2>
-<p>The <cite>editScript.js</cite> is responsible for facilitating user profile editing. It provides the following functionalities:</p>
+<p><cite>editScript.js</cite> plays a crucial role in the user experience by enabling profile editing functionality within the Redwood Prototype platform. This script allows users to update their profile information, including preferences, profile images, and geographic preferences, through an intuitive and interactive interface. It leverages modular JavaScript by utilizing imported modules for dropdown setup, image upload, and map-based isochrone inputs.</p>
+</section>
+<section id="key-functionalities">
+<h2>Key Functionalities<a class="headerlink" href="#key-functionalities" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Populating form fields with existing user data for updates.</p></li>
-<li><p>Setting up dropdowns for user preferences such as age filter, rent filter, and duration.</p></li>
-<li><p>Initializing Select2 for enhanced dropdown UI (this works for user features, preferences, city select, university select and other options).</p></li>
-<li><p>Handling image upload and validation to ensure the image meets the specified criteria.</p></li>
-<li><p>Validating the move-in date range upon form submission.</p></li>
-<li><p>Managing account deletion confirmation through modal interactions.</p></li>
-<li><p>Toggling the side menu for mobile viewports (works for desktop view too but set up for mobile).</p></li>
-<li><p>Allows users to specify their preferred renting location by clicking on a map. Updates latitude and longitude in hidden form fields.</p></li>
+<li><p><strong>Form Pre-population:</strong> Automatically fills form fields with the user’s existing data, facilitating easy updates.</p></li>
+<li><p><strong>Dropdown Initialization:</strong> Utilizes <cite>setupDropdowns</cite> to populate dropdowns with selections such as age range, rent budget, and user features.</p></li>
+<li><p><strong>Profile Image Upload:</strong> Implements image upload and validation logic through <cite>setupProfileImageUpload</cite>, ensuring that profile pictures meet specified criteria.</p></li>
+<li><p><strong>Geographic Preferences:</strong> Enables users to define their preferred living area using map-based isochrone selections via <cite>setupIsochroneInput</cite>.</p></li>
+<li><p><strong>Responsive Navigation:</strong> Manages the side menu improving site navigation with <cite>setupSideMenu</cite>.</p></li>
+<li><p><strong>Preference Reset Confirmation:</strong> Adds a layer of user confirmation before resetting preferences, preventing accidental data loss with <cite>setupResetPreferences</cite>.</p></li>
+<li><p><strong>Validation and Submission:</strong> Validates the move-in date range and form fields before submission to ensure data integrity.</p></li>
 </ul>
 </section>
-<section id="key-features-and-functionalities">
-<h2>Key Features and Functionalities<a class="headerlink" href="#key-features-and-functionalities" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="toggleMenu">
-<span class="sig-name descname"><span class="pre">toggleMenu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#toggleMenu" title="Link to this definition">¶</a></dt>
-<dd><p>Responsible for showing or hiding the side panel, which is particularly useful for mobile responsiveness.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="setPreferencesDisabled">
-<span class="sig-name descname"><span class="pre">setPreferencesDisabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disabled</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#setPreferencesDisabled" title="Link to this definition">¶</a></dt>
-<dd><p>Enables or disables the ‘preferences’ select element based on user interactions, and clears selections when disabled.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="DOMContentLoaded">
-<span class="sig-name descname"><span class="pre">DOMContentLoaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DOMContentLoaded" title="Link to this definition">¶</a></dt>
-<dd><p>Activates once the DOM is fully loaded, initializing dropdowns and setting up event listeners for profile editing.</p>
-</dd></dl>
-
+<section id="integration-and-usage">
+<h2>Integration and Usage<a class="headerlink" href="#integration-and-usage" title="Link to this heading">¶</a></h2>
+<p>This script is integrated within the profile editing form page, where it is executed upon the page’s load to prepare the form for user interaction. Key integrations include:</p>
+<ul class="simple">
+<li><p><strong>DOMContentLoaded:</strong> Waits for the full document to load before initializing form elements and functionalities.</p></li>
+<li><p><strong>jQuery and Select2:</strong> Enhances form elements for a better user experience, providing searchable dropdowns and clear visual feedback.</p></li>
+<li><p><strong>MapLibre Integration:</strong> Incorporates interactive maps for setting geographic preferences, directly influencing the user’s isochrone inputs.</p></li>
+<li><p><strong>Modular JavaScript:</strong> Leverages ES6 module imports to organize code, ensuring maintainability and scalability of the platform’s frontend architecture.</p></li>
+</ul>
 </section>
 <section id="login-js">
 <span id="login-label"></span><h2><strong>login.js</strong><a class="headerlink" href="#login-js" title="Link to this heading">¶</a></h2>
-<p>The <cite>login.js</cite> script manages user authentication through Google sign-in:</p>
-<ul class="simple">
-<li><p>Configuring Firebase for the project.</p></li>
-<li><p>Handling the sign-in process with a popup and Google provider.</p></li>
-<li><p>Sending the Google ID token to the server for verification and handling post-authentication user redirection.</p></li>
-</ul>
+<p>The login.js script manages user authentication through Google sign-in, configuring Firebase for the project, handling the sign-in process with a popup and Google provider, and sending the Google ID token to the server for verification and handling post-authentication user redirection.</p>
 </section>
 <section id="id1">
-<h2>Key Features and Functionalities<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<h2>Key Functionalities<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="signInWithGoogle">
 <span class="sig-name descname"><span class="pre">signInWithGoogle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#signInWithGoogle" title="Link to this definition">¶</a></dt>
@@ -113,40 +99,33 @@ Attaches a click event listener to the Google sign-in button, activating the <ci
 </section>
 <section id="usercreation-js">
 <span id="usercreation-label"></span><h2><strong>userCreation.js</strong><a class="headerlink" href="#usercreation-js" title="Link to this heading">¶</a></h2>
-<p>The <cite>userCreation.js</cite> script is similar to <cite>editScript.js</cite> but is tailored for the user profile creation process (no pre populated fields):</p>
-<ul class="simple">
-<li><p>Populating dropdowns for user preferences such as age, rent, and duration.</p></li>
-<li><p>Handling image upload and validation for new profile creation.</p></li>
-<li><p>Validating the move-in date range and file size upon form submission.</p></li>
-<li><p>Allows users to specify their preferred renting location by clicking on a map. Updates latitude and longitude in hidden form fields.</p></li>
-</ul>
+<p><cite>userCreation.js</cite> orchestrates the user profile creation process on the Redwood Prototype platform. This script ensures a streamlined and error-free setup for new users by handling form element initialization, input validation, and submission. It leverages additional modules for dropdown setups, image upload validations, and geographic preference inputs, enhancing the user onboarding experience.</p>
 </section>
 <section id="id2">
-<h2>Key Features and Functionalities<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="initializeFormElements">
-<span class="sig-name descname"><span class="pre">initializeFormElements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#initializeFormElements" title="Link to this definition">¶</a></dt>
-<dd><p>Sets up the dropdowns for various user preferences and filters, and initializes Select2 for enhanced dropdown functionality.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="handleImageUpload">
-<span class="sig-name descname"><span class="pre">handleImageUpload</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#handleImageUpload" title="Link to this definition">¶</a></dt>
-<dd><p>Manages the image upload process, including validation for image size and dimensions.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="validateFormSubmission">
-<span class="sig-name descname"><span class="pre">validateFormSubmission</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#validateFormSubmission" title="Link to this definition">¶</a></dt>
-<dd><p>Ensures that the form submission adheres to specific criteria, including valid date ranges and file size limits.</p>
-</dd></dl>
-
+<h2>Key Functionalities<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Form Initialization:</strong> Automatically sets up dropdowns, image upload fields, and geographic inputs as soon as the document is ready.</p></li>
+<li><p><strong>Input Validation:</strong> Validates user inputs such as the move-in date range and profile image size to comply with platform policies before form submission.</p></li>
+<li><p><strong>Dynamic Dropdowns:</strong> Utilizes the <cite>setupDropdowns</cite> function from the <cite>signUp</cite> module to populate form dropdowns with options like features, enhancing user interaction.</p></li>
+<li><p><strong>Profile Image Upload:</strong> Leverages the <cite>setupProfileImageUpload</cite> function to implement image upload functionality with validation for file size and type.</p></li>
+<li><p><strong>Geographic Preference Setup:</strong> Incorporates the <cite>setupIsochroneInput</cite> function for users to visually select their geographic preferences on a map.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Integration and Usage<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>This script is integrated within the user creation form page, where it is executed upon the page’s load to prepare the form for user interaction. Key integrations include:</p>
+<ul class="simple">
+<li><p><strong>DOMContentLoaded:</strong> Waits for the full document to load before initializing form elements and functionalities.</p></li>
+<li><p><strong>jQuery and Select2:</strong> For enhancing form elements, such as dropdowns, with advanced features like search and clear options.</p></li>
+<li><p><strong>MapLibre:</strong> To provide an interactive map interface for selecting geographic preferences.</p></li>
+<li><p><strong>Form Submission Handling:</strong> Includes checks on the client side to ensure all user inputs meet the required criteria before allowing the form to be submitted. This prevents unnecessary server requests and improves the user experience by providing immediate feedback on any errors.</p></li>
+</ul>
 </section>
 <section id="integration-with-html">
 <h2>Integration with HTML<a class="headerlink" href="#integration-with-html" title="Link to this heading">¶</a></h2>
 <p>Each script is linked to its respective HTML file, where form elements are defined and the script is included at the bottom of the HTML document to ensure the DOM is loaded before the script runs. Interaction with these elements is managed via the document’s event listeners, allowing for real-time, client-side validation and UI updates.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Example of script inclusion in HTML --&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../static/scripts/form-scripts/login.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../static/scripts/form-scripts/userCreation.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>For more detailed instructions on usage and customization, refer to the usage and comments within each script and the associated HTML files for context.</p>
@@ -157,6 +136,10 @@ Attaches a click event listener to the Google sign-in button, activating the <ci
 <li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for how these scripts integrate with the backend.</p></li>
 <li><p><a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">Modules Overview</span></a> for an overview of related modules.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="javascript.html#javascript-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
 </section>
 </section>
 
@@ -183,19 +166,12 @@ Attaches a click event listener to the Google sign-in button, activating the <ci
 <li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">form-scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#editscript-js"><strong>editScript.js</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#key-features-and-functionalities">Key Features and Functionalities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#login-js"><strong>login.js</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Key Features and Functionalities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#implementation-details">Implementation Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usercreation-js"><strong>userCreation.js</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Key Features and Functionalities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#integration-with-html">Integration with HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="javascript.html">JavaScript</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">form-scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript_modules.html">JavaScript Modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
@@ -206,8 +182,10 @@ Attaches a click event listener to the Google sign-in button, activating the <ci
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="database_schema.html" title="previous chapter">Database Schema Documentation</a></li>
+  <li><a href="javascript.html">JavaScript</a><ul>
+      <li>Previous: <a href="javascript.html" title="previous chapter">JavaScript</a></li>
       <li>Next: <a href="main-scripts.html" title="next chapter">main-scripts</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

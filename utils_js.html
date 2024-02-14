@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>utils &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/utils_js.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python Modules" href="python_modules.html" />
+    <link rel="prev" title="signUp" href="signUp.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="utils">
+<span id="utils-page-label"></span><h1>utils<a class="headerlink" href="#utils" title="Link to this heading">¶</a></h1>
+<p>This section of the documentation elaborates on the JavaScript files within the <cite>modules/utils</cite> directory. The scripts contained within here are more general and cover a wide range of functionalities from incoperating side menu navigation to setting up the ability to chat.</p>
+<section id="api-js">
+<span id="api-label"></span><h2><strong>api.js</strong><a class="headerlink" href="#api-js" title="Link to this heading">¶</a></h2>
+<p><cite>api.js</cite> serves as the backbone for server communication within the Redwood Prototype platform, facilitating seamless data exchange between the client and server. This script encompasses a range of utility functions crucial for fetching matches, managing match reports, removing unwanted matches, and retrieving user profile images, thereby ensuring a dynamic and responsive user experience.</p>
+</section>
+<section id="key-functionalities">
+<h2>Key Functionalities<a class="headerlink" href="#key-functionalities" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Match Fetching:</strong> Responsible for retrieving matches from the server for user interaction.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="fetchMatches">
+<span class="sig-name descname"><span class="pre">fetchMatches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fetchMatches" title="Link to this definition">¶</a></dt>
+<dd><p>Initiates an HTTP GET request to /api/matches, efficiently fetching an array of match data and handling any errors encountered during the process.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Match Reporting:</strong> Enables users to report matches for inappropriate content or behavior.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="reportMatch">
+<span class="sig-name descname"><span class="pre">reportMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reportMatch" title="Link to this definition">¶</a></dt>
+<dd><p>Sends a report about a match to the server using a POST request, with formData encapsulating the report details.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Match Removal:</strong> Provides functionality for users to remove unwanted matches from their list.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="removeMatch">
+<span class="sig-name descname"><span class="pre">removeMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#removeMatch" title="Link to this definition">¶</a></dt>
+<dd><p>Deletes a match based on its unique ID through a POST request, improving the user’s control over their match interactions.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Profile Image Retrieval:</strong> Responsible for retrieving profile images to enhance the user experience.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="getImage">
+<span class="sig-name descname"><span class="pre">getImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getImage" title="Link to this definition">¶</a></dt>
+<dd><p>Fetches a presigned URL for a user’s profile image by their unique ID, ensuring users can view each other’s photos securely and efficiently.</p>
+</dd></dl>
+
+</section>
+<section id="integration-and-usage">
+<h2>Integration and Usage<a class="headerlink" href="#integration-and-usage" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Integral to User Experience Enhancements:</strong> Directly contributes to the platform’s core features, including match fetching, user reporting mechanisms, match management, and profile picture visualization.</p></li>
+<li><p><strong>Dependent on Modern Browser Features:</strong> Utilizes the Fetch API, a modern standard for web requests, ensuring efficient and reliable data exchange without external dependencies.</p></li>
+<li><p><strong>Adaptable and Scalable:</strong> Designed for easy integration and scalability within the platform, allowing for future enhancements and additional functionalities as the platform evolves.</p></li>
+</ul>
+</section>
+<section id="calendarhandler-js">
+<span id="calendar-label"></span><h2><strong>calendarHandler.js</strong><a class="headerlink" href="#calendarhandler-js" title="Link to this heading">¶</a></h2>
+<p><cite>calendarHandler.js</cite> is designed to enrich the user interface with interactive calendar views for viewing move-in dates. By leveraging the lightweight and versatile Pikaday JavaScript date picker library, this script provides users with an intuitive and visually appealing way to navigate through available dates within a specified range, enhancing the overall usability and functionality of the match selection process.</p>
+</section>
+<section id="id1">
+<h2>Key Functionalities<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Dynamic Calendar Initialization:</strong> Facilitates the creation of customizable calendar views for each match card and recommendation card, allowing users to visually comprehend and select potential move-in dates.</p></li>
+<li><p><strong>DatePicker:</strong> A class that encapsulates the management of Pikaday date pickers, offering tailored configurations for the platform’s requirements. It initializes calendars with specified start and end dates, customizes appearance, and incorporates logic to highlight and disable specific dates.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="initializePikadayForMatch">
+<span class="sig-name descname"><span class="pre">initializePikadayForMatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#initializePikadayForMatch" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes a Pikaday calendar for an individual match card, applying custom start and end dates derived from the match data. It also customizes the calendar’s behavior to highlight available dates, enhancing the user’s decision-making process regarding move-in timelines.</p>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h2>Integration and Usage<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><cite>calendarHandler.js</cite> contributes to the interactive and user-friendly aspect of the Redwood Prototype platform by integrating detailed calendar views into the match selection process. It not only simplifies date selection but also adds a layer of engagement through visual date exploration.</p>
+<ul class="simple">
+<li><p><strong>Seamless Integration with Match Cards:</strong> Each match card and recommendation card is equipped with a Pikaday calendar, initialized and configured via <cite>calendarHandler.js</cite>, to display available move-in dates, thereby providing a comprehensive view of each match’s availability.</p></li>
+<li><p><strong>Dependence on External Library:</strong> Relies on the inclusion of the Pikaday library within the project, a testament to its modular approach in leveraging existing solutions to enhance platform features.</p></li>
+<li><p><strong>Enhanced User Experience:</strong> Through its functionalities, <cite>calendarHandler.js</cite> plays a pivotal role in facilitating user interaction with potential matches, allowing for a more informed and visually guided selection process.</p></li>
+</ul>
+</section>
+<section id="chatsetup-js">
+<span id="chat-setup-label"></span><h2><strong>chatSetup.js</strong><a class="headerlink" href="#chatsetup-js" title="Link to this heading">¶</a></h2>
+<p><cite>chatSetup.js</cite> is a sophisticated module within the Redwood Prototype platform, designed to manage the intricacies of real-time chat functionalities. It harnesses the power of Firebase Firestore for storing and retrieving chat messages and Firebase Authentication to authenticate users and manage sessions. This script is pivotal in enabling seamless communication between users, fostering an interactive and connected community within the platform.</p>
+</section>
+<section id="id3">
+<h2>Key Functionalities<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Firebase Initialization for Messaging:</strong> Sets up Firebase to facilitate real-time messaging, ensuring instant communication between users.</p></li>
+<li><p><strong>ChatManager:</strong> A class dedicated to overseeing chat operations, including message sending, message reception, and chat ID generation. It initializes Firebase services (Firestore for database operations and Authentication for user session management) and sets up listeners for real-time chat updates.</p></li>
+<li><p><strong>Real-time Message Sending and Receiving:</strong> Provides users with the ability to send messages to specific matches and dynamically updates the chat interface with incoming messages.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="sendMessage">
+<span class="sig-name descname"><span class="pre">sendMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matchIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matchUserId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sendMessage" title="Link to this definition">¶</a></dt>
+<dd><p>Sends a message to a designated user, creating a unique chat based on user IDs and updating Firestore with the new message.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="receiveMessages">
+<span class="sig-name descname"><span class="pre">receiveMessages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matchIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matchUserId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#receiveMessages" title="Link to this definition">¶</a></dt>
+<dd><p>Listens for new messages in real-time, updating the chat interface accordingly to ensure users have the latest conversation updates.</p>
+</dd></dl>
+
+</section>
+<section id="id4">
+<h2>Integration and Usage<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p><cite>chatSetup.js</cite> significantly enhances the user experience on the Redwood Prototype platform by enabling real-time interactions between potential roommates. It integrates closely with the platform’s UI to provide a seamless chat experience.</p>
+<ul class="simple">
+<li><p><strong>Essential for User Interactions:</strong> By facilitating real-time conversations, it plays a crucial role in the decision-making process, allowing users to communicate directly and efficiently.</p></li>
+<li><p><strong>Leverages Google’s Firebase:</strong> Relies on Firebase Firestore for robust and scalable real-time database capabilities, and Firebase Authentication for secure user management, showcasing the script’s integration with third-party services to enhance functionality.</p></li>
+<li><p><strong>Custom UI Updates:</strong> Through its real-time listening and message management capabilities, the script ensures that chat interfaces are always up-to-date, providing users with an engaging and responsive messaging experience.</p></li>
+</ul>
+</section>
+<section id="map-js">
+<span id="map-label"></span><h2><strong>map.js</strong><a class="headerlink" href="#map-js" title="Link to this heading">¶</a></h2>
+<p><cite>map.js</cite> is dedicated to enhancing the user interface with sophisticated map functionalities. This script leverages the capabilities of maplibre-gl for rendering interactive maps and Turf.js for conducting spatial analysis. It plays a pivotal role in visualizing geographical information, such as isochrones, which represent areas reachable within specific time frames, and updating the map to illustrate intersections between user-defined areas and these isochrones.</p>
+</section>
+<section id="id5">
+<h2>Key Functionalities<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Map Initialization with Custom Styles:</strong> Sets up interactive maps using maplibre-gl, configuring them with custom styles, initial centering, and zoom levels to suit the application’s needs.</p></li>
+<li><p><strong>MapManager:</strong> A class that encapsulates the logic for map initialization, displaying isochrone data, and updating intersections. It initializes the map with specified parameters, including container ID, style URL, center coordinates, and zoom level.</p></li>
+<li><p><strong>Isochrone Visualization:</strong> Employs isochrone data to delineate areas on the map that are reachable within a given time frame, enhancing the user’s understanding of geographical proximities and distances.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="displayIsochrones">
+<span class="sig-name descname"><span class="pre">displayIsochrones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">isochroneData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#displayIsochrones" title="Link to this definition">¶</a></dt>
+<dd><p>Adds isochrone data to the map as a new layer, allowing users to visually assess areas based on travel time considerations.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Intersection Updates:</strong> Updates the map to show the overlay of user-defined geographical areas with isochrones, highlighting intersections that facilitate decision-making regarding location preferences.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="updateIntersection">
+<span class="sig-name descname"><span class="pre">updateIntersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recGeoData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#updateIntersection" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates and displays the intersection between user-defined areas and isochrones, using Turf.js for spatial calculations, thereby providing valuable insights into feasible locations.</p>
+</dd></dl>
+
+</section>
+<section id="id6">
+<h2>Integration and Usage<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p><cite>map.js</cite> enriches the user experience on the Redwood Prototype platform by integrating advanced map and spatial analysis functionalities. It allows users to interactively explore geographical data, aiding in the visualization of potential living areas and their accessibility.</p>
+<ul class="simple">
+<li><p><strong>Integration with User Interface:</strong> Seamlessly integrates with the platform’s UI, enabling users to interact with maps directly, visualize isochrones, and understand the geographical context of their potential roommates or living spaces.</p></li>
+<li><p><strong>Leverages Open-Source Libraries:</strong> Utilizes maplibre-gl for map rendering, providing a robust and flexible solution for interactive maps, and Turf.js for spatial analysis, demonstrating the script’s reliance on powerful external libraries to perform complex geographical computations.</p></li>
+<li><p><strong>Facilitates Geographical Decision-Making:</strong> Through its functionalities, <cite>map.js</cite> aids users in making informed decisions regarding location preferences, enhancing the platform’s capability to match users with compatible roommates based on geographical criteria.</p></li>
+</ul>
+</section>
+<section id="modaldisplay-js">
+<span id="modal-display-label"></span><h2><strong>modalDisplay.js</strong><a class="headerlink" href="#modaldisplay-js" title="Link to this heading">¶</a></h2>
+<p><cite>modalDisplay.js</cite> is specifically designed to enhance user interaction through modal functionalities. It focuses on creating a more engaging user interface by providing modal dialogs for mutual interests between users and facilitating user reporting mechanisms. This script uses a combination of DOM manipulation techniques and event listeners to provide a dynamic and responsive modal experience, contributing to a safer and more interactive platform environment.</p>
+</section>
+<section id="id7">
+<h2>Key Functionalities<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Mutual Interest Notification:</strong> Displays a modal to inform users when there is a mutual like between them.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="showModal">
+<span class="sig-name descname"><span class="pre">showModal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#showModal" title="Link to this definition">¶</a></dt>
+<dd><p>Activates when a mutual interest is detected, dynamically updating the modal’s content with the matched user’s name and providing mechanisms to close the modal through UI elements.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>User Reporting Interface:</strong> Offers a comprehensive UI for reporting users, handling form submissions effectively, and displaying a gratitude message upon submission, thereby supporting platform integrity and user safety.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="showReportModal">
+<span class="sig-name descname"><span class="pre">showReportModal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recommendationHandler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matchReport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#showReportModal" title="Link to this definition">¶</a></dt>
+<dd><p>Prepares and displays the reporting modal, accommodating both general user reports and match-specific reports. It integrates form submission handling and transitions to a “thank you” message post-submission, emphasizing user feedback and platform moderation.</p>
+</dd></dl>
+
+</section>
+<section id="id8">
+<h2>Integration and Usage<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p><cite>modalDisplay.js</cite> is designed to interact seamlessly with modal elements, providing users with an intuitive and responsive interface for mutual interests and reporting functionalities.</p>
+<ul class="simple">
+<li><p><strong>Enhances User Experience:</strong> By leveraging modal dialogs, it directly contributes to a more engaging and interactive platform, allowing users to receive immediate feedback on mutual interests and to report concerns with ease.</p></li>
+<li><p><strong>Relies on Backend API Communication:</strong> Works in conjunction with <cite>api.js</cite> and <cite>recommendationApi.js</cite> for backend API communications, showcasing its integration within the platform’s broader technical architecture.</p></li>
+<li><p><strong>Supports Platform Safety and Integrity:</strong> Through its reporting functionalities, it empowers users to contribute to the platform’s safety, fostering a community where concerns can be addressed promptly and efficiently.</p></li>
+</ul>
+</section>
+<section id="recommendationapi-js">
+<span id="recommendation-api-label"></span><h2><strong>recommendationApi.js</strong><a class="headerlink" href="#recommendationapi-js" title="Link to this heading">¶</a></h2>
+<p><cite>recommendationApi.js</cite> is a dedicated script within the Redwood Prototype platform designed to manage the interaction with the backend API for recommendation-related functionalities. This script is crucial for the user experience by providing recommendations, recording user interactions, and maintaining a safe platform environment through user reporting mechanisms.</p>
+</section>
+<section id="id9">
+<h2>Key Functionalities<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Dynamic Recommendation Fetching:</strong> Automates the retrieval of new recommendations, ensuring users are continuously presented with relevant and engaging profiles based on their previous interactions and seen IDs.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="fetchRecommendationsApi">
+<span class="sig-name descname"><span class="pre">fetchRecommendationsApi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seenUserIds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fetchRecommendationsApi" title="Link to this definition">¶</a></dt>
+<dd><p>Executes a POST request to fetch new recommendations, sending a users’ previously seen IDs and their interactions (like, dislike, superlike), to deliver a customized experience.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Efficient Recommendation Management:</strong> Aims to optimize server resources by checking stored recommendations before making new calculations, thereby reducing unnecessary server load.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="checkRecommendations">
+<span class="sig-name descname"><span class="pre">checkRecommendations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#checkRecommendations" title="Link to this definition">¶</a></dt>
+<dd><p>Initiates a GET request to verify the existence of pre-calculated recommendations, facilitating efficient data management and potentially speeding up the recommendation process.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>User Interaction Recording:</strong> Captures and records users’ responses to recommendations (like, dislike, superlike), enabling the platform to refine future recommendations and understand user preferences better.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recordInteraction(recommendationId,</span> <span class="pre">interactionType)</span> <span class="pre">:no-index:</span></span></dt>
+<dd><p>Submits a POST request to log the user’s interaction with a specific recommendation, enhancing the personalization of the recommendation algorithm.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>User Report Submission:</strong> Provides a mechanism for users to report inappropriate content or behavior, contributing to the platform’s integrity and user safety.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#report" title="Link to this definition">¶</a></dt>
+<dd><p>Handles the submission of user reports to the server via a POST request, using form data to detail the complaint, ensuring the platform remains a respectful and safe environment for all users.</p>
+</dd></dl>
+
+</section>
+<section id="id10">
+<h2>Integration and Usage<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p><cite>recommendationApi.js</cite> plays a pivotal role in the Redwood Prototype platform by seamlessly integrating with the backend API to support a dynamic and safe user experience. It exemplifies the script’s capability to handle complex data interactions and user feedback efficiently.</p>
+<ul class="simple">
+<li><p><strong>Seamless Backend Integration:</strong> Directly communicates with the server to fetch and manage recommendations, record user interactions, and process user reports, showcasing its integral role in the application’s data flow.</p></li>
+<li><p><strong>Reliance on Modern Browser Capabilities:</strong> Utilizes the native fetch API, demonstrating the script’s modern approach to handling HTTP requests without the need for external dependencies.</p></li>
+<li><p><strong>Enhances User Experience and Platform Safety:</strong> Through its functionalities, <cite>recommendationApi.js</cite> significantly contributes to customizing the user experience and maintaining a secure platform by addressing user reports and tailoring recommendations.</p></li>
+</ul>
+</section>
+<section id="sidemenu-js">
+<span id="side-menu-label"></span><h2><strong>sideMenu.js</strong><a class="headerlink" href="#sidemenu-js" title="Link to this heading">¶</a></h2>
+<p><cite>sideMenu.js</cite> is a script designed to enhance user navigation through effective management of the side navigation menu. This script introduces an intuitive and user-friendly way to access various parts of the application, focusing on the dynamic interaction between the user and the navigation panel.</p>
+</section>
+<section id="id11">
+<h2>Key Functionalities<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Navigation Panel Toggle:</strong> Implements a responsive mechanism for showing or hiding the side navigation panel based on user interaction with the hamburger menu icon.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="setupSideMenu">
+<span class="sig-name descname"><span class="pre">setupSideMenu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#setupSideMenu" title="Link to this definition">¶</a></dt>
+<dd><p>Activates the side menu’s functionality by listening for clicks on the hamburger menu icon. It toggles the side panel’s visibility by adjusting its width, providing an elegant solution for accessing the menu on demand.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Intelligent Panel Closure:</strong> Enhances the user experience by closing the side navigation panel automatically when a user clicks outside of it, ensuring a seamless and distraction-free interaction with the application.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h2>Integration and Usage<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p><cite>sideMenu.js</cite> offers a streamlined and efficient navigation experience. It ensures users can easily access various sections of the platform without compromising the content’s visibility or the application’s overall aesthetics.</p>
+<ul class="simple">
+<li><p><strong>User-Centric Design:</strong> By integrating a toggle mechanism for the side navigation panel, the script directly contributes to a more engaging and user-friendly interface, allowing for effortless navigation across the platform.</p></li>
+<li><p><strong>Dependent on Specific HTML Structure:</strong> The script’s functionality is closely tied to the presence of HTML elements with specific IDs (‘hamburger-menu’ and ‘side-panel’), demonstrating its integration within the platform’s UI architecture.</p></li>
+<li><p><strong>Simplifies User Interaction:</strong> The inclusion of automatic closure when clicking outside the navigation panel underscores the platform’s attention to detail in creating an intuitive user experience, minimizing distractions and enhancing content focus.</p></li>
+</ul>
+</section>
+<section id="tabhandler-js">
+<span id="tab-handler-label"></span><h2><strong>tabHandler.js</strong><a class="headerlink" href="#tabhandler-js" title="Link to this heading">¶</a></h2>
+<p><cite>tabHandler.js</cite> is used to facilitate dynamic tab switching. This functionality allows users to navigate between different content areas seamlessly, ensuring a fluid and interactive user experience. By focusing on the dynamic display of content related to selected tabs, this script plays a role in organizing and presenting information in an accessible and intuitive manner.</p>
+</section>
+<section id="id13">
+<h2>Key Functionalities<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Dynamic Tab Switching:</strong> Enables the activation of tabs to display their associated content while concurrently hiding content from inactive tabs.</p></li>
+<li><p><strong>Customizable Activation and Content Management:</strong> Offers flexibility in configuring the active state of tabs and the visibility of their respective content areas, allowing for tailored user interface behaviors.</p></li>
+<li><p><strong>The TabHandler class:</strong> A mechanism that initializes with arrays of tab elements and their corresponding content elements. It includes an option to set the first tab as active by default or the second tab inactive.</p></li>
+</ul>
+</section>
+<section id="id14">
+<h2>Integration and Usage<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<p><cite>tabHandler.js</cite> contributes to the Redwood Prototype platform’s usability by streamlining the user interaction with tabbed content. It exemplifies a modern approach to UI design, where information is presented in a compact and organized manner, facilitating ease of navigation and content discovery.</p>
+<ul class="simple">
+<li><p><strong>Streamlines Content Navigation:</strong> By integrating dynamic tab functionality, the script directly enhances the user’s ability to navigate through different sections of content efficiently, promoting a more engaging and user-friendly interface.</p></li>
+<li><p><strong>Depends on Specific HTML Elements:</strong> The functionality of this script is closely tied to the presence of HTML elements designated as tabs and their content areas, highlighting its integration within the platform’s structured UI design.</p></li>
+<li><p><strong>Facilitates Information Organization:</strong> The inclusion of the TabHandler class in the platform’s architecture underscores a commitment to providing a coherent and organized presentation of information, allowing users to access content relevant to their interests without unnecessary clutter or confusion.</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for how these scripts integrate with the backend.</p></li>
+<li><p><a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">Modules Overview</span></a> for an overview of related modules.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="javascript.html#javascript-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="javascript.html">JavaScript</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="javascript_modules.html">JavaScript Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="javascript.html">JavaScript</a><ul>
+  <li><a href="javascript_modules.html">JavaScript Modules</a><ul>
+      <li>Previous: <a href="signUp.html" title="previous chapter">signUp</a></li>
+      <li>Next: <a href="python_modules.html" title="next chapter">Python Modules</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/utils_js.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

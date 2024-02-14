@@ -9,8 +9,7 @@ Welcome to Redwood Prototype's documentation!
    modules_overview
    frontend_backend_interaction
    database_schema
-   form-scripts
-   main-scripts
+   javascript
    python_modules
    design_rationale
    environment_setup

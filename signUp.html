@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>signUp &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/signUp.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils" href="utils_js.html" />
+    <link rel="prev" title="recommendations" href="recommendations.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="signup">
+<span id="signup-page-label"></span><h1>signUp<a class="headerlink" href="#signup" title="Link to this heading">¶</a></h1>
+<p>This section of the documentation elaborates on the JavaScript files within the <cite>modules/signUp</cite> directory. The scripts contained within here are responsible for the forms and functionality relating to user sign up and profile editing pages.</p>
+<section id="isochroneinput-js">
+<span id="isochrone-label"></span><h2><strong>isochroneInput.js</strong><a class="headerlink" href="#isochroneinput-js" title="Link to this heading">¶</a></h2>
+<p><cite>isochroneInput.js</cite> introduces the <cite>setupIsochroneInput</cite> function, designed to initialize an interactive map feature allowing users to specify their location preferences and transportation modes for isochrone analysis. This functionality is crucial for users in defining their search area based on travel time, enhancing their housing search experience on the Redwood Prototype.</p>
+</section>
+<section id="key-functionalities">
+<h2>Key Functionalities<a class="headerlink" href="#key-functionalities" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Interactive Map Initialization:</strong> Leverages Maplibre GL to render an interactive map centered on the user’s location or a default location, enhancing user engagement and input accuracy.</p></li>
+<li><p><strong>Location Specification via Map:</strong> Enables users to place and move a marker on the map, marking their preferred starting point for isochrone analysis, which directly impacts their search parameters.</p></li>
+<li><p><strong>Transportation Mode Selection:</strong> Offers users the choice of transportation mode (e.g., driving, walking), allowing for tailored isochrone results that align with user preferences and lifestyle.</p></li>
+<li><p><strong>Form Field Updates:</strong> Automatically updates hidden form fields with the marker’s latitude, longitude, and selected transportation mode, ensuring seamless integration with backend processing.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="setupIsochroneInput">
+<span class="sig-name descname"><span class="pre">setupIsochroneInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userLongitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userLatitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userTransportMode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userTravelTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#setupIsochroneInput" title="Link to this definition">¶</a></dt>
+<dd><p>This function is responsible for all of the above, setting up the map, setting up functionality and interactions with the map, transportation selection and more.</p>
+</dd></dl>
+
+</section>
+<section id="integration-and-usage">
+<h2>Integration and Usage<a class="headerlink" href="#integration-and-usage" title="Link to this heading">¶</a></h2>
+<p><cite>setupIsochroneInput</cite> enhances the platform’s user interface by providing a visual and interactive method for users to define their search area related to geographical location and accessibility.</p>
+<ul class="simple">
+<li><p><strong>External Dependencies:</strong> Relies on the Maplibre GL library for map rendering and user interaction handling, and Maptiler for the map style, necessitating an API key.</p></li>
+<li><p><strong>User Experience Enhancement:</strong> By enabling users to visually specify their preferred location and how they plan to travel from that point, this function plays a vital role in personalizing and refining the housing search process on the Redwood Prototype platform.</p></li>
+</ul>
+</section>
+<section id="profilecreationformpopulation-js">
+<span id="profile-creation-label"></span><h2><strong>profileCreationFormPopulation.js</strong><a class="headerlink" href="#profilecreationformpopulation-js" title="Link to this heading">¶</a></h2>
+<p><cite>profileCreationFormPopulation.js</cite> is dedicated to initializing and populating dropdown menus for age filter, rent filter, duration, university selection, city selection, profession, user features, and preferences in the user profile creation and editing forms on the Redwood Prototype. It enhances user experience by offering a streamlined and intuitive way to input and edit user-specific information.</p>
+</section>
+<section id="id1">
+<h2>Key Functionalities<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Dropdown Initialization:</strong> Dynamically populates dropdown options for various user profile fields, ensuring that users can easily input and edit their information with context-specific choices.</p></li>
+<li><p><strong>Select2 Integration:</strong> Utilizes the Select2 library to enhance select elements, providing users with search capabilities, multi-select options for features and preferences, and a better overall user experience.</p></li>
+<li><p><strong>User Selections Handling:</strong> Accepts an object containing previous user selections or defaults to an empty object, allowing for the pre-population of form fields during the editing process.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="setupDropdowns">
+<span class="sig-name descname"><span class="pre">setupDropdowns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userSelections</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#setupDropdowns" title="Link to this definition">¶</a></dt>
+<dd><p>This function is responsible for setting up the form by pre populating fields with previous selections if any are present, and by initializing the form fields and options.</p>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h2>Integration and Usage<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>This script is a critical component of the Redwood Prototype platform, facilitating easy and intuitive user profile creation and editing. By leveraging Select2 and predefined lists, it ensures a consistent and user-friendly interface for inputting profile information.</p>
+<ul class="simple">
+<li><p><strong>Predefined Lists Importation:</strong> Imports lists of cities, universities, and features from <cite>../variables/userCreationLists.js</cite>, ensuring that dropdowns are populated with relevant and up-to-date options.</p></li>
+<li><p><strong>Dropdown Population:</strong> Calls <cite>populateDropdown</cite> for each form element, adding options to the select elements and marking appropriate options as selected based on the provided <cite>userSelections</cite>.</p></li>
+<li><p><strong>Enhanced Dropdown Functionality:</strong> Initializes Select2 on each dropdown to provide enhanced functionality, including searchable dropdowns and clear options, significantly improving the usability of the form.</p></li>
+</ul>
+</section>
+<section id="profileimagesetup-js">
+<span id="profile-image-label"></span><h2><strong>profileImageSetup.js</strong><a class="headerlink" href="#profileimagesetup-js" title="Link to this heading">¶</a></h2>
+<p><cite>profileImageSetup.js</cite> is designed to streamline the process of uploading and previewing a profile image on user profile creation or editing forms. It provides users with immediate feedback on their selected image, ensuring it meets the platform’s requirements for dimensions while presenting a scaled preview.</p>
+</section>
+<section id="id3">
+<h2>Key Functionalities<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Image Selection and Preview:</strong> Enables users to select an image file from their device, providing a seamless interface for uploading profile pictures.</p></li>
+<li><p><strong>Image Dimension Validation:</strong> Ensures the selected image meets minimum dimension requirements, alerting users if their image does not qualify, thereby maintaining a consistent visual quality across user profiles.</p></li>
+<li><p><strong>Preview Display and Adjustment:</strong> Dynamically displays a preview of the selected image, scaling it appropriately to fit within a designated preview area without distorting the image’s aspect ratio.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="setupProfileImageUpload">
+<span class="sig-name descname"><span class="pre">setupProfileImageUpload</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#setupProfileImageUpload" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the event listener for image selection, conducts image dimension validation, and updates the preview area with the selected image.</p>
+</dd></dl>
+
+</section>
+<section id="id4">
+<h2>Integration and Usage<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>This script is utilized on pages where users are engaged in creating or editing their profiles, it is essential for uploading profile images and handling their display on forms.</p>
+<ul class="simple">
+<li><p><strong>Real time profile image viewing:</strong> By calling <cite>setupProfileImageUpload</cite> we easily integrate image upload and preview functionality into forms, enhancing the user experience by allowing for real-time feedback on selected profile images.</p></li>
+</ul>
+</section>
+<section id="resetpreferences-js">
+<span id="reset-label"></span><h2><strong>resetPreferences.js</strong><a class="headerlink" href="#resetpreferences-js" title="Link to this heading">¶</a></h2>
+<p><cite>resetPreferences.js</cite> specifically focuses on the ability for users to reset their preferences with ease and security.</p>
+</section>
+<section id="id5">
+<h2>Key Functionalities<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>User Confirmation for Preferences Reset:</strong> Introduces a checkbox that must be checked to confirm the intention to reset preferences, ensuring that users are making deliberate choices about their profile settings.</p></li>
+<li><p><strong>Dynamic Preferences Dropdown Control:</strong> Manages the state (enabled/disabled) of the preferences dropdown based on user confirmation, enhancing the user experience by preventing unintended modifications.</p></li>
+<li><p><strong>Clearing of Preferences Upon Reset:</strong> Automatically clears any selections within the preferences dropdown when the reset action is confirmed, simplifying the reset process for users.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>Integration and Usage<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>This script is an important component of the user profile management system within the Redwood Prototype platform, offering a user-centric approach to resetting preferences.</p>
+<ul class="simple">
+<li><p><strong>Used in Profile Editing Workflow:</strong> This script is particularly useful in scenarios where users are editing their profiles and wish to reset their preferences to a new state. It contributes to a more intuitive and user-friendly profile editing experience.</p></li>
+<li><p><strong>Depends on jQuery for DOM Manipulation:</strong> Utilizes jQuery to efficiently handle DOM manipulations and event bindings, ensuring compatibility across browsers and simplifying the script’s implementation.</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for how these scripts integrate with the backend.</p></li>
+<li><p><a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">Modules Overview</span></a> for an overview of related modules.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="javascript.html#javascript-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="javascript.html">JavaScript</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="javascript_modules.html">JavaScript Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="javascript.html">JavaScript</a><ul>
+  <li><a href="javascript_modules.html">JavaScript Modules</a><ul>
+      <li>Previous: <a href="recommendations.html" title="previous chapter">recommendations</a></li>
+      <li>Next: <a href="utils_js.html" title="next chapter">utils</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/signUp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

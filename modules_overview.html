@@ -53,19 +53,59 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="form-scripts.html#edit-script-label"><span class="std std-ref">editScript.js</span></a>: Facilitates profile editing, repopulating form fields with existing user data for updates.</p></li>
 <li><p><a class="reference internal" href="form-scripts.html#login-label"><span class="std std-ref">login.js</span></a>: Manages user authentication with Firebase and Google sign-in integration.</p></li>
-<li><p><a class="reference internal" href="form-scripts.html#usercreation-label"><span class="std std-ref">userCreation.js</span></a>: Handles user profile creation, including feature/preference selections and image upload validation.</p></li>
-<li><p><strong>userCreationLists.js</strong>:  Contains predefined lists of cities, universities, and features for user profiles, used in user creation/editing process.</p></li>
+<li><p><a class="reference internal" href="form-scripts.html#usercreation-label"><span class="std std-ref">userCreation.js</span></a>: Handles user profile creation, including feature/preference selections, image upload validation, isochrone data collection and other form fields.</p></li>
 </ul>
 </section>
 <section id="main-scripts">
 <h3>main-scripts/<a class="headerlink" href="#main-scripts" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="main-scripts.html#api-label"><span class="std std-ref">api.js</span></a>: Serves as an interface for backend API requests, including fetching recommendations and recording interactions.</p></li>
-<li><p><a class="reference internal" href="main-scripts.html#dom-label"><span class="std std-ref">dom.js</span></a>: Responsible for DOM manipulations, displaying user recommendations, and managing modals.</p></li>
-<li><p><strong>features.js</strong>: Contains predefined dicts which allow us to decide which section a users features belong to.</p></li>
-<li><p><a class="reference internal" href="main-scripts.html#map-label"><span class="std std-ref">map.js</span></a>: Generates the map which will display isochrones of users and recommendations, also populates the map with the users isochrone and handles visibility switches.</p></li>
-<li><p><a class="reference internal" href="main-scripts.html#matches-label"><span class="std std-ref">matches.js</span></a>: Manages match display and interactions.</p></li>
-<li><p><a class="reference internal" href="main-scripts.html#recommendations-label"><span class="std std-ref">recommendations.js</span></a>: Core to the recommendation feature, managing user recommendations and interactions.</p></li>
+<li><p><a class="reference internal" href="main-scripts.html#matches-label"><span class="std std-ref">matches.js</span></a>: Orchestrates the display and interaction with user matches, also allows users to chat with other matches</p></li>
+<li><p><a class="reference internal" href="main-scripts.html#recommendations-label"><span class="std std-ref">recommendations.js</span></a>: Core to the recommendation feature, this script manages the display and interaction with user recommendations, ensuring users are presented with tailored roommate suggestions.</p></li>
+</ul>
+</section>
+</section>
+<section id="modules">
+<h2>Modules/<a class="headerlink" href="#modules" title="Link to this heading">¶</a></h2>
+<section id="matches">
+<h3>Matches/<a class="headerlink" href="#matches" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="matches.html#match-generator-label"><span class="std std-ref">matchGenerator.js</span></a>: Generates HTML content for match cards, categorizing user features into informative sections, setting up budget gauges, setting up calendars and more.</p></li>
+<li><p><a class="reference internal" href="matches.html#match-utility-label"><span class="std std-ref">matchUtilitySetup.js</span></a>: Provides utility functions for match-related operations, such as fetching matches and setting up match interactions such as chatting abilities, switching between tabs and more.</p></li>
+</ul>
+</section>
+<section id="recommendations">
+<h3>Recommendations/<a class="headerlink" href="#recommendations" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="recommendations.html#recommendation-handler-label"><span class="std std-ref">recommendationHandler.js</span></a>: Manages recommendation retrieval, display and interaction, including fetching new recommendations and recording user actions.</p></li>
+</ul>
+</section>
+<section id="signup">
+<h3>SignUp/<a class="headerlink" href="#signup" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="signUp.html#isochrone-label"><span class="std std-ref">isochroneInput.js</span></a>: Handles isochrone input for the sign-up process, enabling users to define their preferred travel times and methods in order to generate isochrones.</p></li>
+<li><p><a class="reference internal" href="signUp.html#profile-creation-label"><span class="std std-ref">profileCreationFormPopulation.js</span></a>: Populates sign-up forms with predefined lists (e.g., cities, universities) in order to allow users to pick their selections, also populates the list with any previously selected data.</p></li>
+<li><p><a class="reference internal" href="signUp.html#profile-image-label"><span class="std std-ref">profileImageSetup.js</span></a>: Manages the setup and validation of profile image uploads during the sign-up process.</p></li>
+<li><p><a class="reference internal" href="signUp.html#reset-label"><span class="std std-ref">resetPreferences.js</span></a>: Allows users to reset their preferences during profile editing, ensuring users are sure they would like reset this before doing so.</p></li>
+</ul>
+</section>
+<section id="utils">
+<h3>Utils/<a class="headerlink" href="#utils" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="utils_js.html#api-label"><span class="std std-ref">api.js</span></a>: Serves as an interface for general backend API requests, facilitating interactions like fetching matches, sending reports and more.</p></li>
+<li><p><a class="reference internal" href="utils_js.html#calendar-label"><span class="std std-ref">calendarHandler.js</span></a>: Manages calendar-related functionalities, including displaying move-in dates.</p></li>
+<li><p><a class="reference internal" href="utils_js.html#chat-setup-label"><span class="std std-ref">chatSetup.js</span></a>: Sets up real-time chat functionalities, enabling users to communicate directly within the platform.</p></li>
+<li><p><a class="reference internal" href="utils_js.html#map-label"><span class="std std-ref">map.js</span></a>: Responsible for generating and managing interactive maps that display isochrones and geographical data relevant to users.</p></li>
+<li><p><a class="reference internal" href="utils_js.html#modal-display-label"><span class="std std-ref">modalDisplay.js</span></a>: Manages the display and interaction of modals across the platform, such as report modals and match notifications.</p></li>
+<li><p><a class="reference internal" href="utils_js.html#recommendation-api-label"><span class="std std-ref">recommendationApi.js</span></a>: Handles API interactions specifically related to recommendations, including fetching recommendations and recording interactions.</p></li>
+<li><p><a class="reference internal" href="utils_js.html#side-menu-label"><span class="std std-ref">sideMenu.js</span></a>: Manages the side menu’s behavior, including its display and interaction logic.</p></li>
+<li><p><a class="reference internal" href="utils_js.html#tab-handler-label"><span class="std std-ref">tabHandler.js</span></a>: Facilitates tabbed interfaces within the platform, enabling seamless navigation between different UI sections.</p></li>
+</ul>
+</section>
+<section id="variables">
+<h3>Variables/<a class="headerlink" href="#variables" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>features.js:</strong> Defines predefined feature categories used throughout the platform to categorize and display user information.</p></li>
+<li><p><strong>userCreationLists.js:</strong> Contains predefined lists used during user sign-up, such as cities and universities, to streamline the profile creation process.</p></li>
 </ul>
 </section>
 </section>
@@ -101,7 +141,7 @@
 <h3>algorithms/<a class="headerlink" href="#algorithms" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="algorithms.html#collaborative-filtering-web-label"><span class="std std-ref">collaborative_filtering_web.py</span></a>: Uses collaborative filtering techniques to identify user similarities for recommendations.</p></li>
-<li><p><a class="reference internal" href="algorithms.html#web-recommendations-label"><span class="std std-ref">web-recommendations.py</span></a>: Implements the mixed filtering algorithm, combining collaborative and content-based filtering for enhanced recommendation accuracy.</p></li>
+<li><p><a class="reference internal" href="algorithms.html#web-recommendations-label"><span class="std std-ref">web-recommendations.py</span></a>: Implements the mixed filtering algorithm, combining collaborative and content-based filtering for enhanced recommendation accuracy. Also faciliates the ability to check for pre existing recommendations and formatting of data.</p></li>
 </ul>
 </section>
 <section id="database">
@@ -112,8 +152,8 @@
 <li><p><a class="reference internal" href="form-scripts.html#usercreation-label"><span class="std std-ref">user_creation.py</span></a>: Facilitates the addition and updating of user profiles in the database, including handling of user preferences and profile images.</p></li>
 </ul>
 </section>
-<section id="utils">
-<h3>utils/<a class="headerlink" href="#utils" title="Link to this heading">¶</a></h3>
+<section id="id1">
+<h3>utils/<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="utils.html#interactions-label"><span class="std std-ref">interactions.py</span></a>: Manages user interactions with the system, such as recording likes, dislikes, and user reports.</p></li>
 <li><p><a class="reference internal" href="utils.html#similarity-metrics-label"><span class="std std-ref">similarity_metrics.py</span></a>: This module is used for calculation the similarity of users, through preferences or features, through the use of cosine similarity.</p></li>
@@ -131,6 +171,7 @@
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for details on how these modules interact with each other.</p></li>
+<li><p><a class="reference internal" href="javascript_modules.html#javascript-modules-label"><span class="std std-ref">JavaScript Modules</span></a> for a deep dive into frontend modules.</p></li>
 <li><p><a class="reference internal" href="python_modules.html#python-modules-label"><span class="std std-ref">Python Modules</span></a> for a deep dive into backend modules.</p></li>
 <li><p><a class="reference internal" href="environment_setup.html#environment-setup-label"><span class="std std-ref">Environment Setup</span></a> for setup details relevant to the frontend and backend.</p></li>
 </ul>
@@ -159,6 +200,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modules Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#frontend-modules"><strong>Frontend Modules</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modules">Modules/</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#html-documents">HTML Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#css-stylesheets">CSS Stylesheets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#integration-with-backend">Integration with Backend</a></li>
@@ -168,8 +210,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html">JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>

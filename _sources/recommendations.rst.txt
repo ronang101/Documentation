@@ -1,0 +1,57 @@
+.. _recommendations-page-label:
+
+recommendations
+===============
+
+This section of the documentation elaborates on the JavaScript files within the `modules/recommendations` directory. The scripts contained within here are responsible for managing user recommendations. This includes the display of recommendations, the ability to interact and any other functionality related to recommendations.
+
+.. _recommendation-handler-label:
+
+**recommendationHandler.js**
+----------------------------
+
+`recommendationHandler.js` introduces the `RecommendationHandler` class, pivotal for managing the recommendation system's frontend logic on the Redwood Prototype. This class is instrumental in fetching, displaying, and interacting with user recommendations, creating a dynamic and personalized user experience through the integration of various APIs and UI components.
+
+Key Functionalities
+--------------------
+
+- **Dynamic Recommendation Fetching and Display:** Manages the lifecycle of user recommendations, from fetching and updating recommendations based on user interaction history to dynamic display.
+
+.. method:: loadNextRecommendation()
+  
+  Loads and displays the next recommendation, handling the transition between current and upcoming recommendations seamlessly.
+  
+.. method:: fetchRecommendations()
+  
+  Fetches new recommendations from the server, updating the state to reflect the latest set of recommendations available for the user.
+
+- **User Interaction Recording:** Captures and processes user interactions with recommendations, such as likes, dislikes, and superlikes, influencing the recommendation logic.
+
+.. method:: recordInteraction(recommendationId, recName, interactionType)
+  
+  Records a user's interaction with a recommendation, updating both the local state and the server-side logic to reflect the user's preferences.
+
+- **Geographical Data and Calendar Integration:** Incorporates geographical data visualization and calendar functionalities, enhancing the depth of information available in recommendations.
+
+.. method:: displayRecommendation(rec)
+  
+  Dynamically updates the UI to display detailed information about a recommendation, incorporating user features, geographical data and more.
+
+Integration and Usage
+----------------------
+
+`RecommendationHandler` serves as a cornerstone for the recommendation system within the Redwood Prototype, integrating tightly with various components of the platform to offer a comprehensive and interactive user experience.
+
+- **Integrated with MapManager and DatePicker:** Enhances recommendations with geographical data visualization and calendar visualization, provided by `MapManager` and `DatePicker`, respectively.
+
+- **Utilizes Utility Modules and External Data:** Leverages `recommendationApi.js` for fetching recommendations and recording interactions, `modalDisplay.js` for modals related to mutual interests and reporting, and `api.js` for fetching images.
+
+- **Categorization of User Features:** Through integration with `features.js`, it categorizes user features into "About Me," "Lifestyle," and "Interests," enriching the recommendation profiles.
+
+See Also
+--------
+
+- :ref:`Frontend-Backend Interaction <frontend-backend-interaction-label>` for how these scripts integrate with the backend.
+- :ref:`Modules Overview <modules-overview-label>` for an overview of related modules.
+
+.. note:: For a complete overview of all modules, visit :ref:`the modules overview page <javascript-label>`.

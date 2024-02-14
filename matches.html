@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>matches &#8212; Redwood Prototype v1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5cb08e4e"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://ronang101.github.io/Documentation/matches.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="recommendations" href="recommendations.html" />
+    <link rel="prev" title="JavaScript Modules" href="javascript_modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="matches">
+<span id="matches-page-label"></span><h1>matches<a class="headerlink" href="#matches" title="Link to this heading">¶</a></h1>
+<p>This section of the documentation elaborates on the JavaScript files within the <cite>modules/matches</cite> directory. These scripts are modules which are used for displaying, interacting with and chatting with matches.</p>
+<section id="matchgenerator-js">
+<span id="match-generator-label"></span><h2><strong>matchGenerator.js</strong><a class="headerlink" href="#matchgenerator-js" title="Link to this heading">¶</a></h2>
+<p><cite>matchGenerator.js</cite> plays a crucial role in the Redwood Prototype platform by dynamically generating HTML content for match cards. This script uses user profile data to create an engaging and informative display of users that have been matched, highlighting key aspects such as personality, lifestyle, interests, budget considerations and more.</p>
+</section>
+<section id="key-functionalities">
+<h2>Key Functionalities<a class="headerlink" href="#key-functionalities" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Dynamic Match Card Creation:</strong> Generates HTML content for match cards dynamically, incorporating user data to present a comprehensive overview of potential matches.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="createMatchCard">
+<span class="sig-name descname"><span class="pre">createMatchCard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#createMatchCard" title="Link to this definition">¶</a></dt>
+<dd><p>Constructs the HTML content for a single match card, including profile picture, bio, user features, budget gauge and more. It categorizes user features into “About Me”, “Lifestyle”, and “Interests” for an organized presentation.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Feature Categorization:</strong> Utilizes predefined categories to organize user features, enhancing the readability and appeal of match cards.</p></li>
+<li><p><strong>Budget Gauge Visualization:</strong> Implements a budget gauge using custom SVG formatting to visually represent a user’s monthly rent budget, aiding in the assessment of financial compatibility.</p></li>
+<li><p><strong>Placeholder Image Utilization:</strong> Employs a placeholder image for user profiles in the absence of a user-uploaded photo, maintaining a consistent aesthetic across all match cards.</p></li>
+</ul>
+</section>
+<section id="integration-and-usage">
+<h2>Integration and Usage<a class="headerlink" href="#integration-and-usage" title="Link to this heading">¶</a></h2>
+<p><cite>matchGenerator.js</cite> is integral to the match display component of the platform, enriching the user experience by providing detailed and visually appealing match cards. Its implementation enhances the platform’s capability to facilitate informed decisions regarding potential roommates.</p>
+<ul class="simple">
+<li><p><strong>Integration with Match Display Component:</strong> The script is directly integrated into the match display logic, invoked to generate match cards as users browse through their potential matches.</p></li>
+<li><p><strong>Utilization of Predefined Feature Categories:</strong> Relies on feature categories defined in <cite>../variables/features.js</cite> to accurately categorize and display user features within match cards.</p></li>
+</ul>
+</section>
+<section id="matchutilitysetup-js">
+<span id="match-utility-label"></span><h2><strong>matchUtilitySetup.js</strong><a class="headerlink" href="#matchutilitysetup-js" title="Link to this heading">¶</a></h2>
+<p><cite>matchUtilitySetup.js</cite> is a core script within the Redwood Prototype platform, designed to manage the display and interactions with user matches. It leverages a variety of utility modules to create a dynamic and interactive match viewing experience.</p>
+</section>
+<section id="id1">
+<h2>Key Functionalities<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Dynamic Match Display:</strong> Fetches and displays user matches dynamically, enhancing user engagement with potential roommates.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="displayMatches">
+<span class="sig-name descname"><span class="pre">displayMatches</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#displayMatches" title="Link to this definition">¶</a></dt>
+<dd><p>Initiates the process of fetching user matches from the backend, displaying each match using dynamically generated match cards. Ensures user engagement by providing interactive and informative match profiles.</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p><strong>Calendar Initialization for Matches:</strong> Integrates with <cite>calendarHandler.js</cite> to provide calendars for each match, showcasing potential move-in dates and enhancing the decision-making process for users.</p></li>
+<li><p><strong>Tab Management within Match Cards:</strong> Uses <cite>TabHandler</cite> to manage content displayed within match cards, allowing users to toggle between budget and calendar views for a comprehensive understanding of each match.</p></li>
+<li><p><strong>Match Management:</strong> Enables users to manage their matches by removing matches they no longer want to see, or by reporting users.</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="checkIfMatchesLeft">
+<span class="sig-name descname"><span class="pre">checkIfMatchesLeft</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#checkIfMatchesLeft" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if there are any matches left to display after certain actions (e.g., removal of a match). It updates the UI accordingly, ensuring a seamless user experience.</p>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h2>Integration and Usage<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><cite>matchUtilitySetup.js</cite> significantly enhances the match viewing experience on the Redwood Prototype platform by providing a suite of interactive and dynamic functionalities. From fetching matches to setting up detailed match cards with integrated chat functionality, this script ensures users can effectively engage with and manage their matches.</p>
+<ul class="simple">
+<li><p><strong>Used in Match Display Components:</strong> Integrated within the platform’s match display component, this script is instrumental in fetching, displaying, and managing user matches.</p></li>
+<li><p><strong>Leverages External Utility Modules:</strong> Incorporates functionalities from <cite>api.js</cite> for fetching and removing matches, <cite>matchGenerator.js</cite> for generating match card HTML content, <cite>calendarHandler.js</cite> for calendar functionalities, <cite>tabHandler.js</cite> for managing tabs, and <cite>chatSetup.js</cite> for initiating chat with matches.</p></li>
+<li><p><strong>Facilitates User Interaction with Matches:</strong> Through the functionalities provided, users can interact with their matches in various ways, including initiating chats, reporting matches, and viewing detailed match profiles.</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="frontend_backend_interaction.html#frontend-backend-interaction-label"><span class="std std-ref">Frontend-Backend Interaction</span></a> for how these scripts integrate with the backend.</p></li>
+<li><p><a class="reference internal" href="modules_overview.html#modules-overview-label"><span class="std std-ref">Modules Overview</span></a> for an overview of related modules.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a complete overview of all modules, visit <a class="reference internal" href="javascript.html#javascript-label"><span class="std std-ref">the modules overview page</span></a>.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Redwood Prototype</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules_overview.html">Modules Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frontend_backend_interaction.html">Frontend-Backend Interaction Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_schema.html">Database Schema Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="javascript.html">JavaScript</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="form-scripts.html">form-scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main-scripts.html">main-scripts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="javascript_modules.html">JavaScript Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_modules.html">Python Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_rationale.html">Design Rationale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_setup.html">Environment Setup and Required Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future_work.html">Future Work and Development Roadmap</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="javascript.html">JavaScript</a><ul>
+  <li><a href="javascript_modules.html">JavaScript Modules</a><ul>
+      <li>Previous: <a href="javascript_modules.html" title="previous chapter">JavaScript Modules</a></li>
+      <li>Next: <a href="recommendations.html" title="next chapter">recommendations</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Ronan Geraghty.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/matches.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

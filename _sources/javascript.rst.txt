@@ -1,0 +1,13 @@
+.. _javascript-label:
+
+JavaScript
+==========
+
+In-depth details of the JavaScript modules, encompassing functionalities such as sign up forms, isochrone displaying, chat abilities and more.
+
+.. toctree::
+   :maxdepth: 2
+
+   form-scripts
+   main-scripts
+   javascript_modules

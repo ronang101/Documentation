@@ -92,8 +92,8 @@ API Endpoints and Frontend Handlers
 
 7. **Image Handling and Secure Access**
   
-   - *Frontend*: :ref:`dom.js <dom-label>`
-     - Calls the `/images/<requested_id>` endpoint to fetch a pre-signed URL for the user's profile image.
+   - *Frontend*: :ref:`editScript.js <edit-script-label>`, :ref:`recommendations.js <recommendations-label>`, :ref:`matches.js <matches-label>`
+     - Calls the `/images/<requested_id>` endpoint to fetch a pre-signed URL for a user's profile image.
      - Implements error handling for scenarios where image fetching fails, ensuring a fallback to a placeholder image if necessary.
 
    - *Backend*: :ref:`app.py <app-label>`
