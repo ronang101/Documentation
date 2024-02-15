@@ -34,7 +34,7 @@ Planned Features
 Conclusion
 ----------
 
-The roadmap for the Redwood Prototype is ambitious and focused on creating a dynamic and comprehensive platform. We are excited about the journey ahead and committed to delivering a product that resonates with our users' needs. 
+The roadmap for the renting website prototype is ambitious and focused on creating a dynamic and comprehensive platform. We are excited about the journey ahead and committed to delivering a product that resonates with our users' needs. 
 
 
 

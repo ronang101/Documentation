@@ -1,5 +1,5 @@
-Welcome to Redwood Prototype's documentation!
-=============================================
+Welcome to my Renting Website Prototype's documentation!
+========================================================
 
 .. toctree::
    :maxdepth: 2

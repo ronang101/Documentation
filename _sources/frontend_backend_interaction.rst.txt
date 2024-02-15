@@ -3,7 +3,7 @@
 Frontend-Backend Interaction Documentation
 ==========================================
 
-The Redwood Prototype's frontend and backend modules interact to provide a seamless user experience. This section outlines how the frontend JavaScript modules communicate with the Flask backend via API endpoints, highlighting key functionalities and data flow.
+The renting website prototype's frontend and backend modules interact to provide a seamless user experience. This section outlines how the frontend JavaScript modules communicate with the Flask backend via API endpoints, highlighting key functionalities and data flow.
 
 User Flow
 ---------

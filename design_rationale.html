@@ -35,7 +35,7 @@
             
   <section id="design-rationale">
 <h1>Design Rationale<a class="headerlink" href="#design-rationale" title="Link to this heading">¶</a></h1>
-<p>This section provides insight into the key decisions made during the development of the Redwood Prototype. For each decision, we explore the reasoning, alternatives considered, and their alignment with the project’s goals.</p>
+<p>This section provides insight into the key decisions made during the development of the prototype. For each decision, we explore the reasoning, alternatives considered, and their alignment with the project’s goals.</p>
 <section id="decisions">
 <h2>Decisions:<a class="headerlink" href="#decisions" title="Link to this heading">¶</a></h2>
 <ul class="simple">
@@ -56,7 +56,7 @@
 <section id="decision-1-choosing-python-for-backend-development">
 <span id="decision-1"></span><h2>Decision 1: Choosing Python for Backend Development<a class="headerlink" href="#decision-1-choosing-python-for-backend-development" title="Link to this heading">¶</a></h2>
 <p><strong>Decision Made</strong>:</p>
-<p>The backend of the Redwood Prototype is developed using Python.</p>
+<p>The backend of the renting website prototype is developed using Python.</p>
 <p><strong>Reasoning</strong>:</p>
 <p>Python is known for its extensive support and libraries in machine learning and data processing, making it an ideal choice for developing simple or complex recommendation systems. Its simplicity and readability also contribute to easier maintenance and collaborative development. Moreover, Python’s widespread adoption in the tech community ensures a robust support network and continuous updates, which are vital for a project focusing on cutting-edge features.</p>
 <p><strong>Alternatives Considered</strong>:</p>
@@ -64,9 +64,9 @@
 <p>Java: Offers robust performance and is widely used in large-scale systems. However, it does not provide the same ease of use for machine learning and data processing tasks as Python.</p>
 <p>Ruby: Known for its easy syntax and rapid development capabilities, but it also lacks the extensive machine learning libraries and community support that Python offers.</p>
 <p><strong>Project Objectives Alignment</strong>:</p>
-<p>Python’s strengths in machine learning and data processing align well with Redwood’s need for an advanced recommendation system. Its ease of use and readability support collaborative development, which is crucial for a growing project. Python’s extensive libraries, such as scikit-learn and TensorFlow, provide the necessary tools to build and refine the recommendation algorithms, directly contributing to the project’s core mission.</p>
+<p>Python’s strengths in machine learning and data processing align well with the websites need for an advanced recommendation system. Its ease of use and readability support collaborative development, which is crucial for a growing project. Python’s extensive libraries, such as scikit-learn and TensorFlow, provide the necessary tools to build and refine the recommendation algorithms, directly contributing to the project’s core mission.</p>
 <p><strong>Future Implications</strong>:</p>
-<p>The choice of Python offers scalability and flexibility for future enhancements, especially in the realm of machine learning and data analytics. It ensures that the backend can be  easily adapted and expanded as new features and algorithms are introduced. Additionally, Python’s popularity and large community support mean that emerging trends and advancements in technology can be readily integrated into Redwood.</p>
+<p>The choice of Python offers scalability and flexibility for future enhancements, especially in the realm of machine learning and data analytics. It ensures that the backend can be  easily adapted and expanded as new features and algorithms are introduced. Additionally, Python’s popularity and large community support mean that emerging trends and advancements in technology can be readily integrated into the website.</p>
 </section>
 <section id="decision-2-generating-and-storing-sets-of-30-recommendations-for-dynamic-updates">
 <span id="decision-2"></span><h2>Decision 2: Generating and Storing Sets of 30 Recommendations for Dynamic Updates<a class="headerlink" href="#decision-2-generating-and-storing-sets-of-30-recommendations-for-dynamic-updates" title="Link to this heading">¶</a></h2>
@@ -145,11 +145,11 @@ However it is worth noting that each time we have to fetch another set of 30 rec
 <section id="decision-7-flask-as-the-web-framework">
 <span id="decision-7"></span><h2>Decision 7: Flask as the Web Framework<a class="headerlink" href="#decision-7-flask-as-the-web-framework" title="Link to this heading">¶</a></h2>
 <p><strong>Decision Made</strong>:</p>
-<p>Selecting Flask to develop the web application portion of the Redwood Prototype.</p>
+<p>Selecting Flask to develop the web application portion of the renting website prototype.</p>
 <p><strong>Reasoning</strong>:</p>
-<p>Flask, a lightweight and flexible Python web framework, was chosen for its simplicity and adaptability. Its minimalist nature allows for greater control over the application structure and the choice of components, making it suitable for a project like Redwood that requires a tailored approach. Flask’s extensive compatibility with various libraries and tools in the Python ecosystem, including machine learning and database interaction libraries, played a significant role in this decision.</p>
+<p>Flask, a lightweight and flexible Python web framework, was chosen for its simplicity and adaptability. Its minimalist nature allows for greater control over the application structure and the choice of components, making it suitable for a project that requires a tailored approach. Flask’s extensive compatibility with various libraries and tools in the Python ecosystem, including machine learning and database interaction libraries, played a significant role in this decision.</p>
 <p><strong>Alternatives Considered</strong>:</p>
-<p>Django: A more feature-rich and opinionated web framework. While Django offers a comprehensive set of tools and a built-in ORM, its complexity and rigid structure could have constrained the custom development needed for the Redwood Prototype.</p>
+<p>Django: A more feature-rich and opinionated web framework. While Django offers a comprehensive set of tools and a built-in ORM, its complexity and rigid structure could have constrained the custom development needed for the renting website.</p>
 <p>Node.js with Express: Offers high performance and is well-suited for real-time applications. However, it would require a shift from Python, which is central to the project’s machine learning and data processing capabilities.</p>
 <p><strong>Project Objectives Alignment</strong>:</p>
 <p>Using Flask aligns with the project’s need for a customizable, efficient, and scalable web framework that seamlessly integrates with the Python-based backend logic. Its lightweight nature ensures that the focus remains on the application’s unique functionalities without unnecessary overhead.</p>
@@ -173,7 +173,7 @@ However it is worth noting that each time we have to fetch another set of 30 rec
 <section id="decision-9-handling-user-interactions">
 <span id="decision-9"></span><h2>Decision 9: Handling User Interactions<a class="headerlink" href="#decision-9-handling-user-interactions" title="Link to this heading">¶</a></h2>
 <p><strong>Decision Made</strong>:</p>
-<p>Developing a system within the Redwood Prototype to record and process user interactions, such as likes, dislikes, and superlikes.</p>
+<p>Developing a system within the renting website prototype to record and process user interactions, such as likes, dislikes, and superlikes.</p>
 <p><strong>Reasoning</strong>:</p>
 <p>The decision to create a robust system for tracking user interactions was driven by the need to understand user preferences and behaviors accurately. This system includes a dedicated database schema to record every interaction. Each interaction is stored with details including the user IDs involved and the type of interaction. This data is crucial for refining user recommendations and enhancing the matching algorithm.</p>
 <p><strong>Alternatives Considered</strong>:</p>
@@ -187,7 +187,7 @@ However it is worth noting that each time we have to fetch another set of 30 rec
 <section id="decision-10-recommendation-update-strategy">
 <span id="decision-10"></span><h2>Decision 10: Recommendation Update Strategy<a class="headerlink" href="#decision-10-recommendation-update-strategy" title="Link to this heading">¶</a></h2>
 <p><strong>Decision Made</strong>:</p>
-<p>Establishing a strategy for updating user recommendations in the Redwood Prototype based on user interactions, balancing between real-time updates and computational efficiency.</p>
+<p>Establishing a strategy for updating user recommendations in the renting website prototype based on user interactions, balancing between real-time updates and computational efficiency.</p>
 <p><strong>Reasoning</strong>:</p>
 <p>The chosen strategy involves updating recommendations in a semi-batch process. After a user interacts with a predetermined number of recommendations (e.g., 30), the system updates their preference profile and generates a new set of recommendations. This approach offers a middle ground between the responsiveness of real-time updates and the efficiency of batch processing, ensuring recommendations remain relevant without overloading the system.</p>
 <p><strong>Alternatives Considered</strong>:</p>
@@ -201,7 +201,7 @@ However it is worth noting that each time we have to fetch another set of 30 rec
 <section id="decision-11-image-processing-for-user-profiles">
 <span id="decision-11"></span><h2>Decision 11: Image Processing for User Profiles<a class="headerlink" href="#decision-11-image-processing-for-user-profiles" title="Link to this heading">¶</a></h2>
 <p><strong>Decision Made</strong>:</p>
-<p>Implementing a strategy for handling user profile images within the Redwood Prototype, which includes resizing, cropping, and appropriate storage.</p>
+<p>Implementing a strategy for handling user profile images within the renting website prototype, which includes resizing, cropping, and appropriate storage.</p>
 <p><strong>Reasoning</strong>:</p>
 <p>The decision to incorporate a robust image processing system for user profiles was driven by the need for consistency in user experience and efficient use of server resources. This includes automating the process of resizing and cropping images to a standard format and size, ensuring uniformity across all user profiles. Efficient image processing also contributes to faster page load times and a smoother user interface.</p>
 <p><strong>Alternatives Considered</strong>:</p>
@@ -215,7 +215,7 @@ However it is worth noting that each time we have to fetch another set of 30 rec
 <section id="decision-12-front-end-to-back-end-communication">
 <span id="decision-12"></span><h2>Decision 12: Front-End to Back-End Communication<a class="headerlink" href="#decision-12-front-end-to-back-end-communication" title="Link to this heading">¶</a></h2>
 <p><strong>Decision Made</strong>:</p>
-<p>Establishing a structured approach for front-end to back-end communication in the Redwood Prototype, focusing on efficient API design and standardized data exchange formats.</p>
+<p>Establishing a structured approach for front-end to back-end communication in the renting website prototype, focusing on efficient API design and standardized data exchange formats.</p>
 <p><strong>Reasoning</strong>:</p>
 <p>A well-defined communication protocol between the front-end and back-end is crucial for the smooth operation of the application. This involves designing RESTful APIs that handle requests and responses in a standardized format, typically JSON. This approach ensures that data exchange is efficient, secure, and easily manageable. The use of RESTful principles also facilitates scalability and maintainability of the application.</p>
 <p><strong>Alternatives Considered</strong>:</p>
@@ -224,11 +224,11 @@ However it is worth noting that each time we have to fetch another set of 30 rec
 <p><strong>Project Objectives Alignment</strong>:</p>
 <p>Adopting RESTful APIs for communication aligns with the project’s objectives of creating a scalable, efficient, and user-friendly platform. Standardized data exchange formats ensure consistency across different parts of the application and facilitate easier debugging and testing.</p>
 <p><strong>Future Implications</strong>:</p>
-<p>This decision provides a solid foundation for future development and expansion of the Redwood Prototype. It allows for easier integration of new features and modules, as well as potential scaling to accommodate a growing user base. The choice of RESTful APIs also ensures compatibility with a wide range of tools and technologies, offering flexibility for future technological advancements.</p>
+<p>This decision provides a solid foundation for future development and expansion of the renting website prototype. It allows for easier integration of new features and modules, as well as potential scaling to accommodate a growing user base. The choice of RESTful APIs also ensures compatibility with a wide range of tools and technologies, offering flexibility for future technological advancements.</p>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
-<p>The design decisions made during the development of the Redwood Prototype reflect a thoughtful and strategic approach to creating a robust and scalable roommate matching platform. Each decision, from choosing Python for backend development to establishing efficient communication between front-end and back-end, was guided by a commitment to achieving the project’s core objectives: providing a user-friendly, efficient, and adaptable service.</p>
+<p>The design decisions made during the development of the renting website prototype reflect a thoughtful and strategic approach to creating a robust and scalable roommate matching platform. Each decision, from choosing Python for backend development to establishing efficient communication between front-end and back-end, was guided by a commitment to achieving the project’s core objectives: providing a user-friendly, efficient, and adaptable service.</p>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>

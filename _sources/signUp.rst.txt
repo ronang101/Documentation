@@ -10,7 +10,7 @@ This section of the documentation elaborates on the JavaScript files within the 
 **isochroneInput.js**
 ---------------------
 
-`isochroneInput.js` introduces the `setupIsochroneInput` function, designed to initialize an interactive map feature allowing users to specify their location preferences and transportation modes for isochrone analysis. This functionality is crucial for users in defining their search area based on travel time, enhancing their housing search experience on the Redwood Prototype.
+`isochroneInput.js` introduces the `setupIsochroneInput` function, designed to initialize an interactive map feature allowing users to specify their location preferences and transportation modes for isochrone analysis. This functionality is crucial for users in defining their search area based on travel time, enhancing their housing search experience on the renting website.
 
 Key Functionalities
 --------------------
@@ -34,14 +34,14 @@ Integration and Usage
 
 - **External Dependencies:** Relies on the Maplibre GL library for map rendering and user interaction handling, and Maptiler for the map style, necessitating an API key.
 
-- **User Experience Enhancement:** By enabling users to visually specify their preferred location and how they plan to travel from that point, this function plays a vital role in personalizing and refining the housing search process on the Redwood Prototype platform.
+- **User Experience Enhancement:** By enabling users to visually specify their preferred location and how they plan to travel from that point, this function plays a vital role in personalizing and refining the housing search process on the renting website platform.
 
 .. _profile-creation-label:
 
 **profileCreationFormPopulation.js**
 ------------------------------------
 
-`profileCreationFormPopulation.js` is dedicated to initializing and populating dropdown menus for age filter, rent filter, duration, university selection, city selection, profession, user features, and preferences in the user profile creation and editing forms on the Redwood Prototype. It enhances user experience by offering a streamlined and intuitive way to input and edit user-specific information.
+`profileCreationFormPopulation.js` is dedicated to initializing and populating dropdown menus for age filter, rent filter, duration, university selection, city selection, profession, user features, and preferences in the user profile creation and editing forms on the renting website prototype. It enhances user experience by offering a streamlined and intuitive way to input and edit user-specific information.
 
 Key Functionalities
 --------------------
@@ -59,7 +59,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-This script is a critical component of the Redwood Prototype platform, facilitating easy and intuitive user profile creation and editing. By leveraging Select2 and predefined lists, it ensures a consistent and user-friendly interface for inputting profile information.
+This script is a critical component of the renting website platform, facilitating easy and intuitive user profile creation and editing. By leveraging Select2 and predefined lists, it ensures a consistent and user-friendly interface for inputting profile information.
 
 - **Predefined Lists Importation:** Imports lists of cities, universities, and features from `../variables/userCreationLists.js`, ensuring that dropdowns are populated with relevant and up-to-date options.
 
@@ -113,7 +113,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-This script is an important component of the user profile management system within the Redwood Prototype platform, offering a user-centric approach to resetting preferences.
+This script is an important component of the user profile management system within the renting website platform, offering a user-centric approach to resetting preferences.
 
 - **Used in Profile Editing Workflow:** This script is particularly useful in scenarios where users are editing their profiles and wish to reset their preferences to a new state. It contributes to a more intuitive and user-friendly profile editing experience.
   

@@ -3,7 +3,7 @@
 Database Schema Documentation
 =============================
 
-The Redwood Prototype uses several tables in its PostgreSQL database to manage user data, interactions, reports, and matches. Below is a detailed description of each table, including their columns, data types, constraints, and indexes.
+This prototype uses several tables in its PostgreSQL database to manage user data, interactions, reports, and matches. Below is a detailed description of each table, including their columns, data types, constraints, and indexes.
 
 Tables:
 -------

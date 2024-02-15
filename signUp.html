@@ -38,7 +38,7 @@
 <p>This section of the documentation elaborates on the JavaScript files within the <cite>modules/signUp</cite> directory. The scripts contained within here are responsible for the forms and functionality relating to user sign up and profile editing pages.</p>
 <section id="isochroneinput-js">
 <span id="isochrone-label"></span><h2><strong>isochroneInput.js</strong><a class="headerlink" href="#isochroneinput-js" title="Link to this heading">¶</a></h2>
-<p><cite>isochroneInput.js</cite> introduces the <cite>setupIsochroneInput</cite> function, designed to initialize an interactive map feature allowing users to specify their location preferences and transportation modes for isochrone analysis. This functionality is crucial for users in defining their search area based on travel time, enhancing their housing search experience on the Redwood Prototype.</p>
+<p><cite>isochroneInput.js</cite> introduces the <cite>setupIsochroneInput</cite> function, designed to initialize an interactive map feature allowing users to specify their location preferences and transportation modes for isochrone analysis. This functionality is crucial for users in defining their search area based on travel time, enhancing their housing search experience on the renting website.</p>
 </section>
 <section id="key-functionalities">
 <h2>Key Functionalities<a class="headerlink" href="#key-functionalities" title="Link to this heading">¶</a></h2>
@@ -60,12 +60,12 @@
 <p><cite>setupIsochroneInput</cite> enhances the platform’s user interface by providing a visual and interactive method for users to define their search area related to geographical location and accessibility.</p>
 <ul class="simple">
 <li><p><strong>External Dependencies:</strong> Relies on the Maplibre GL library for map rendering and user interaction handling, and Maptiler for the map style, necessitating an API key.</p></li>
-<li><p><strong>User Experience Enhancement:</strong> By enabling users to visually specify their preferred location and how they plan to travel from that point, this function plays a vital role in personalizing and refining the housing search process on the Redwood Prototype platform.</p></li>
+<li><p><strong>User Experience Enhancement:</strong> By enabling users to visually specify their preferred location and how they plan to travel from that point, this function plays a vital role in personalizing and refining the housing search process on the renting website platform.</p></li>
 </ul>
 </section>
 <section id="profilecreationformpopulation-js">
 <span id="profile-creation-label"></span><h2><strong>profileCreationFormPopulation.js</strong><a class="headerlink" href="#profilecreationformpopulation-js" title="Link to this heading">¶</a></h2>
-<p><cite>profileCreationFormPopulation.js</cite> is dedicated to initializing and populating dropdown menus for age filter, rent filter, duration, university selection, city selection, profession, user features, and preferences in the user profile creation and editing forms on the Redwood Prototype. It enhances user experience by offering a streamlined and intuitive way to input and edit user-specific information.</p>
+<p><cite>profileCreationFormPopulation.js</cite> is dedicated to initializing and populating dropdown menus for age filter, rent filter, duration, university selection, city selection, profession, user features, and preferences in the user profile creation and editing forms on the renting website prototype. It enhances user experience by offering a streamlined and intuitive way to input and edit user-specific information.</p>
 </section>
 <section id="id1">
 <h2>Key Functionalities<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
@@ -83,7 +83,7 @@
 </section>
 <section id="id2">
 <h2>Integration and Usage<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p>This script is a critical component of the Redwood Prototype platform, facilitating easy and intuitive user profile creation and editing. By leveraging Select2 and predefined lists, it ensures a consistent and user-friendly interface for inputting profile information.</p>
+<p>This script is a critical component of the renting website platform, facilitating easy and intuitive user profile creation and editing. By leveraging Select2 and predefined lists, it ensures a consistent and user-friendly interface for inputting profile information.</p>
 <ul class="simple">
 <li><p><strong>Predefined Lists Importation:</strong> Imports lists of cities, universities, and features from <cite>../variables/userCreationLists.js</cite>, ensuring that dropdowns are populated with relevant and up-to-date options.</p></li>
 <li><p><strong>Dropdown Population:</strong> Calls <cite>populateDropdown</cite> for each form element, adding options to the select elements and marking appropriate options as selected based on the provided <cite>userSelections</cite>.</p></li>
@@ -129,7 +129,7 @@
 </section>
 <section id="id6">
 <h2>Integration and Usage<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
-<p>This script is an important component of the user profile management system within the Redwood Prototype platform, offering a user-centric approach to resetting preferences.</p>
+<p>This script is an important component of the user profile management system within the renting website platform, offering a user-centric approach to resetting preferences.</p>
 <ul class="simple">
 <li><p><strong>Used in Profile Editing Workflow:</strong> This script is particularly useful in scenarios where users are editing their profiles and wish to reset their preferences to a new state. It contributes to a more intuitive and user-friendly profile editing experience.</p></li>
 <li><p><strong>Depends on jQuery for DOM Manipulation:</strong> Utilizes jQuery to efficiently handle DOM manipulations and event bindings, ensuring compatibility across browsers and simplifying the script’s implementation.</p></li>

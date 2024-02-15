@@ -1,7 +1,7 @@
 Design Rationale
 ================
 
-This section provides insight into the key decisions made during the development of the Redwood Prototype. For each decision, we explore the reasoning, alternatives considered, and their alignment with the project's goals.
+This section provides insight into the key decisions made during the development of the prototype. For each decision, we explore the reasoning, alternatives considered, and their alignment with the project's goals.
 
 Decisions:
 ----------
@@ -37,7 +37,7 @@ Decision 1: Choosing Python for Backend Development
 
 **Decision Made**:
 
-The backend of the Redwood Prototype is developed using Python.
+The backend of the renting website prototype is developed using Python.
 
 **Reasoning**:
 
@@ -53,11 +53,11 @@ Ruby: Known for its easy syntax and rapid development capabilities, but it also 
 
 **Project Objectives Alignment**:
 
-Python's strengths in machine learning and data processing align well with Redwood's need for an advanced recommendation system. Its ease of use and readability support collaborative development, which is crucial for a growing project. Python's extensive libraries, such as scikit-learn and TensorFlow, provide the necessary tools to build and refine the recommendation algorithms, directly contributing to the project's core mission.
+Python's strengths in machine learning and data processing align well with the websites need for an advanced recommendation system. Its ease of use and readability support collaborative development, which is crucial for a growing project. Python's extensive libraries, such as scikit-learn and TensorFlow, provide the necessary tools to build and refine the recommendation algorithms, directly contributing to the project's core mission.
 
 **Future Implications**:
 
-The choice of Python offers scalability and flexibility for future enhancements, especially in the realm of machine learning and data analytics. It ensures that the backend can be  easily adapted and expanded as new features and algorithms are introduced. Additionally, Python's popularity and large community support mean that emerging trends and advancements in technology can be readily integrated into Redwood.
+The choice of Python offers scalability and flexibility for future enhancements, especially in the realm of machine learning and data analytics. It ensures that the backend can be  easily adapted and expanded as new features and algorithms are introduced. Additionally, Python's popularity and large community support mean that emerging trends and advancements in technology can be readily integrated into the website.
 
 .. _Decision 2:
 
@@ -208,15 +208,15 @@ Decision 7: Flask as the Web Framework
 
 **Decision Made**:
 
-Selecting Flask to develop the web application portion of the Redwood Prototype.
+Selecting Flask to develop the web application portion of the renting website prototype.
 
 **Reasoning**:
 
-Flask, a lightweight and flexible Python web framework, was chosen for its simplicity and adaptability. Its minimalist nature allows for greater control over the application structure and the choice of components, making it suitable for a project like Redwood that requires a tailored approach. Flask's extensive compatibility with various libraries and tools in the Python ecosystem, including machine learning and database interaction libraries, played a significant role in this decision.
+Flask, a lightweight and flexible Python web framework, was chosen for its simplicity and adaptability. Its minimalist nature allows for greater control over the application structure and the choice of components, making it suitable for a project that requires a tailored approach. Flask's extensive compatibility with various libraries and tools in the Python ecosystem, including machine learning and database interaction libraries, played a significant role in this decision.
 
 **Alternatives Considered**:
 
-Django: A more feature-rich and opinionated web framework. While Django offers a comprehensive set of tools and a built-in ORM, its complexity and rigid structure could have constrained the custom development needed for the Redwood Prototype.
+Django: A more feature-rich and opinionated web framework. While Django offers a comprehensive set of tools and a built-in ORM, its complexity and rigid structure could have constrained the custom development needed for the renting website.
 
 Node.js with Express: Offers high performance and is well-suited for real-time applications. However, it would require a shift from Python, which is central to the project's machine learning and data processing capabilities.
 
@@ -262,7 +262,7 @@ Decision 9: Handling User Interactions
 
 **Decision Made**:
 
-Developing a system within the Redwood Prototype to record and process user interactions, such as likes, dislikes, and superlikes.
+Developing a system within the renting website prototype to record and process user interactions, such as likes, dislikes, and superlikes.
 
 **Reasoning**:
 
@@ -289,7 +289,7 @@ Decision 10: Recommendation Update Strategy
 
 **Decision Made**:
 
-Establishing a strategy for updating user recommendations in the Redwood Prototype based on user interactions, balancing between real-time updates and computational efficiency.
+Establishing a strategy for updating user recommendations in the renting website prototype based on user interactions, balancing between real-time updates and computational efficiency.
 
 **Reasoning**:
 
@@ -316,7 +316,7 @@ Decision 11: Image Processing for User Profiles
 
 **Decision Made**:
 
-Implementing a strategy for handling user profile images within the Redwood Prototype, which includes resizing, cropping, and appropriate storage.
+Implementing a strategy for handling user profile images within the renting website prototype, which includes resizing, cropping, and appropriate storage.
 
 **Reasoning**:
 
@@ -343,7 +343,7 @@ Decision 12: Front-End to Back-End Communication
 
 **Decision Made**:
 
-Establishing a structured approach for front-end to back-end communication in the Redwood Prototype, focusing on efficient API design and standardized data exchange formats.
+Establishing a structured approach for front-end to back-end communication in the renting website prototype, focusing on efficient API design and standardized data exchange formats.
 
 **Reasoning**:
 
@@ -361,12 +361,12 @@ Adopting RESTful APIs for communication aligns with the project's objectives of 
 
 **Future Implications**:
 
-This decision provides a solid foundation for future development and expansion of the Redwood Prototype. It allows for easier integration of new features and modules, as well as potential scaling to accommodate a growing user base. The choice of RESTful APIs also ensures compatibility with a wide range of tools and technologies, offering flexibility for future technological advancements.
+This decision provides a solid foundation for future development and expansion of the renting website prototype. It allows for easier integration of new features and modules, as well as potential scaling to accommodate a growing user base. The choice of RESTful APIs also ensures compatibility with a wide range of tools and technologies, offering flexibility for future technological advancements.
 
 Conclusion
 ----------
 
-The design decisions made during the development of the Redwood Prototype reflect a thoughtful and strategic approach to creating a robust and scalable roommate matching platform. Each decision, from choosing Python for backend development to establishing efficient communication between front-end and back-end, was guided by a commitment to achieving the project's core objectives: providing a user-friendly, efficient, and adaptable service.
+The design decisions made during the development of the renting website prototype reflect a thoughtful and strategic approach to creating a robust and scalable roommate matching platform. Each decision, from choosing Python for backend development to establishing efficient communication between front-end and back-end, was guided by a commitment to achieving the project's core objectives: providing a user-friendly, efficient, and adaptable service.
 
 See Also
 --------

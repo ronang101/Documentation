@@ -3,12 +3,12 @@
 Modules Overview
 ================
 
-The Redwood Prototype is composed of several key modules, each playing a vital role in the functionality of the platform. This section provides an overview of these modules, detailing their purpose and functionality.
+The renting website prototype is composed of several key modules, each playing a vital role in the functionality of the platform. This section provides an overview of these modules, detailing their purpose and functionality.
 
 **Frontend Modules**
 --------------------
 
-The frontend of Redwood Prototype is developed using HTML, CSS, and JavaScript to provide a dynamic and interactive user interface. Key JavaScript files include:
+The frontend of renting website prototype is developed using HTML, CSS, and JavaScript to provide a dynamic and interactive user interface. Key JavaScript files include:
 
 additional/
 ~~~~~~~~~~~
@@ -112,7 +112,7 @@ The stylesheets are organized into two main directories: form-pages for styling 
 
 **animations/animations.css**: This file contains any animations we use within the css files in order to store them in one place.
 
-**form-pages/login.css**: Styles the login page with Redwood's design language.
+**form-pages/login.css**: Styles the login page with website's design language.
 
 **form-pages/user-creation.css**: Provides styling for the signup and edit profile forms, ensuring consistency in the form design.
 

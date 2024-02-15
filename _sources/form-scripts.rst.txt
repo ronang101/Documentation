@@ -10,7 +10,7 @@ This section of the documentation provides details on the JavaScript files withi
 **editScript.js**
 -----------------
 
-`editScript.js` plays a crucial role in the user experience by enabling profile editing functionality within the Redwood Prototype platform. This script allows users to update their profile information, including preferences, profile images, and geographic preferences, through an intuitive and interactive interface. It leverages modular JavaScript by utilizing imported modules for dropdown setup, image upload, and map-based isochrone inputs.
+`editScript.js` plays a crucial role in the user experience by enabling profile editing functionality within the renting website prototype platform. This script allows users to update their profile information, including preferences, profile images, and geographic preferences, through an intuitive and interactive interface. It leverages modular JavaScript by utilizing imported modules for dropdown setup, image upload, and map-based isochrone inputs.
 
 Key Functionalities
 -------------------
@@ -88,7 +88,7 @@ Implementation Details
 **userCreation.js**
 -------------------
 
-`userCreation.js` orchestrates the user profile creation process on the Redwood Prototype platform. This script ensures a streamlined and error-free setup for new users by handling form element initialization, input validation, and submission. It leverages additional modules for dropdown setups, image upload validations, and geographic preference inputs, enhancing the user onboarding experience.
+`userCreation.js` orchestrates the user profile creation process on the renting website prototype platform. This script ensures a streamlined and error-free setup for new users by handling form element initialization, input validation, and submission. It leverages additional modules for dropdown setups, image upload validations, and geographic preference inputs, enhancing the user onboarding experience.
 
 Key Functionalities
 -------------------

@@ -10,7 +10,7 @@ This section of the documentation elaborates on the JavaScript files within the 
 **api.js**
 ----------
 
-`api.js` serves as the backbone for server communication within the Redwood Prototype platform, facilitating seamless data exchange between the client and server. This script encompasses a range of utility functions crucial for fetching matches, managing match reports, removing unwanted matches, and retrieving user profile images, thereby ensuring a dynamic and responsive user experience.
+`api.js` serves as the backbone for server communication within the renting website platform, facilitating seamless data exchange between the client and server. This script encompasses a range of utility functions crucial for fetching matches, managing match reports, removing unwanted matches, and retrieving user profile images, thereby ensuring a dynamic and responsive user experience.
 
 Key Functionalities
 --------------------
@@ -69,7 +69,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-`calendarHandler.js` contributes to the interactive and user-friendly aspect of the Redwood Prototype platform by integrating detailed calendar views into the match selection process. It not only simplifies date selection but also adds a layer of engagement through visual date exploration.
+`calendarHandler.js` contributes to the interactive and user-friendly aspect of the renting website platform by integrating detailed calendar views into the match selection process. It not only simplifies date selection but also adds a layer of engagement through visual date exploration.
 
 - **Seamless Integration with Match Cards:** Each match card and recommendation card is equipped with a Pikaday calendar, initialized and configured via `calendarHandler.js`, to display available move-in dates, thereby providing a comprehensive view of each match's availability.
 
@@ -82,7 +82,7 @@ Integration and Usage
 **chatSetup.js**
 ----------------
 
-`chatSetup.js` is a sophisticated module within the Redwood Prototype platform, designed to manage the intricacies of real-time chat functionalities. It harnesses the power of Firebase Firestore for storing and retrieving chat messages and Firebase Authentication to authenticate users and manage sessions. This script is pivotal in enabling seamless communication between users, fostering an interactive and connected community within the platform.
+`chatSetup.js` is a sophisticated module within the renting website platform, designed to manage the intricacies of real-time chat functionalities. It harnesses the power of Firebase Firestore for storing and retrieving chat messages and Firebase Authentication to authenticate users and manage sessions. This script is pivotal in enabling seamless communication between users, fostering an interactive and connected community within the platform.
 
 Key Functionalities
 -------------------
@@ -104,7 +104,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-`chatSetup.js` significantly enhances the user experience on the Redwood Prototype platform by enabling real-time interactions between potential roommates. It integrates closely with the platform's UI to provide a seamless chat experience.
+`chatSetup.js` significantly enhances the user experience on the renting website platform by enabling real-time interactions between potential roommates. It integrates closely with the platform's UI to provide a seamless chat experience.
 
 - **Essential for User Interactions:** By facilitating real-time conversations, it plays a crucial role in the decision-making process, allowing users to communicate directly and efficiently.
 
@@ -141,7 +141,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-`map.js` enriches the user experience on the Redwood Prototype platform by integrating advanced map and spatial analysis functionalities. It allows users to interactively explore geographical data, aiding in the visualization of potential living areas and their accessibility.
+`map.js` enriches the user experience on the renting website platform by integrating advanced map and spatial analysis functionalities. It allows users to interactively explore geographical data, aiding in the visualization of potential living areas and their accessibility.
 
 - **Integration with User Interface:** Seamlessly integrates with the platform's UI, enabling users to interact with maps directly, visualize isochrones, and understand the geographical context of their potential roommates or living spaces.
 
@@ -187,7 +187,7 @@ Integration and Usage
 **recommendationApi.js**
 ------------------------
 
-`recommendationApi.js` is a dedicated script within the Redwood Prototype platform designed to manage the interaction with the backend API for recommendation-related functionalities. This script is crucial for the user experience by providing recommendations, recording user interactions, and maintaining a safe platform environment through user reporting mechanisms.
+`recommendationApi.js` is a dedicated script within the renting website platform designed to manage the interaction with the backend API for recommendation-related functionalities. This script is crucial for the user experience by providing recommendations, recording user interactions, and maintaining a safe platform environment through user reporting mechanisms.
 
 Key Functionalities
 --------------------
@@ -219,7 +219,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-`recommendationApi.js` plays a pivotal role in the Redwood Prototype platform by seamlessly integrating with the backend API to support a dynamic and safe user experience. It exemplifies the script's capability to handle complex data interactions and user feedback efficiently.
+`recommendationApi.js` plays a pivotal role in the renting website platform by seamlessly integrating with the backend API to support a dynamic and safe user experience. It exemplifies the script's capability to handle complex data interactions and user feedback efficiently.
 
 - **Seamless Backend Integration:** Directly communicates with the server to fetch and manage recommendations, record user interactions, and process user reports, showcasing its integral role in the application's data flow.
 
@@ -275,7 +275,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-`tabHandler.js` contributes to the Redwood Prototype platform's usability by streamlining the user interaction with tabbed content. It exemplifies a modern approach to UI design, where information is presented in a compact and organized manner, facilitating ease of navigation and content discovery.
+`tabHandler.js` contributes to the renting website platform's usability by streamlining the user interaction with tabbed content. It exemplifies a modern approach to UI design, where information is presented in a compact and organized manner, facilitating ease of navigation and content discovery.
 
 - **Streamlines Content Navigation:** By integrating dynamic tab functionality, the script directly enhances the user's ability to navigate through different sections of content efficiently, promoting a more engaging and user-friendly interface.
 
