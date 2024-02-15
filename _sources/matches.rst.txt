@@ -10,7 +10,7 @@ This section of the documentation elaborates on the JavaScript files within the 
 **matchGenerator.js**
 ---------------------
 
-`matchGenerator.js` plays a crucial role in the Redwood Prototype platform by dynamically generating HTML content for match cards. This script uses user profile data to create an engaging and informative display of users that have been matched, highlighting key aspects such as personality, lifestyle, interests, budget considerations and more.
+`matchGenerator.js` plays a crucial role in the renting website's platform by dynamically generating HTML content for match cards. This script uses user profile data to create an engaging and informative display of users that have been matched, highlighting key aspects such as personality, lifestyle, interests, budget considerations and more.
 
 Key Functionalities
 --------------------
@@ -41,7 +41,7 @@ Integration and Usage
 **matchUtilitySetup.js**
 ------------------------
 
-`matchUtilitySetup.js` is a core script within the Redwood Prototype platform, designed to manage the display and interactions with user matches. It leverages a variety of utility modules to create a dynamic and interactive match viewing experience.
+`matchUtilitySetup.js` is a core script within the renting website's platform, designed to manage the display and interactions with user matches. It leverages a variety of utility modules to create a dynamic and interactive match viewing experience.
 
 Key Functionalities
 --------------------
@@ -65,7 +65,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-`matchUtilitySetup.js` significantly enhances the match viewing experience on the Redwood Prototype platform by providing a suite of interactive and dynamic functionalities. From fetching matches to setting up detailed match cards with integrated chat functionality, this script ensures users can effectively engage with and manage their matches.
+`matchUtilitySetup.js` significantly enhances the match viewing experience on the renting website platform by providing a suite of interactive and dynamic functionalities. From fetching matches to setting up detailed match cards with integrated chat functionality, this script ensures users can effectively engage with and manage their matches.
 
 - **Used in Match Display Components:** Integrated within the platform's match display component, this script is instrumental in fetching, displaying, and managing user matches.
 

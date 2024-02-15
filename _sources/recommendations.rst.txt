@@ -10,7 +10,7 @@ This section of the documentation elaborates on the JavaScript files within the 
 **recommendationHandler.js**
 ----------------------------
 
-`recommendationHandler.js` introduces the `RecommendationHandler` class, pivotal for managing the recommendation system's frontend logic on the Redwood Prototype. This class is instrumental in fetching, displaying, and interacting with user recommendations, creating a dynamic and personalized user experience through the integration of various APIs and UI components.
+`recommendationHandler.js` introduces the `RecommendationHandler` class, pivotal for managing the recommendation system's frontend logic on the renting website prototype. This class is instrumental in fetching, displaying, and interacting with user recommendations, creating a dynamic and personalized user experience through the integration of various APIs and UI components.
 
 Key Functionalities
 --------------------
@@ -40,7 +40,7 @@ Key Functionalities
 Integration and Usage
 ----------------------
 
-`RecommendationHandler` serves as a cornerstone for the recommendation system within the Redwood Prototype, integrating tightly with various components of the platform to offer a comprehensive and interactive user experience.
+`RecommendationHandler` serves as a cornerstone for the recommendation system within the renting website prototype, integrating tightly with various components of the platform to offer a comprehensive and interactive user experience.
 
 - **Integrated with MapManager and DatePicker:** Enhances recommendations with geographical data visualization and calendar visualization, provided by `MapManager` and `DatePicker`, respectively.
 

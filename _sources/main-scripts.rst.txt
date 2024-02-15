@@ -10,7 +10,7 @@ This section of the documentation elaborates on the JavaScript files within the 
 **matches.js**
 --------------
 
-`matches.js` plays a critical role in the Redwood Prototype platform by managing the display and interactions with user matches. It incorporates various utility modules to present matches dynamically, facilitate chat functionalities, and ensure a smooth user experience in reporting and managing matches.
+`matches.js` plays a critical role in the renting website's platform by managing the display and interactions with user matches. It incorporates various utility modules to present matches dynamically, facilitate chat functionalities, and ensure a smooth user experience in reporting and managing matches.
 
 Key Functionalities
 --------------------
@@ -39,7 +39,7 @@ This script integrates seamlessly with the platform's frontend, ensuring matches
 **recommendations.js**
 ----------------------
 
-`recommendations.js` is at the heart of the Redwood Prototype's recommendation system, providing a seamless and interactive experience for users exploring potential matches. This script integrates various modules to present user recommendations dynamically, allowing for a rich interaction with geographical data, calendar inputs, and responsive UI elements.
+`recommendations.js` is at the heart of the renting website prototype's recommendation system, providing a seamless and interactive experience for users exploring potential matches. This script integrates various modules to present user recommendations dynamically, allowing for a rich interaction with geographical data, calendar inputs, and responsive UI elements.
 
 Key Functionalities
 --------------------
